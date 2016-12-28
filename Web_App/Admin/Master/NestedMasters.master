@@ -1,0 +1,49 @@
+﻿<%@ Master Language="C#" MasterPageFile="~/Admin/AdminMaster.master" AutoEventWireup="true"
+    CodeFile="NestedMasters.master.cs" Inherits="Admin_Master_NestedMasters" %>
+
+<asp:Content ID="Content1" ContentPlaceHolderID="head" runat="Server">
+</asp:Content>
+<asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="Server">
+    <br />
+    <div class="row">
+        <div class="alert alert-success">
+            <asp:LinkButton ID="lkbCategory" CommandName="Category" CssClass="alert-link" runat="server"
+                OnClick="lkbOnclick">Category</asp:LinkButton>
+            <span class="alert-link">| </span>
+            <asp:LinkButton ID="lkbSubCat" CommandName="SubCategory" CssClass="alert-link" runat="server"
+                OnClick="lkbOnclick">Sub-Category</asp:LinkButton>
+            <span class="alert-link">| </span>
+            <asp:LinkButton ID="lkbMerchants" CommandName="Merchant" CssClass="alert-link" runat="server"
+                OnClick="lkbOnclick">Merchants</asp:LinkButton>
+            <span class="alert-link">| </span>
+            <asp:LinkButton ID="lbkCoupon" CommandName="Coupon" CssClass="alert-link" runat="server"
+                OnClick="lkbOnclick">Coupons</asp:LinkButton>
+            <span class="alert-link">| </span>
+            <asp:LinkButton ID="lkbOffer" CommandName="Offer" CssClass="alert-link" runat="server"
+                OnClick="lkbOnclick">Offers</asp:LinkButton>
+            <span class="alert-link">| </span>
+            <asp:LinkButton ID="lkbDeal" CommandName="Deal" CssClass="alert-link" runat="server"
+                OnClick="lkbOnclick">Deals</asp:LinkButton>
+            <span class="alert-link">| </span>
+            <asp:LinkButton ID="lkbVwProduct" CommandName="Campaigns" CssClass="alert-link" runat="server"
+                OnClick="lkbOnclick">Campaigns</asp:LinkButton>
+            <span class="alert-link">| </span>
+            <asp:LinkButton ID="lkbApiURL" CommandName="ApiURL" CssClass="alert-link" runat="server"
+                OnClick="lkbOnclick">API-URL</asp:LinkButton>
+            <span class="alert-link">| </span>
+            <asp:LinkButton ID="lkbCommision" CommandName="Commision" CssClass="alert-link" runat="server"
+                OnClick="lkbOnclick">Commision</asp:LinkButton>
+            <span class="alert-link">| </span>
+            <asp:LinkButton ID="lkbBanner" CommandName="Banner" CssClass="alert-link" runat="server"
+                OnClick="lkbOnclick">Banner</asp:LinkButton>
+            <span class="alert-link">| </span>
+            <asp:LinkButton ID="lnkNotification" CommandName="Notification" CssClass="alert-link"
+                runat="server" OnClick="lkbOnclick">Notification</asp:LinkButton>
+                <span class="alert-link">| </span>
+            <asp:LinkButton ID="lkbMissingCashback" CommandName="MissingCashback" CssClass="alert-link"
+                runat="server" OnClick="lkbOnclick">Missing Cashback</asp:LinkButton>
+        </div>
+    </div>
+    <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
+    </asp:ContentPlaceHolder>
+</asp:Content>

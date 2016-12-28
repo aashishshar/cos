@@ -1,0 +1,208 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeFile="AdminMaster.master.cs"
+    Inherits="Admin_AdminMaster" %>
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head runat="server">
+    <title></title>
+    <%-- <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css"
+        rel="stylesheet" type="text/css" />
+    <!-- Ionicons 2.0.0 -->
+    <link href="http://code.ionicframework.com/ionicons/2.0.0/css/ionicons.min.css" rel="stylesheet"
+        type="text/css" />
+    <link href="../App_Themes/Admin/dist/css/AdminLTE.min.css" rel="stylesheet" type="text/css" />
+    <!-- AdminLTE Skins. Choose a skin from the css/skins 
+         folder instead of downloading all of them to reduce the load. -->
+    <link href="../App_Themes/Admin/dist/css/skins/_all-skins.min.css" rel="stylesheet"
+        type="text/css" />
+    <!-- jvectormap -->
+    <link href="../App_Themes/Admin/plugins/jvectormap/jquery-jvectormap-1.2.2.css" rel="stylesheet"
+        type="text/css" />
+    <!-- Date Picker -->
+    <link href="../App_Themes/Admin/plugins/datepicker/datepicker3.css" rel="stylesheet"
+        type="text/css" />
+    <!-- Daterange picker -->
+    <link href="../App_Themes/Admin/plugins/daterangepicker/daterangepicker-bs3.css"
+        rel="stylesheet" type="text/css" />
+    <!-- bootstrap wysihtml5 - text editor -->
+    <link href="../App_Themes/Admin/plugins/bootstrap-wysihtml5/bootstrap3-wysihtml5.min.css"
+        rel="stylesheet" type="text/css" />
+   <link href="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css"
+        rel="stylesheet" />--%>
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+    <link rel="stylesheet" href="http://cdn.datatables.net/1.10.2/css/jquery.dataTables.min.css" />
+    <%--<script type="text/javascript" src="http://cdn.datatables.net/1.10.2/js/jquery.dataTables.min.js"></script>
+   <script type="text/javascript" src="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>--%>
+    <asp:ContentPlaceHolder ID="head" runat="server">
+    </asp:ContentPlaceHolder>
+</head>
+<body class="skin-blue">
+    <form id="form1" runat="server">
+    <div id="wrapper">
+        <nav class="navbar navbar-default navbar-static-top" role="navigation" style="margin-bottom: 0">
+            <asp:ScriptManager ID="ScriptManager1" EnablePageMethods="true" runat="server">
+                <Scripts>
+                   <%--<asp:ScriptReference Path="~/App_Themes/Admin/js/jquery-1.11.0.js" />--%>
+                    <asp:ScriptReference Path="http://cdn.datatables.net/1.10.2/js/jquery.dataTables.min.js" />
+                 <%--   <asp:ScriptReference Path="~/App_Themes/Admin/js/jquery.min.js" />--%>
+                    <asp:ScriptReference Path="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8/jquery-ui.min.js" />
+                    <asp:ScriptReference Path="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js" />
+                    <asp:ScriptReference Path="~/App_Themes/Admin/js/plugins/metisMenu/metisMenu.min.js" />
+                    <asp:ScriptReference Path="~/App_Themes/Admin/js/sb-admin-2.js" />
+                    <asp:ScriptReference Path="~/App_Themes/Admin/js/button.js" />
+                     <%--<asp:ScriptReference Path="~/App_Themes/Admin/js/jquery-ui.js" />--%>
+                </Scripts>
+            </asp:ScriptManager>
+            <script type="text/javascript">
+                $("[id*=chkHeader]").live("click", function () {
+                    var chkHeader = $(this);
+                    var grid = $(this).closest("table");
+                    $("input[type=checkbox]", grid).each(function () {
+                        if (chkHeader.is(":checked")) {
+                            $(this).attr("checked", "checked");
+                            $("td", $(this).closest("tr")).addClass("selected");
+                        } else {
+                            $(this).removeAttr("checked");
+                            $("td", $(this).closest("tr")).removeClass("selected");
+                        }
+                    });
+                });
+                $("[id*=chkRow]").live("click", function () {
+                    var grid = $(this).closest("table");
+                    var chkHeader = $("[id*=chkHeader]", grid);
+                    if (!$(this).is(":checked")) {
+                        $("td", $(this).closest("tr")).removeClass("selected");
+                        chkHeader.removeAttr("checked");
+                    } else {
+                        $("td", $(this).closest("tr")).addClass("selected");
+                        if ($("[id*=chkRow]", grid).length == $("[id*=chkRow]:checked", grid).length) {
+                            chkHeader.attr("checked", "checked");
+                        }
+                    }
+                });
+            </script>
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                    <span class="sr-only">Toggle navigation</span> <span class="icon-bar"></span><span
+                        class="icon-bar"></span><span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="Dashboard.aspx">Admin c-Panel</a>
+            </div>
+            <ul class="nav navbar-top-links navbar-right">
+                <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#"><i
+                    class="fa fa-dashboard fa-fw"></i>Masters <i class="fa fa-caret-down"></i></a>
+                    <ul class="dropdown-menu dropdown-user">
+                        <li>
+                            <asp:HyperLink ID="HyperLink1" NavigateUrl="~/Admin/Master/Masters.aspx" runat="server"><i class="fa fa-user fa-fw"></i>Master</asp:HyperLink>
+                        </li>
+                        <li>
+                            <asp:HyperLink ID="HyperLink5" NavigateUrl="~/Admin/BreakDown.aspx" runat="server"><i class="fa fa-user fa-fw"></i>Break-down</asp:HyperLink>
+                        </li>
+                         <li>
+                            <asp:HyperLink ID="HyperLink11" NavigateUrl="~/Admin/TrackingLink.aspx" runat="server"><i class="fa fa-user fa-fw"></i>Tracking Link</asp:HyperLink>
+                        </li>
+                    </ul>
+                </li>
+                <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#"><i
+                    class="fa fa-dashboard fa-fw"></i>Feature Offers <i class="fa fa-caret-down"></i></a>
+                    <ul class="dropdown-menu dropdown-user">
+                        <li>
+                            <asp:HyperLink ID="HyperLink9" NavigateUrl="~/Admin/FeatureOffers.aspx" runat="server"><i class="fa fa-user fa-fw"></i>Add Feature Offers</asp:HyperLink>
+                        </li>
+                    </ul>
+                </li>
+
+                <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#"><i
+                    class="fa fa-dashboard fa-fw"></i>User <i class="fa fa-caret-down"></i></a>
+                    <ul class="dropdown-menu dropdown-user">
+                        <li>
+                            <asp:HyperLink ID="HyperLink2" NavigateUrl="~/Admin/ManageUsers.aspx" runat="server"><i class="fa fa-user fa-fw"></i>Manage Users</asp:HyperLink>
+                        </li>
+                    </ul>
+                </li>
+                 <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#"><i
+                    class="fa fa-dashboard fa-fw"></i>Pramotion <i class="fa fa-caret-down"></i></a>
+                    <ul class="dropdown-menu dropdown-user">
+                        
+                         <li>
+                            <asp:HyperLink ID="HyperLink7" NavigateUrl="~/Admin/MarketingTemplate.aspx" runat="server"><i class="fa fa-user fa-fw"></i>Pramotion Email Template</asp:HyperLink>
+                        </li>
+                        <li>
+                            <asp:HyperLink ID="HyperLink8" NavigateUrl="~/Admin/Bulkmailing.aspx" runat="server"><i class="fa fa-user fa-fw"></i>Bulk Mail Sender</asp:HyperLink>
+                        </li>
+                        <li>
+                            <asp:HyperLink ID="HyperLink6" NavigateUrl="~/Admin/Seo.aspx" runat="server"><i class="fa fa-user fa-fw"></i>Merchant SEO</asp:HyperLink>
+                        </li>
+                    </ul>
+                </li>
+
+                  <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#"><i
+                    class="fa fa-gear fa-fw"></i>OMG Report <i class="fa fa-caret-down"></i></a>
+                    <ul class="dropdown-menu dropdown-user">
+                        <li>
+                            <asp:HyperLink ID="HyperLink3" NavigateUrl="~/Admin/OmgTransaction.aspx" runat="server"><i class="fa fa-user fa-fw"></i>Transaction Report</asp:HyperLink>
+                        </li>
+                    </ul>
+                </li>
+
+                <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#"><i
+                    class="fa fa-gear fa-fw"></i>API <i class="fa fa-caret-down"></i></a>
+                    <ul class="dropdown-menu dropdown-user">
+                       <li class="dropdown">
+                    <asp:HyperLink ID="hlMerchant" NavigateUrl="~/Admin/Merchant.aspx" runat="server"><i class="fa fa-gear fa-fw"></i>Merchant Feed</asp:HyperLink>
+                </li>
+                <li class="dropdown">
+                    <asp:HyperLink ID="hlApi" NavigateUrl="~/Admin/API.aspx" runat="server"><i class="fa fa-gear fa-fw"></i>Manage API</asp:HyperLink>
+                </li>
+                <li class="dropdown">
+                    <asp:HyperLink ID="HyperLink4" NavigateUrl="~/Admin/KeyAPI.aspx" runat="server"><i class="fa fa-gear fa-fw"></i>Keyword API</asp:HyperLink>
+                </li>
+                    </ul>
+                </li>
+
+                <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#"><i
+                    class="fa fa-gear fa-fw"></i>Report <i class="fa fa-caret-down"></i></a>
+                    <ul class="dropdown-menu dropdown-user">
+                       <li class="dropdown">
+                    <asp:HyperLink ID="HyperLink10" NavigateUrl="~/Admin/OfferLink.aspx" runat="server"><i class="fa fa-gear fa-fw"></i>Offer View Link</asp:HyperLink>
+                </li>
+               
+                    </ul>
+                </li>
+
+
+
+              
+                <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#"><i
+                    class="fa fa-user fa-fw"></i>
+                    <asp:LoginName ID="HeadLoginName" runat="server" />
+                    <i class="fa fa-caret-down"></i></a>
+                    <ul class="dropdown-menu dropdown-user">
+                        <li><a href="../Account/Profile.aspx"><i class="fa fa-user fa-fw"></i>User Profile</a>
+                        </li>
+                        <li><a href="#"><i class="fa fa-gear fa-fw"></i>Settings</a> </li>
+                        <li class="divider"></li>
+                        <li>
+                            <asp:LoginStatus ID="HeadLoginStatus" runat="server" LogoutAction="Redirect" LogoutPageUrl="~/Default.aspx" />
+                        </li>
+                    </ul>
+                </li>
+            </ul>
+        </nav>
+        <div id="page-wrapper">
+            <asp:ContentPlaceHolder ID="MainContent" runat="server" />
+        </div>
+        <!-- /#page-wrapper -->
+    </div>
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $('#gvItems').dataTable({
+                //                "scrollX": true
+            });
+
+            //            $('#table.display').dataTable();
+        });
+    </script>
+    </form>
+</body>
+</html>

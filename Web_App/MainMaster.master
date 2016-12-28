@@ -1,0 +1,374 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeFile="MainMaster.master.cs" Inherits="MainMaster" %>
+
+<%@ Register Src="UC/UCUI/RightSidebar/UC_MerchantList.ascx" TagName="UC_MerchantList"
+    TagPrefix="uc1" %>
+<%@ Register Src="UC/UCUI/Menu/uc_MerchantMenu.ascx" TagName="uc_MerchantMenu" TagPrefix="uc2" %>
+<%@ Register Src="UC/MasterHeader/uc_TopOnHeader.ascx" TagName="uc_TopOnHeader" TagPrefix="uc3" %>
+<%@ Register Src="UC/MasterHeader/uc_HeaderCommon.ascx" TagName="uc_HeaderCommon"
+    TagPrefix="uc4" %>
+<%@ Register Src="UC/UCUI/Master/Merchant/uc_NotificationView.ascx" TagName="uc_NotificationView"
+    TagPrefix="uc5" %>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head runat="server">
+    <title>Best Cashback Offers & Online Shopping Coupons on 100 + Websites</title>
+    <link href='https://fonts.googleapis.com/css?family=Fjalla+One' rel='stylesheet'
+        type='text/css' />
+    <meta name="msvalidate.01" content="F673C55059F23507403CA3BC57430767" />
+    <meta name="alexaVerifyID" content="wAjAe0_dX1ZK4WPQnBdsmYtnH1Y" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name='verify-v1' content='9822c9e7191f4c47662ba4a1d969072e' />
+    <script type="text/javascript" src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/respond.js/1.4.2/respond.js"></script>
+    <meta name='verify-v1' content='9822c9e7191f4c47662ba4a1d969072e' />
+    <!-- Define Charset -->
+    <meta charset="utf-8" />
+    <meta name="verify-admitad" content="458cfcd7be" />
+    <meta name="OMG-Verify-V1" content="764019-83d22112-2c5e-4d9a-aecf-af3d47b5ad85" />
+    <meta name="description" content="Get Cashback Offers, Discount Coupons & Promo Codes for India's Top Online Selling
+Websites like Shopclues, Amazon, Paytm, Greendust, Snapdeal & many more. Join Us Free @Cashonshop.com!" />
+    <meta name="google-site-verification" content="KTfZeANxHL0IEDcjMcGrQCPlKRwyasroOQAKVEEL5gw" />
+    <meta name="keywords" content="Extra Cash On Shopping, Discount Coupons, Cash Back Sites, Extra Cashback Online,
+Online Cashback, Free Deals, Free Shopping Deals, Free Coupons, Free Offers, Free Shopping Coupons, 
+Free Cashback Deals, Extra Cashback, Best Cashback Sites, Online Shopping Coupons, Cashback 
+Coupons, Cashback Shopping, Best Offers On Online Shopping" />
+    <meta name="author" content="http://www.cashonshop.com" />
+    <!-- Bootstrap CSS  -->
+    <link rel="stylesheet" href="~/App_Themes/Main/asset/css/bootstrap.css" type="text/css"
+        media="screen" />
+    <!-- Font Awesome CSS -->
+    <link rel="stylesheet" href="~/App_Themes/Main/css/font-awesome.min.css" type="text/css"
+        media="screen" />
+    <!-- Margo CSS Styles  -->
+    <link rel="stylesheet" type="text/css" href="~/App_Themes/Main/css/style.css" media="screen" />
+    <!-- Responsive CSS Styles  -->
+    <link rel="stylesheet" type="text/css" href="~/App_Themes/Main/css/responsive.css"
+        media="screen" />
+    <!-- Css3 Transitions Styles  -->
+    <link rel="stylesheet" type="text/css" href="~/App_Themes/Main/css/animate.css" media="screen" />
+    <!-- Color CSS Styles  -->
+    <link rel="stylesheet" type="text/css" href="~/App_Themes/Main/css/colors/red.css"
+        title="red" media="screen" />
+    <!-- Facebook Pixel Code -->
+    <script>
+        !function (f, b, e, v, n, t, s) {
+            if (f.fbq) return; n = f.fbq = function () {
+                n.callMethod ?
+n.callMethod.apply(n, arguments) : n.queue.push(arguments)
+            }; if (!f._fbq) f._fbq = n;
+            n.push = n; n.loaded = !0; n.version = '2.0'; n.queue = []; t = b.createElement(e); t.async = !0;
+            t.src = v; s = b.getElementsByTagName(e)[0]; s.parentNode.insertBefore(t, s)
+        } (window,
+document, 'script', '//connect.facebook.net/en_US/fbevents.js');
+
+        fbq('init', '1444594905588965');
+        fbq('track', "PageView");</script>
+    <noscript>
+        <img height="1" width="1" style="display: none" src="https://www.facebook.com/tr?id=1444594905588965&ev=PageView&noscript=1" /></noscript>
+    <!-- End Facebook Pixel Code -->
+    <%-- <link rel="stylesheet" type="text/css" href="~/App_Themes/Main/css/formValidation.min.css"  media="screen" />
+    --%>
+    <!-- Bootstrap CSS  -->
+    <%--  <link rel="stylesheet" href="~/App_Themes/Main/asset/css/bootstrap.min.css" type="text/css"
+        media="screen">
+    <!-- Font Awesome CSS -->
+    <link rel="stylesheet" href="~/App_Themes/Main/css/font-awesome.min.css" type="text/css"
+        media="screen">
+    <!-- Margo CSS Styles  -->
+    <link rel="stylesheet" type="text/css" href="~/App_Themes/Main/css/style.css" media="screen">
+    <!-- Responsive CSS Styles  -->
+    <link rel="stylesheet" type="text/css" href="~/App_Themes/Main/css/responsive.css"
+        media="screen">
+    <!-- Color CSS Styles  -->
+    <link rel="stylesheet" type="text/css" href="~/App_Themes/Main/css/colors/red.css"
+        title="red" media="screen" />
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>--%>
+    <asp:ContentPlaceHolder ID="head" runat="server">
+    </asp:ContentPlaceHolder>
+</head>
+<body onkeydown="return (event.keyCode!=13)">
+    <form id="form1" runat="server">
+    <asp:ScriptManager ID="ScriptManager1" EnableCdn="true" runat="server">
+        <Scripts>
+            <%--https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js--%>
+            <asp:ScriptReference Path="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js" />
+            <%-- <asp:ScriptReference Path="~/App_Themes/Admin/js/jquery-1.11.0.js" />--%>
+            <asp:ScriptReference Path="~/App_Themes/Main/js/jquery.migrate.js" />
+            <asp:ScriptReference Path="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8/jquery-ui.min.js" />
+            <asp:ScriptReference Path="~/App_Themes/Main/js/modernizrr.js" />
+            <asp:ScriptReference Path="~/App_Themes/Main/asset/js/bootstrap.min.js" />
+            <asp:ScriptReference Path="~/App_Themes/Main/js/jquery.fitvids.js" />
+            <asp:ScriptReference Path="~/App_Themes/Main/js/owl.carousel.min.js" />
+            <asp:ScriptReference Path="~/App_Themes/Main/js/nivo-lightbox.min.js" />
+            <asp:ScriptReference Path="~/App_Themes/Main/js/jquery.isotope.min.js" />
+            <asp:ScriptReference Path="~/App_Themes/Main/js/jquery.appear.js" />
+            <asp:ScriptReference Path="~/App_Themes/Main/js/count-to.js" />
+            <asp:ScriptReference Path="~/App_Themes/Main/js/jquery.textillate.js" />
+            <asp:ScriptReference Path="~/App_Themes/Main/js/jquery.lettering.js" />
+            <asp:ScriptReference Path="~/App_Themes/Main/js/jquery.easypiechart.min.js" />
+            <asp:ScriptReference Path="~/App_Themes/Main/js/jquery.nicescroll.min.js" />
+            <asp:ScriptReference Path="~/App_Themes/Main/js/jquery.parallax.js" />
+            <asp:ScriptReference Path="~/App_Themes/Main/js/script.js" />
+            <asp:ScriptReference Path="~/App_Themes/Main/js/mediaelement-and-player.js" />
+            <asp:ScriptReference Path="~/App_Themes/Main/js/login-sign.js" />
+            <%--  <asp:ScriptReference Path="~/App_Themes/Main/js/bootstrapValidator.js" />
+               <asp:ScriptReference Path="~/App_Themes/Main/js/formValidation.min.js" />--%>
+        </Scripts>
+    </asp:ScriptManager>
+    <!-- Container -->
+    <div id="container">
+        <!-- Start Header -->
+        <div class="hidden-header">
+        </div>
+        <header class="clearfix">
+            <!-- Start Top Bar -->
+            <div class="top-bar color-bar">
+                <div class="container">
+                    <div class="row">
+                     <div class="col-md-7">
+                        <!--Here Top On Header-->
+                        <uc3:uc_TopOnHeader ID="uc_TopOnHeader1" runat="server" />
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- End Top Bar -->
+            <!-- Start Header ( Logo & Naviagtion ) -->
+           <uc4:uc_HeaderCommon ID="uc_HeaderCommon1" runat="server" />
+      
+            <!-- End Header ( Logo & Naviagtion ) -->
+        </header>
+        <uc5:uc_NotificationView ID="uc_NotificationView1" runat="server" />
+        <!-- Start Content -->
+        <div id="container-fluid">
+            <div class="container da-mid-top-margin">
+                <div class="row">
+                    <!-- Page Content -->
+                    <div class="container">
+                        <div class="row" style="min-height: 500px;">
+                            <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
+                            </asp:ContentPlaceHolder>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- End Content -->
+        <!-- Start Footer -->
+        <footer>
+            <div class="container">
+                <div class="row footer-widgets">
+                    <!-- Start Subscribe & Social Links Widget -->
+                    <div class="col-md-4 col-xs-12">
+
+                        <div class="footer-widget ">
+
+                            <h4>
+                                Get in touch<span class="head-line"></span></h4>
+                            
+                                send us mail on care@cashonshop.com!
+                                 <div   class="mail-subscribe-widget">
+                                <input type="text" placeholder="mail@example.com"/>
+                                <input type="submit" class="main-button" value="Send"/>
+                            </div>
+                              
+                                </div>
+                             
+                           
+                      
+                     
+                    </div>
+                 
+                    <!-- .col-md-3 -->
+                    <!-- End Subscribe & Social Links Widget -->
+                    <!-- Start Twitter Widget -->
+                    <div class="col-md-2 col-xs-12">
+                        <div class="footer-widget ">
+                            <h4>
+                                Categories <span class="head-line"></span></h4>
+                            <ul>
+                                <li>
+                                  <p>   <asp:HyperLink ID="HyperLink4" NavigateUrl="~/MerchantStore.aspx" runat="server">Mens Clothing</asp:HyperLink> </p> </li>
+                                 <li>
+                                   <asp:HyperLink ID="HyperLink5" NavigateUrl="~/MerchantStore.aspx" runat="server">Women Clothing</asp:HyperLink> </li>
+                                <li>
+                                  <asp:HyperLink ID="HyperLink6" NavigateUrl="~/MerchantStore.aspx" runat="server">Recharge/Bill Payment</asp:HyperLink> </li>
+                                  <li><asp:HyperLink ID="HyperLink7" NavigateUrl="~/advertiseus.aspx" runat="server">Partner with us</asp:HyperLink> </li>
+                                  <li><asp:HyperLink ID="HyperLink8" NavigateUrl="~/MerchantStore.aspx" runat="server">All Merchant</asp:HyperLink> </li>
+                            </ul>
+                        </div>
+                    </div>
+                       <div class="col-md-3 col-xs-12">
+                       <div class="footer-widget social-widget">
+                            <h4>
+                                Follow Us<span class="head-line"></span></h4>
+                            <ul class="social-icons">
+                                <li><a class="facebook" target="_blank" href="https://www.facebook.com/profile.php?id=100009295903346">
+                                    <i class="fa fa-facebook"></i></a></li>
+                                <li><a class="twitter" target="_blank" href="https://twitter.com/CashonShop"><i class="fa fa-twitter">
+                                </i></a></li>
+                                <li><a class="google" target="_blank" href="https://plus.google.com/108563708791585528533/posts">
+                                    <i class="fa fa-google-plus"></i></a></li>
+                                <%-- <li><a class="dribbble" href="#"><i class="fa fa-dribbble"></i></a></li>--%>
+                                <li><a class="linkdin" target="_blank" href="https://www.linkedin.com/in/cashonshop">
+                                    <i class="fa fa-linkedin"></i></a></li>
+                                <%--    <li><a class="flickr" href="#"><i class="fa fa-flickr"></i></a></li>
+                                <li><a class="tumblr" href="#"><i class="fa fa-tumblr"></i></a></li>
+                                <li><a class="instgram" href="#"><i class="fa fa-instagram"></i></a></li>
+                                <li><a class="vimeo" href="#"><i class="fa fa-vimeo-square"></i></a></li>
+                                <li><a class="skype" href="#"><i class="fa fa-skype"></i></a></li>--%>
+                            </ul>
+                        </div>
+                    </div>
+                    <!-- .col-md-3 -->
+                    <!-- End Twitter Widget -->
+                    <!-- Start Flickr Widget -->
+                    <%-- <div class="col-md-3">
+                        <div class="footer-widget flickr-widget">
+                            <h4>
+                                Flicker Feed<span class="head-line"></span></h4>
+                            <ul class="flickr-list">
+                                <li><a href="images/flickr-01.jpg" class="lightbox">
+                                    <img alt="" src="images/flickr-01.jpg">
+                                </a></li>
+                                <li><a href="images/flickr-02.jpg" class="lightbox">
+                                    <img alt="" src="images/flickr-02.jpg">
+                                </a></li>
+                                <li><a href="images/flickr-03.jpg" class="lightbox">
+                                    <img alt="" src="images/flickr-03.jpg">
+                                </a></li>
+                                <li><a href="images/flickr-04.jpg" class="lightbox">
+                                    <img alt="" src="images/flickr-04.jpg">
+                                </a></li>
+                                <li><a href="images/flickr-05.jpg" class="lightbox">
+                                    <img alt="" src="images/flickr-05.jpg">
+                                </a></li>
+                                <li><a href="images/flickr-06.jpg" class="lightbox">
+                                    <img alt="" src="images/flickr-06.jpg">
+                                </a></li>
+                                <li><a href="images/flickr-07.jpg" class="lightbox">
+                                    <img alt="" src="images/flickr-07.jpg">
+                                </a></li>
+                                <li><a href="images/flickr-08.jpg" class="lightbox">
+                                    <img alt="" src="images/flickr-08.jpg">
+                                </a></li>
+                                <li><a href="images/flickr-09.jpg" class="lightbox">
+                                    <img alt="" src="images/flickr-09.jpg">
+                                </a></li>
+                            </ul>
+                        </div>
+                    </div>--%>
+                    <!-- .col-md-3 -->
+                    <!-- End Flickr Widget -->
+                    <!-- Start Contact Widget -->
+                    <div class="col-md-3 col-xs-12">
+                        <div class="footer-widget contact-widget">
+                            <h4><asp:Image ID="Image1" ImageUrl="Images/logo.png" CssClass="img-responsive" AlternateText="Footer logo" runat="server"></asp:Image> </h4>
+                            
+                            <ul>
+                                <%--<li><span>Phone Number:</span> +01 234 567 890</li>--%>
+                                <li><asp:HyperLink ID="HyperLink1" NavigateUrl="~/about.aspx" runat="server">About us</asp:HyperLink></li>
+                                 <li><asp:HyperLink ID="HyperLink2" NavigateUrl="~/ContactUs.aspx" runat="server">Contact us</asp:HyperLink></li>
+                                <li><asp:HyperLink ID="HyperLink3" NavigateUrl="~/advertiseus.aspx" runat="server">Advertise with us</asp:HyperLink></li> 
+                                <%--<li><a href="#">Join us</a> </li>--%>
+                                <li><span>Email:</span>care@cashonshop.com</li>
+                                
+                            </ul>
+                        </div>
+                    </div>
+                    <!-- .col-md-3 -->
+                    <!-- End Contact Widget -->
+    </div>
+    <!-- .row -->
+    <!-- Start Copyright -->
+    <div class="copyright-section">
+        <div class="row">
+            <div class="col-md-7">
+                <p>
+                    &copy; 2015-16 Cashonshop.com - All Rights Reserved</p>
+            </div>
+            <div class="col-md-5">
+                <ul class="footer-nav">
+                    <p>
+                        proudly made by Plexis Software Solution LLP in india</p>
+                    <%--  <li><a href="#">Sitemap</a></li>
+                                <li><a href="#">Privacy Policy</a></li>
+                                <li><a href="#">Contact</a></li>--%>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <!-- End Copyright -->
+    </div> </footer>
+        <!-- End Footer -->
+    </div>
+    <!-- End Container -->
+    <!-- Go To Top Link -->
+    <%--<a href="#" class="back-to-top"><i class="fa fa-angle-up">ashish</i></a>
+      <div id="loader">
+        <div class="spinner">
+            <div class="dot1">
+            </div>
+            <div class="dot2">
+            </div>
+        </div>
+    </div>--%>
+    <script type="text/javascript">
+        (function (i, s, o, g, r, a, m) {
+            i['GoogleAnalyticsObject'] = r; i[r] = i[r] || function () {
+                (i[r].q = i[r].q || []).push(arguments)
+            }, i[r].l = 1 * new Date(); a = s.createElement(o),
+  m = s.getElementsByTagName(o)[0]; a.async = 1; a.src = g; m.parentNode.insertBefore(a, m)
+        })(window, document, 'script', '//www.google-analytics.com/analytics.js', 'ga');
+
+        ga('create', 'UA-61500954-1', 'auto');
+        ga('send', 'pageview');
+
+    </script>
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $(document).keypress(function (event) {
+                /// alert("as");
+                if (event.keyCode == 13) {
+                    alert("1");
+                    $('#searchButton').click();
+                    $('#btnMainLoginUserwindow').click();
+
+                    // alert("2");
+                }
+            });
+            $('#divContentCrowsel div:first').addClass("item active");
+        });
+       
+    </script>
+    <%--<script src="http://static.ak.fbcdn.net/connect.php/js/FB.Share" type="text/javascript" />
+    <script src="http://static.ak.connect.facebook.com/js/api_lib/v0.4/FeatureLoader.js.php"
+        type="text/javascript" />--%>
+    <script type="text/javascript">
+        $(document).ready(function () {
+            //            $("html").niceScroll({ styler: "fb", cursorcolor: "#000" });
+            //            $("#divexample1").niceScroll();
+            //            $("#divexample2").niceScroll("#wrapperexample2", { cursorcolor: "#0F0", boxzoom: true });
+            //            $("#divexample3").niceScroll("#divexample3 iframe", { boxzoom: true });
+        });
+        // tooltip demo
+        $('.tooltip-demo').tooltip({
+            selector: "[data-toggle=tooltip]",
+            container: "body"
+        })
+
+        // popover demo
+        $("[data-toggle=popover]")
+        .popover()
+
+        // popover demo
+        $("[data-toggle=popover]").popover()
+
+    </script>
+    <%-- <script src="//my.hellobar.com/cf6f2eb5c6c829be60792bf799f8bcab5cdbd395.js" type="text/javascript"
+        charset="utf-8" async="async"></script>--%>
+    <!-- Go To Top Link -->
+    <a href="#" class="back-to-top"><i class="fa fa-angle-up"></i></a>
+    </form>
+</body>
+</html>

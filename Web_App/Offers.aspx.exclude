@@ -1,0 +1,44 @@
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/MainMaster.master" AutoEventWireup="true"
+    CodeFile="Offers.aspx.cs" Inherits="Offers" %>
+
+<%@ Register Src="UC/UCUI/Master/Merchant/uc_AllOffers.ascx" TagName="uc_AllOffers"
+    TagPrefix="uc1" %>
+<%@ Register src="UC/UCUI/RightSidebar/uc_MerchantListCB_List.ascx" tagname="uc_MerchantListCB_List" tagprefix="uc2" %>
+<asp:Content ID="Content1" ContentPlaceHolderID="head" runat="Server">
+</asp:Content>
+<asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="Server">
+    <div class="col-md-9 page-content">
+        <div class="latest-posts">
+            <!-- Classic Heading -->
+            <h4 class="classic-title">
+                <span>Search Offers</span></h4>
+            <p>
+                &nbsp;<uc1:uc_AllOffers ID="uc_AllOffersList" runat="server" />
+        </div>
+    </div>
+    <div class="col-md-3 sidebar right-sidebar">
+        <div class="widget widget-categories">
+            <h4>
+                Find Offers <span class="head-line"></span>
+            </h4>
+            <ul>
+                <li>
+                    <asp:CheckBox ID="ckbAll" AutoPostBack="true" runat="server" Text="&nbsp;ALL" OnCheckedChanged="ckbAll_CheckedChanged" /></li>
+            </ul> <ul>
+                <li>
+                    <asp:TextBox ID="txtmerchant" ClientIDMode="Static" runat="server" onkeyup="KeyUp(this,'#ckbAllMerchant');"
+                        placeholder="Search Merchant"></asp:TextBox></li></ul>
+            <div style="overflow-y: scroll; height: 400px; margin-bottom: 10px!important">
+            <uc2:uc_MerchantListCB_List ID="uc_MerchantListCB_ListItem" runat="server" />
+            
+              <%--  <asp:CheckBoxList ID="ckbAllMerchant" runat="server" RepeatLayout="UnorderedList"
+                    TextAlign="Right">
+                </asp:CheckBoxList>--%>
+            </div>
+            <p style="text-align: center;">
+                <asp:LinkButton ID="lkbFilterSearch" EnableTheming="false" Width="100%" CssClass="btn-system btn-large border-btn"
+                    runat="server" OnClick="lkbFilterSearch_Click"><i class='fa fa-filter'></i>&nbsp;Refine your search here</asp:LinkButton>
+            </p>
+        </div>
+    </div>
+</asp:Content>

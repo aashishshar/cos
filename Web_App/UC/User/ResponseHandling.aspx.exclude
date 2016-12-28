@@ -1,0 +1,90 @@
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/UC/UserMain.master" AutoEventWireup="true"
+    CodeFile="ResponseHandling.aspx.cs" Inherits="UC_User_ResponseHandling" %>
+
+<asp:Content ID="Content1" ContentPlaceHolderID="Head" runat="Server">
+</asp:Content>
+<asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="Server">
+    <div class="col-lg-3 col-md-3 col-sm-3 sidebar left-sidebar">
+        <div class="da-activepanel">
+            <div class="widget widget-popular-posts">
+                <h4>
+                    <b>Payment Summary</b><span class="head-line"></span></h4>
+                <div class="row">
+                    <div class="col-sm-12 col-xs-6">
+                        <div class="col-lg-9 col-md-9 col-sm-9" style="margin-left: -15px;font-weight:normal!important;">
+                            <p>
+                                Paytm Cash Transaction No 1548035058</p>
+                        </div>
+                        <div class="row">
+                            <div class="col-lg-3 col-md-3 col-sm-3" style="margin-left:15px;font-weight:normal!important;">
+                                <p>
+                                    Rs.1110</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                 <div class="row">
+                    <div class="col-sm-12 col-xs-6">
+                        <div class="col-lg-9 col-md-9 col-sm-9" style="margin-left: -15px;font-weight:normal!important;">
+                            <p>
+                                Subtotal</p>
+                        </div>
+                        <div class="row">
+                            <div class="col-lg-3 col-md-3 col-sm-3" style="margin-left:15px;font-weight:normal!important;">
+                                <p>
+                                    Rs.1110</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                 <div class="row" >
+                    <div class="col-sm-12 col-xs-6" >
+                        <div class="col-lg-9 col-md-9 col-sm-9" style="margin-left: -15px;">
+                            <p style="padding-top:7px;padding-bottom:7px;border-top:1px dotted gray;border-bottom:1px dotted gray;margin-top:10px;margin-bottom:10px;">
+                                Total Order</p>
+                        </div>
+                        <div class="row">
+                            <div class="col-lg-3 col-md-3 col-sm-3" style="margin-left:15px;">
+                                <p style="padding-top:7px;padding-bottom:7px;border-top:1px dotted gray;border-bottom:1px dotted gray;margin-top:10px;margin-bottom:10px;">
+                                    Rs.1110</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-lg-9 col-md-9 col-sm-9 sidebar left-sidebar">
+        <div class="da-activepanel">
+            <div class="widget widget-popular-posts">
+                <h4>
+                    <b>RECHARGE / BILL PAYMENT Details</b><span class="head-line"></span></h4>
+                <div class="row">
+                    <div class="col-sm-12 col-xs-6">
+                        <div class="col-lg-1 col-md-1 col-sm-1 lbl-system lbl-white da-leftbox">
+                            <asp:Image runat="server" Width="92px" Height="30px" ImageAlign="AbsMiddle" ID="pImage"
+                                ImageUrl='http://www.cashonshop.com/Images/mImage/paytm.jpg' />
+                        </div>
+                        <div class="col-lg-7 col-md-7 col-sm-7">
+                            <p>
+                                <b>Bill Payment of Vodafone Mobile 9873321199<asp:Label ID="lblmsg" runat="server"></asp:Label><br />
+                                    Payment of Rs. 1 received by Paytm !<br />
+                                </b>
+                            </p>
+                        </div>
+                        <div class="col-lg-3 col-md-3 col-sm-3">
+                            <p>
+                                Order No : 1548974522<br />
+                                4:36pm, Feb 21 2016
+                            </p>
+                        </div>
+                        <div class="col-lg-1 col-md-1 col-sm-1">
+                            <p>
+                                Rs.1111</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</asp:Content>

@@ -1,0 +1,119 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Web;
+using System.Web.UI;
+using System.Web.UI.WebControls;
+
+public partial class Offers : BasePage, IMerchant_OfferListView
+{
+
+    private Merchant_OfferListPrensenter _presenter;
+
+
+    public event EventHandler SearchRefresh;
+    public Offers()
+    {
+        this.TakeLatestCoupon = 0;
+        this._presenter = new Merchant_OfferListPrensenter(this);
+    }
+    protected void Page_Load(object sender, EventArgs e)
+    {
+        if (!IsPostBack)
+        {
+            string searchText = string.Empty;
+            if (Session["S"]!=null)
+            {
+                this.SearchText = Session["S"].ToString();// Request.QueryString["s"].ToString().Trim();
+
+                EventHandler search = this.SearchRefresh;
+                if (search != null)
+                {
+                    search(sender, e);
+                    ckbAll.Checked = false;
+                    uc_AllOffersList.Offers = Merchant_Offers;
+                    Merchant_OffersList = Merchant_Offers;
+                    Session.Abandon();
+                }
+            }
+            else
+            {
+                //BindApi();           
+                ckbAll.Checked = true;
+                uc_AllOffersList.Offers = Merchant_Offers;
+                Merchant_OffersList = Merchant_Offers;
+            }
+        }
+    }
+    public List<Merchant_Offer> Merchant_OffersList
+    {
+        get
+        {
+            object s = ViewState["Merchant_OffersList"];
+            return ((s == null) ? null : (List<Merchant_Offer>)s);
+        }
+
+        set
+        {
+            ViewState["Merchant_OffersList"] = value;
+        }
+    }
+
+    private void BindApi()
+    {
+        //EnumControl.GetEnumDescriptions<Constants.NameOfMerchants>(ckbAllMerchant);
+    }
+
+    protected void ckbAll_CheckedChanged(object sender, EventArgs e)
+    {
+        if (ckbAll.Checked)
+        {
+            uc_MerchantListCB_ListItem.GetSelectedClearItem();
+
+            //if (Merchant_OffersList.Count > 0)
+            //{
+            //    uc_AllOffersList.Offers = Merchant_OffersList;
+            //}
+            //else
+            //{
+                 EventHandler searchRefresh = this.SearchRefresh;
+                 if (searchRefresh != null)
+                 {
+                     //Request.QueryString.Clear();
+                     searchRefresh(sender, e);
+                     uc_AllOffersList.Offers = Merchant_Offers;
+                     Merchant_OffersList = Merchant_Offers;
+                 }
+            //}
+        }
+    }
+    protected void lkbFilterSearch_Click(object sender, EventArgs e)
+    {
+        ckbAll.Checked = false;
+       
+
+        List<Merchant_Offer> i = (from p in Merchant_OffersList
+                                  where uc_MerchantListCB_ListItem.GetSelectedItemValue().Contains(p.MID.ToString())
+                                   select p).ToList();
+        uc_AllOffersList.Offers = i;
+        
+    }
+
+    public List<Merchant_Offer> Merchant_Offers { get; set; }
+
+    public string SearchText { get; set; }
+
+
+
+    public int TakeLatestCoupon { get; set; }
+
+
+    public int PageIndex { get; set; }
+
+    public int PageSize { get; set; }
+
+    public int TotalRecord { get; set; }
+
+
+    public event EventHandler PagingCommand;
+}

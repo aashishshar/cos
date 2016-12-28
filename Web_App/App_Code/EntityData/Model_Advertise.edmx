@@ -1,0 +1,2031 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="2.0" xmlns:edmx="http://schemas.microsoft.com/ado/2008/10/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="Ad_Model.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2008" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/02/edm/ssdl">
+        <EntityContainer Name="Ad_ModelStoreContainer">
+          <EntitySet Name="Adv_Commision" EntityType="Ad_Model.Store.Adv_Commision" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="Adv_Commision_HISTORY" EntityType="Ad_Model.Store.Adv_Commision_HISTORY" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="adv_CommissionBreakdown" EntityType="Ad_Model.Store.adv_CommissionBreakdown" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="Adv_Coupon" EntityType="Ad_Model.Store.Adv_Coupon" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="Adv_Deal" EntityType="Ad_Model.Store.Adv_Deal" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="Adv_DynamicProductFeed" EntityType="Ad_Model.Store.Adv_DynamicProductFeed" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="Adv_FeatureOffer" EntityType="Ad_Model.Store.Adv_FeatureOffer" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="Adv_MailContent" EntityType="Ad_Model.Store.Adv_MailContent" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="Adv_MissingCashback" EntityType="Ad_Model.Store.Adv_MissingCashback" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="Adv_Mst_ApiUrl" EntityType="Ad_Model.Store.Adv_Mst_ApiUrl" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="Adv_Mst_Merchant" EntityType="Ad_Model.Store.Adv_Mst_Merchant" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="Adv_Notification" EntityType="Ad_Model.Store.Adv_Notification" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="Adv_Offer" EntityType="Ad_Model.Store.Adv_Offer" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="Adv_OMG_Transaction" EntityType="Ad_Model.Store.Adv_OMG_Transaction" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="Adv_Product_Common" EntityType="Ad_Model.Store.Adv_Product_Common" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="Adv_Subscribe" EntityType="Ad_Model.Store.Adv_Subscribe" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="Adv_Trn_Banner" EntityType="Ad_Model.Store.Adv_Trn_Banner" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="Adv_Trn_UserProfile" EntityType="Ad_Model.Store.Adv_Trn_UserProfile" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="adv_Wallet" EntityType="Ad_Model.Store.adv_Wallet" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="aspnet_Users" EntityType="Ad_Model.Store.aspnet_Users" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="Mst_Category" EntityType="Ad_Model.Store.Mst_Category" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="Mst_SubCategory" EntityType="Ad_Model.Store.Mst_SubCategory" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="vw_Offer_List" EntityType="Ad_Model.Store.vw_Offer_List" store:Type="Views" store:Schema="dbo" store:Name="vw_Offer_List">
+            <DefiningQuery>SELECT 
+      [vw_Offer_List].[OfferID] AS [OfferID], 
+      [vw_Offer_List].[MID] AS [MID], 
+      [vw_Offer_List].[VoucherCodeID] AS [VoucherCodeID], 
+      [vw_Offer_List].[CouponForDevice] AS [CouponForDevice], 
+      [vw_Offer_List].[Title] AS [Title], 
+      [vw_Offer_List].[CouponCode] AS [CouponCode], 
+      [vw_Offer_List].[Description] AS [Description], 
+      [vw_Offer_List].[ValidTill] AS [ValidTill], 
+      [vw_Offer_List].[NavigationURL] AS [NavigationURL], 
+      [vw_Offer_List].[CreatedDate] AS [CreatedDate], 
+      [vw_Offer_List].[MoreOffer] AS [MoreOffer], 
+      [vw_Offer_List].[MerchantName] AS [MerchantName], 
+      [vw_Offer_List].[TrackingURL] AS [TrackingURL], 
+      [vw_Offer_List].[OfferType] AS [OfferType], 
+      [vw_Offer_List].[MerchantImage] AS [MerchantImage], 
+      [vw_Offer_List].[ImageUrl] AS [ImageUrl], 
+      [vw_Offer_List].[UserCommision] AS [UserCommision]
+      FROM [dbo].[vw_Offer_List] AS [vw_Offer_List]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="vw_OfferItem" EntityType="Ad_Model.Store.vw_OfferItem" store:Type="Views" store:Schema="dbo" store:Name="vw_OfferItem">
+            <DefiningQuery>SELECT 
+      [vw_OfferItem].[ID] AS [ID], 
+      [vw_OfferItem].[MerchantName] AS [MerchantName], 
+      [vw_OfferItem].[MerchantNameDetail] AS [MerchantNameDetail], 
+      [vw_OfferItem].[MerchantLogoUrl] AS [MerchantLogoUrl], 
+      [vw_OfferItem].[AdType] AS [AdType], 
+      [vw_OfferItem].[CategoryName] AS [CategoryName], 
+      [vw_OfferItem].[ProductTitle] AS [ProductTitle], 
+      [vw_OfferItem].[Description] AS [Description], 
+      [vw_OfferItem].[Availability] AS [Availability], 
+      [vw_OfferItem].[ImageUrl] AS [ImageUrl], 
+      [vw_OfferItem].[NavigationURL] AS [NavigationURL], 
+      [vw_OfferItem].[SerialNo] AS [SerialNo], 
+      [vw_OfferItem].[CreatedDate] AS [CreatedDate], 
+      [vw_OfferItem].[ModifiedDate] AS [ModifiedDate], 
+      [vw_OfferItem].[CreatedBy] AS [CreatedBy], 
+      [vw_OfferItem].[ProductPrice] AS [ProductPrice], 
+      [vw_OfferItem].[ProductPriceCurrency] AS [ProductPriceCurrency], 
+      [vw_OfferItem].[DiscountedPrice] AS [DiscountedPrice], 
+      [vw_OfferItem].[Brand] AS [Brand], 
+      [vw_OfferItem].[Color] AS [Color], 
+      [vw_OfferItem].[Location] AS [Location], 
+      [vw_OfferItem].[MerchantProductID] AS [MerchantProductID], 
+      [vw_OfferItem].[SKUID] AS [SKUID], 
+      [vw_OfferItem].[CategoryID_N] AS [CategoryID_N], 
+      [vw_OfferItem].[CategoryName_V] AS [CategoryName_V], 
+      [vw_OfferItem].[PID] AS [PID], 
+      [vw_OfferItem].[Custom1] AS [Custom1], 
+      [vw_OfferItem].[Custom2] AS [Custom2], 
+      [vw_OfferItem].[Custom3] AS [Custom3], 
+      [vw_OfferItem].[UserCommision] AS [UserCommision], 
+      [vw_OfferItem].[PriceType] AS [PriceType]
+      FROM [dbo].[vw_OfferItem] AS [vw_OfferItem]</DefiningQuery>
+          </EntitySet>
+          <AssociationSet Name="FK_Adv_Commision_Adv_Mst_Merchant" Association="Ad_Model.Store.FK_Adv_Commision_Adv_Mst_Merchant">
+            <End Role="Adv_Mst_Merchant" EntitySet="Adv_Mst_Merchant" />
+            <End Role="Adv_Commision" EntitySet="Adv_Commision" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Adv_Commision_HISTORY_Adv_Commision" Association="Ad_Model.Store.FK_Adv_Commision_HISTORY_Adv_Commision">
+            <End Role="Adv_Commision" EntitySet="Adv_Commision" />
+            <End Role="Adv_Commision_HISTORY" EntitySet="Adv_Commision_HISTORY" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Adv_Commision_HISTORY_Adv_Mst_Merchant" Association="Ad_Model.Store.FK_Adv_Commision_HISTORY_Adv_Mst_Merchant">
+            <End Role="Adv_Mst_Merchant" EntitySet="Adv_Mst_Merchant" />
+            <End Role="Adv_Commision_HISTORY" EntitySet="Adv_Commision_HISTORY" />
+          </AssociationSet>
+          <AssociationSet Name="FK_adv_CommissionBreakdown_Adv_Mst_Merchant" Association="Ad_Model.Store.FK_adv_CommissionBreakdown_Adv_Mst_Merchant">
+            <End Role="Adv_Mst_Merchant" EntitySet="Adv_Mst_Merchant" />
+            <End Role="adv_CommissionBreakdown" EntitySet="adv_CommissionBreakdown" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Adv_Coupon_Adv_Mst_Merchant" Association="Ad_Model.Store.FK_Adv_Coupon_Adv_Mst_Merchant">
+            <End Role="Adv_Mst_Merchant" EntitySet="Adv_Mst_Merchant" />
+            <End Role="Adv_Coupon" EntitySet="Adv_Coupon" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Adv_Deal_Adv_Mst_Merchant" Association="Ad_Model.Store.FK_Adv_Deal_Adv_Mst_Merchant">
+            <End Role="Adv_Mst_Merchant" EntitySet="Adv_Mst_Merchant" />
+            <End Role="Adv_Deal" EntitySet="Adv_Deal" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Adv_Offer_Adv_Mst_Merchant" Association="Ad_Model.Store.FK_Adv_Offer_Adv_Mst_Merchant">
+            <End Role="Adv_Mst_Merchant" EntitySet="Adv_Mst_Merchant" />
+            <End Role="Adv_Offer" EntitySet="Adv_Offer" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Adv_Trn_Banner_Adv_Trn_Banner" Association="Ad_Model.Store.FK_Adv_Trn_Banner_Adv_Trn_Banner">
+            <End Role="Adv_Trn_Banner" EntitySet="Adv_Trn_Banner" />
+            <End Role="Adv_Trn_Banner1" EntitySet="Adv_Trn_Banner" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Adv_Trn_UserProfile_aspnet_Users" Association="Ad_Model.Store.FK_Adv_Trn_UserProfile_aspnet_Users">
+            <End Role="aspnet_Users" EntitySet="aspnet_Users" />
+            <End Role="Adv_Trn_UserProfile" EntitySet="Adv_Trn_UserProfile" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Mst_SubCategory_Mst_Category" Association="Ad_Model.Store.FK_Mst_SubCategory_Mst_Category">
+            <End Role="Mst_Category" EntitySet="Mst_Category" />
+            <End Role="Mst_SubCategory" EntitySet="Mst_SubCategory" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="Adv_Commision">
+          <Key>
+            <PropertyRef Name="CommisionID" />
+          </Key>
+          <Property Name="CommisionID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="MerchantID" Type="bigint" />
+          <Property Name="ProgramName" Type="varchar" MaxLength="150" />
+          <Property Name="Commision" Type="varchar" MaxLength="20" />
+          <Property Name="UserCommision" Type="varchar" MaxLength="20" />
+          <Property Name="MaximumCommision" Type="int" />
+          <Property Name="Currency" Type="int" />
+          <Property Name="PID" Type="int" />
+          <Property Name="ProductDescription" Type="varchar(max)" />
+          <Property Name="Sector" Type="varchar" MaxLength="15" />
+          <Property Name="PayoutType" Type="varchar" MaxLength="10" />
+          <Property Name="CookieDuration" Type="varchar" MaxLength="15" />
+          <Property Name="ProductfeedAvailable" Type="smallint" />
+          <Property Name="DeepLinkEnabled" Type="smallint" />
+          <Property Name="UIDTracking" Type="smallint" />
+          <Property Name="WebsiteUrl" Type="varchar(max)" />
+          <Property Name="TrackingURL" Type="varchar" MaxLength="300" />
+          <Property Name="PriceType" Type="int" />
+          <Property Name="Status" Type="int" />
+          <Property Name="UpdatedDate" Type="datetime" />
+          <Property Name="MerchantName" Type="varchar" MaxLength="100" />
+        </EntityType>
+        <EntityType Name="Adv_Commision_HISTORY">
+          <Key>
+            <PropertyRef Name="CommisionID" />
+          </Key>
+          <Property Name="CommisionID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="MerchantID" Type="bigint" />
+          <Property Name="PID" Type="int" />
+          <Property Name="ProgramName" Type="varchar" MaxLength="150" />
+          <Property Name="ProductDescription" Type="varchar(max)" />
+          <Property Name="Commision" Type="varchar" MaxLength="20" />
+          <Property Name="UserCommision" Type="varchar" MaxLength="20" />
+          <Property Name="MaximumCommision" Type="int" />
+          <Property Name="Sector" Type="varchar" MaxLength="15" />
+          <Property Name="PayoutType" Type="varchar" MaxLength="10" />
+          <Property Name="CookieDuration" Type="varchar" MaxLength="15" />
+          <Property Name="ProductfeedAvailable" Type="smallint" />
+          <Property Name="DeepLinkEnabled" Type="smallint" />
+          <Property Name="UIDTracking" Type="smallint" />
+          <Property Name="WebsiteUrl" Type="varchar(max)" />
+          <Property Name="TrackingURL" Type="varchar" MaxLength="300" />
+          <Property Name="Currency" Type="int" />
+          <Property Name="PriceType" Type="int" />
+          <Property Name="Status" Type="int" />
+          <Property Name="MerchantName" Type="varchar" MaxLength="100" />
+          <Property Name="COMID" Type="int" />
+          <Property Name="CreatedDate" Type="datetime" />
+        </EntityType>
+        <EntityType Name="adv_CommissionBreakdown">
+          <Key>
+            <PropertyRef Name="BreakDownID" />
+          </Key>
+          <Property Name="BreakDownID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="MID" Type="bigint" />
+          <Property Name="BreakDownText" Type="varchar" MaxLength="250" />
+          <Property Name="BreakDownStartAmount" Type="decimal" />
+          <Property Name="BreakDownEndAmount" Type="decimal" />
+          <Property Name="BreakDownMaxCommission" Type="decimal" />
+          <Property Name="UserBreakDownMaxCommission" Type="decimal" />
+          <Property Name="CommissionType" Type="smallint" />
+          <Property Name="ToValidDate" Type="datetime" />
+          <Property Name="CreatedDate" Type="datetime" />
+        </EntityType>
+        <EntityType Name="Adv_Coupon">
+          <Key>
+            <PropertyRef Name="CID" />
+          </Key>
+          <Property Name="CID" Type="bigint" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="MID" Type="bigint" />
+          <Property Name="CouponForDevice" Type="smallint" />
+          <Property Name="Coupon" Type="nvarchar" MaxLength="100" />
+          <Property Name="Offer" Type="nvarchar" MaxLength="500" />
+          <Property Name="ValidTill" Type="datetime" />
+          <Property Name="NavigationURL" Type="nvarchar" MaxLength="300" />
+          <Property Name="CreatedDate" Type="datetime" />
+        </EntityType>
+        <EntityType Name="Adv_Deal">
+          <Key>
+            <PropertyRef Name="DealID" />
+          </Key>
+          <Property Name="DealID" Type="bigint" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="MID" Type="bigint" />
+          <Property Name="ProductID" Type="varchar" MaxLength="20" />
+          <Property Name="ProductSKU" Type="varchar" MaxLength="20" />
+          <Property Name="ProductCategoryName" Type="varchar" MaxLength="200" />
+          <Property Name="Title" Type="varchar" MaxLength="200" />
+          <Property Name="Description" Type="nvarchar(max)" />
+          <Property Name="ProductPrice" Type="float" />
+          <Property Name="ProductPriceCurrency" Type="varchar" MaxLength="5" />
+          <Property Name="WasPrice" Type="float" />
+          <Property Name="DiscountedPrice" Type="float" />
+          <Property Name="Brand" Type="varchar" MaxLength="50" />
+          <Property Name="Color" Type="varchar" MaxLength="30" />
+          <Property Name="Location" Type="varchar" MaxLength="100" />
+          <Property Name="Availability" Type="varchar" MaxLength="50" />
+          <Property Name="CouponCode" Type="varchar" MaxLength="50" />
+          <Property Name="ImageUrl" Type="varchar" MaxLength="500" />
+          <Property Name="NavigationURL" Type="varchar" MaxLength="500" />
+          <Property Name="SerialNo" Type="int" />
+          <Property Name="CreatedDate" Type="datetime" />
+          <Property Name="ModifiedDate" Type="datetime" />
+          <Property Name="CreatedBy" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="Adv_DynamicProductFeed">
+          <Key>
+            <PropertyRef Name="PFURLID" />
+          </Key>
+          <Property Name="PFURLID" Type="bigint" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="CategoryID_N" Type="int" />
+          <Property Name="PFXmlPath" Type="varchar(max)" />
+          <Property Name="MerchantName" Type="varchar" MaxLength="200" />
+          <Property Name="SearchInCategory" Type="varchar" MaxLength="200" />
+          <Property Name="ISRUN" Type="char" MaxLength="1" />
+          <Property Name="Status" Type="char" MaxLength="1" />
+        </EntityType>
+        <EntityType Name="Adv_FeatureOffer">
+          <Key>
+            <PropertyRef Name="FeatureOfferID" />
+          </Key>
+          <Property Name="FeatureOfferID" Type="bigint" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="OfferID" Type="bigint" />
+          <Property Name="OfferType" Type="smallint" />
+        </EntityType>
+        <EntityType Name="Adv_MailContent">
+          <Key>
+            <PropertyRef Name="MailTemplateID" />
+          </Key>
+          <Property Name="MailTemplateID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="MailContent" Type="nvarchar(max)" />
+          <Property Name="MailType" Type="smallint" />
+        </EntityType>
+        <EntityType Name="Adv_MissingCashback">
+          <Key>
+            <PropertyRef Name="TicketNo" />
+          </Key>
+          <Property Name="TicketNo" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="TransactionDate" Type="datetime" />
+          <Property Name="MID" Type="bigint" />
+          <Property Name="UserID" Type="uniqueidentifier" />
+          <Property Name="OrderID" Type="varchar" MaxLength="50" />
+          <Property Name="AmountPaid" Type="varchar" MaxLength="10" />
+          <Property Name="CouponCode" Type="varchar" MaxLength="20" />
+          <Property Name="Details" Type="varchar" MaxLength="300" />
+          <Property Name="FileUrl" Type="varchar" MaxLength="250" />
+          <Property Name="ContactNo" Type="varchar" MaxLength="15" />
+          <Property Name="Status" Type="int" />
+          <Property Name="CreatedDate" Type="datetime" />
+          <Property Name="IsMailSend" Type="bit" />
+        </EntityType>
+        <EntityType Name="Adv_Mst_ApiUrl">
+          <Key>
+            <PropertyRef Name="APIID" />
+          </Key>
+          <Property Name="APIID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="APIType" Type="int" />
+          <Property Name="ApiName" Type="varchar" MaxLength="50" />
+          <Property Name="ApiURL" Type="nvarchar" MaxLength="250" />
+          <Property Name="ExpireOn" Type="datetime" />
+          <Property Name="ApiScheduleType" Type="int" />
+          <Property Name="RunOnTime" Type="time" />
+        </EntityType>
+        <EntityType Name="Adv_Mst_Merchant">
+          <Key>
+            <PropertyRef Name="MID" />
+          </Key>
+          <Property Name="MID" Type="bigint" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="MerchantName" Type="int" />
+          <Property Name="MerchantDetails" Type="nvarchar(max)" />
+          <Property Name="Status" Type="int" />
+          <Property Name="AffiliateID" Type="int" />
+          <Property Name="CountryCode" Type="varchar" MaxLength="5" />
+          <Property Name="OMGMID" Type="int" />
+          <Property Name="MerchantNameDetail" Type="varchar" MaxLength="50" />
+          <Property Name="LogoUrl" Type="varchar" MaxLength="250" />
+          <Property Name="CategoryType" Type="int" />
+          <Property Name="TrackingURL" Type="varchar" MaxLength="250" />
+          <Property Name="Seo_Title" Type="varchar" MaxLength="250" />
+          <Property Name="Seo_Description" Type="varchar" MaxLength="500" />
+          <Property Name="Seo_Keyword" Type="varchar" MaxLength="500" />
+          <Property Name="MerchantLinkType" Type="smallint" />
+          <Property Name="MerchantNameDescription" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="Adv_Notification">
+          <Key>
+            <PropertyRef Name="NotificationId" />
+          </Key>
+          <Property Name="NotificationId" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="NotificationText" Type="varchar" MaxLength="250" />
+          <Property Name="NotificationType" Type="smallint" />
+          <Property Name="Status" Type="int" />
+          <Property Name="CreatedDate" Type="datetime" />
+        </EntityType>
+        <EntityType Name="Adv_Offer">
+          <Key>
+            <PropertyRef Name="OfferID" />
+          </Key>
+          <Property Name="OfferID" Type="bigint" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="MID" Type="bigint" />
+          <Property Name="VoucherCodeID" Type="int" />
+          <Property Name="OfferForDevice" Type="smallint" />
+          <Property Name="Title" Type="nvarchar" MaxLength="500" />
+          <Property Name="CouponCode" Type="nvarchar" MaxLength="100" />
+          <Property Name="Description" Type="nvarchar(max)" />
+          <Property Name="SrNo" Type="int" />
+          <Property Name="ValidTill" Type="datetime" />
+          <Property Name="NavigationURL" Type="varchar(max)" />
+          <Property Name="CreatedDate" Type="datetime" />
+          <Property Name="OfferType" Type="smallint" />
+          <Property Name="ActivationDate" Type="datetime" />
+          <Property Name="ImageUrl" Type="varchar" MaxLength="300" />
+        </EntityType>
+        <EntityType Name="Adv_OMG_Transaction">
+          <Key>
+            <PropertyRef Name="TransactionID" />
+          </Key>
+          <Property Name="TransactionID" Type="bigint" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="ClickTime" Type="varchar" MaxLength="30" />
+          <Property Name="TransactionTime" Type="datetime" />
+          <Property Name="OmgTransactionID" Type="varchar" MaxLength="30" />
+          <Property Name="OmgMerchantRef" Type="varchar" MaxLength="60" />
+          <Property Name="UID" Type="varchar" MaxLength="40" />
+          <Property Name="UID2" Type="varchar" MaxLength="40" />
+          <Property Name="MID" Type="varchar" MaxLength="20" />
+          <Property Name="MerchantName" Type="varchar" MaxLength="50" />
+          <Property Name="PID" Type="varchar" MaxLength="40" />
+          <Property Name="Product" Type="varchar" MaxLength="100" />
+          <Property Name="Referrer" Type="nvarchar" MaxLength="200" />
+          <Property Name="SR" Type="varchar" MaxLength="20" />
+          <Property Name="VR" Type="varchar" MaxLength="20" />
+          <Property Name="NVR" Type="varchar" MaxLength="20" />
+          <Property Name="Status" Type="varchar" MaxLength="20" />
+          <Property Name="Paid" Type="varchar" MaxLength="20" />
+          <Property Name="Completed" Type="varchar" MaxLength="30" />
+          <Property Name="UKey" Type="varchar" MaxLength="50" />
+          <Property Name="TransactionValue" Type="varchar" MaxLength="20" />
+          <Property Name="Commision" Type="varchar" MaxLength="20" />
+          <Property Name="UserCommision" Type="decimal" Scale="2" />
+          <Property Name="MaximumCommision" Type="int" />
+          <Property Name="PriceType" Type="int" />
+          <Property Name="VoucherCode" Type="varchar" MaxLength="20" />
+          <Property Name="SendToUser" Type="bit" />
+          <Property Name="FinalCommision" Type="numeric" Scale="2" />
+          <Property Name="UserPercentage" Type="numeric" Scale="2" />
+          <Property Name="AmountStatus" Type="smallint" />
+        </EntityType>
+        <EntityType Name="Adv_Product_Common">
+          <Key>
+            <PropertyRef Name="ProductID" />
+          </Key>
+          <Property Name="ProductID" Type="bigint" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="CategoryID_N" Type="int" />
+          <Property Name="Ad_For" Type="int" />
+          <Property Name="Ad_Type" Type="int" />
+          <Property Name="ProductCategoryName" Type="varchar" MaxLength="200" />
+          <Property Name="Title" Type="varchar" MaxLength="300" />
+          <Property Name="Description" Type="varchar(max)" />
+          <Property Name="ProductPrice" Type="float" />
+          <Property Name="ProductPriceCurrency" Type="varchar" MaxLength="10" />
+          <Property Name="DiscountedPrice" Type="float" />
+          <Property Name="Brand" Type="varchar" MaxLength="50" />
+          <Property Name="Color" Type="varchar" MaxLength="30" />
+          <Property Name="Location" Type="varchar" MaxLength="200" />
+          <Property Name="Availability" Type="varchar" MaxLength="50" />
+          <Property Name="ImageUrl" Type="varchar" MaxLength="500" />
+          <Property Name="NavigationURL" Type="varchar" MaxLength="500" />
+          <Property Name="MerchantProductID" Type="varchar" MaxLength="20" />
+          <Property Name="SKUID" Type="varchar" MaxLength="20" />
+          <Property Name="SerialNo" Type="int" />
+          <Property Name="CreatedDate" Type="datetime" />
+          <Property Name="ModifiedDate" Type="datetime" />
+          <Property Name="CreatedBy" Type="varchar" MaxLength="50" />
+          <Property Name="PID" Type="int" />
+          <Property Name="Custom1" Type="varchar" MaxLength="100" />
+          <Property Name="Custom2" Type="varchar" MaxLength="100" />
+          <Property Name="Custom3" Type="varchar" MaxLength="100" />
+        </EntityType>
+        <EntityType Name="Adv_Subscribe">
+          <Key>
+            <PropertyRef Name="SubscribeID" />
+          </Key>
+          <Property Name="SubscribeID" Type="bigint" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="SubscribeEmail" Type="varchar" MaxLength="50" />
+          <Property Name="Status" Type="smallint" />
+          <Property Name="SubscrptionDate" Type="datetime" />
+          <Property Name="UnSubscriptionDate" Type="datetime" />
+        </EntityType>
+        <EntityType Name="Adv_Trn_Banner">
+          <Key>
+            <PropertyRef Name="BannerID" />
+          </Key>
+          <Property Name="BannerID" Type="bigint" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="BannerText" Type="nvarchar" MaxLength="50" />
+          <Property Name="BannerType" Type="int" />
+          <Property Name="BannerURL" Type="nvarchar(max)" />
+          <Property Name="BannerLocation" Type="int" />
+          <Property Name="MID" Type="bigint" />
+          <Property Name="Description" Type="varchar" MaxLength="250" />
+          <Property Name="Price" Type="int" />
+          <Property Name="DiscountedPrice" Type="int" />
+        </EntityType>
+        <EntityType Name="Adv_Trn_UserProfile">
+          <Key>
+            <PropertyRef Name="UserProfileID" />
+          </Key>
+          <Property Name="UserID" Type="bigint" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="UserProfileID" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="LoginUserName" Type="varchar" MaxLength="50" />
+          <Property Name="FullName" Type="varchar" MaxLength="80" />
+          <Property Name="Picture" Type="nvarchar" MaxLength="60" />
+          <Property Name="PhoneNo" Type="varchar" MaxLength="15" />
+          <Property Name="DOB" Type="datetime" />
+          <Property Name="IsEmailVerified" Type="bit" />
+          <Property Name="IsOfferReceiveWeekly" Type="bit" />
+          <Property Name="IsOtherInfo" Type="bit" />
+          <Property Name="BankAcHolderName" Type="varchar" MaxLength="50" />
+          <Property Name="BankName" Type="varchar" MaxLength="50" />
+          <Property Name="BankBranchName" Type="varchar" MaxLength="50" />
+          <Property Name="BankAccountNo" Type="varchar" MaxLength="50" />
+          <Property Name="IFSCCode" Type="varchar" MaxLength="15" />
+          <Property Name="FullNameOnAdd" Type="varchar" MaxLength="50" />
+          <Property Name="FullAddress" Type="varchar" MaxLength="100" />
+          <Property Name="City" Type="varchar" MaxLength="30" />
+          <Property Name="State" Type="varchar" MaxLength="10" />
+          <Property Name="PinCode" Type="nvarchar" MaxLength="8" />
+        </EntityType>
+        <EntityType Name="adv_Wallet">
+          <Key>
+            <PropertyRef Name="WaletID" />
+          </Key>
+          <Property Name="WaletID" Type="bigint" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="OmgTransactionID" Type="int" />
+          <Property Name="IsTransfered" Type="char" MaxLength="1" />
+          <Property Name="TransferedDate" Type="datetime" />
+          <Property Name="TransferedBy" Type="int" />
+          <Property Name="BankTransactionID" Type="varchar" MaxLength="50" />
+          <Property Name="TransactionStatus" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="aspnet_Users">
+          <Key>
+            <PropertyRef Name="UserId" />
+          </Key>
+          <Property Name="ApplicationId" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="UserId" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="UserName" Type="nvarchar" Nullable="false" MaxLength="256" />
+          <Property Name="LoweredUserName" Type="nvarchar" Nullable="false" MaxLength="256" />
+          <Property Name="MobileAlias" Type="nvarchar" MaxLength="16" />
+          <Property Name="IsAnonymous" Type="bit" Nullable="false" />
+          <Property Name="LastActivityDate" Type="datetime" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Mst_Category">
+          <Key>
+            <PropertyRef Name="CategoryID_N" />
+          </Key>
+          <Property Name="CategoryID_N" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="CategoryName_V" Type="varchar" MaxLength="50" />
+          <Property Name="Status_N" Type="smallint" />
+          <Property Name="ParentCategoryID_N" Type="int" />
+          <Property Name="CreatedBy" Type="varchar" MaxLength="50" />
+          <Property Name="CreatedDate" Type="datetime" />
+          <Property Name="UpdatedBy" Type="varchar" MaxLength="50" />
+          <Property Name="UpdatedDate" Type="datetime" />
+          <Property Name="DeletedBy" Type="varchar" MaxLength="50" />
+          <Property Name="DeletedDate" Type="datetime" />
+          <Property Name="MCategoryName_V" Type="varchar" MaxLength="100" />
+          <Property Name="Seo_Title" Type="varchar" MaxLength="250" />
+          <Property Name="Seo_Description" Type="varchar" MaxLength="500" />
+          <Property Name="Seo_Keyword" Type="varchar" MaxLength="500" />
+        </EntityType>
+        <EntityType Name="Mst_SubCategory">
+          <Key>
+            <PropertyRef Name="SubCategoryID_N" />
+          </Key>
+          <Property Name="SubCategoryID_N" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="CategoryID_N" Type="int" />
+          <Property Name="SubCategoryName_V" Type="varchar" MaxLength="50" />
+          <Property Name="Status_N" Type="smallint" />
+          <Property Name="CreatedBy" Type="varchar" MaxLength="50" />
+          <Property Name="CreatedDate" Type="datetime" />
+          <Property Name="UpdatedBy" Type="varchar" MaxLength="50" />
+          <Property Name="UpdatedDate" Type="datetime" />
+          <Property Name="DeletedBy" Type="varchar" MaxLength="50" />
+          <Property Name="DeletedDate" Type="datetime" />
+        </EntityType>
+        <!--Errors Found During Generation:
+      warning 6002: The table/view 'cos.dbo.vw_Offer_List' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.
+      -->
+        <EntityType Name="vw_Offer_List">
+          <Key>
+            <PropertyRef Name="OfferID" />
+          </Key>
+          <Property Name="OfferID" Type="bigint" Nullable="false" />
+          <Property Name="MID" Type="bigint" />
+          <Property Name="VoucherCodeID" Type="int" />
+          <Property Name="CouponForDevice" Type="smallint" />
+          <Property Name="Title" Type="nvarchar" MaxLength="200" />
+          <Property Name="CouponCode" Type="nvarchar" MaxLength="50" />
+          <Property Name="Description" Type="nvarchar(max)" />
+          <Property Name="ValidTill" Type="datetime" />
+          <Property Name="NavigationURL" Type="varchar" MaxLength="500" />
+          <Property Name="CreatedDate" Type="datetime" />
+          <Property Name="MoreOffer" Type="int" />
+          <Property Name="MerchantName" Type="varchar" MaxLength="50" />
+          <Property Name="TrackingURL" Type="varchar" MaxLength="250" />
+          <Property Name="OfferType" Type="smallint" />
+          <Property Name="MerchantImage" Type="varchar" MaxLength="250" />
+          <Property Name="ImageUrl" Type="varchar" MaxLength="300" />
+          <Property Name="UserCommision" Type="varchar" MaxLength="24" />
+        </EntityType>
+        <!--Errors Found During Generation:
+      warning 6002: The table/view 'cos.dbo.vw_OfferItem' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.
+      -->
+        <EntityType Name="vw_OfferItem">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="bigint" Nullable="false" />
+          <Property Name="MerchantName" Type="int" />
+          <Property Name="MerchantNameDetail" Type="varchar" MaxLength="50" />
+          <Property Name="MerchantLogoUrl" Type="varchar" MaxLength="250" />
+          <Property Name="AdType" Type="int" />
+          <Property Name="CategoryName" Type="varchar" MaxLength="200" />
+          <Property Name="ProductTitle" Type="varchar" MaxLength="300" />
+          <Property Name="Description" Type="varchar(max)" />
+          <Property Name="Availability" Type="varchar" MaxLength="50" />
+          <Property Name="ImageUrl" Type="varchar" MaxLength="500" />
+          <Property Name="NavigationURL" Type="varchar" MaxLength="500" />
+          <Property Name="SerialNo" Type="int" />
+          <Property Name="CreatedDate" Type="datetime" />
+          <Property Name="ModifiedDate" Type="datetime" />
+          <Property Name="CreatedBy" Type="varchar" MaxLength="50" />
+          <Property Name="ProductPrice" Type="float" />
+          <Property Name="ProductPriceCurrency" Type="varchar" MaxLength="10" />
+          <Property Name="DiscountedPrice" Type="float" />
+          <Property Name="Brand" Type="varchar" MaxLength="50" />
+          <Property Name="Color" Type="varchar" MaxLength="30" />
+          <Property Name="Location" Type="varchar" MaxLength="200" />
+          <Property Name="MerchantProductID" Type="varchar" MaxLength="20" />
+          <Property Name="SKUID" Type="varchar" MaxLength="20" />
+          <Property Name="CategoryID_N" Type="int" />
+          <Property Name="CategoryName_V" Type="varchar" MaxLength="50" />
+          <Property Name="PID" Type="int" />
+          <Property Name="Custom1" Type="varchar" MaxLength="100" />
+          <Property Name="Custom2" Type="varchar" MaxLength="100" />
+          <Property Name="Custom3" Type="varchar" MaxLength="100" />
+          <Property Name="UserCommision" Type="varchar" MaxLength="20" />
+          <Property Name="PriceType" Type="int" />
+        </EntityType>
+        <Association Name="FK_Adv_Commision_Adv_Mst_Merchant">
+          <End Role="Adv_Mst_Merchant" Type="Ad_Model.Store.Adv_Mst_Merchant" Multiplicity="0..1" />
+          <End Role="Adv_Commision" Type="Ad_Model.Store.Adv_Commision" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Adv_Mst_Merchant">
+              <PropertyRef Name="MID" />
+            </Principal>
+            <Dependent Role="Adv_Commision">
+              <PropertyRef Name="MerchantID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Adv_Commision_HISTORY_Adv_Commision">
+          <End Role="Adv_Commision" Type="Ad_Model.Store.Adv_Commision" Multiplicity="0..1" />
+          <End Role="Adv_Commision_HISTORY" Type="Ad_Model.Store.Adv_Commision_HISTORY" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Adv_Commision">
+              <PropertyRef Name="CommisionID" />
+            </Principal>
+            <Dependent Role="Adv_Commision_HISTORY">
+              <PropertyRef Name="COMID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Adv_Commision_HISTORY_Adv_Mst_Merchant">
+          <End Role="Adv_Mst_Merchant" Type="Ad_Model.Store.Adv_Mst_Merchant" Multiplicity="0..1" />
+          <End Role="Adv_Commision_HISTORY" Type="Ad_Model.Store.Adv_Commision_HISTORY" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Adv_Mst_Merchant">
+              <PropertyRef Name="MID" />
+            </Principal>
+            <Dependent Role="Adv_Commision_HISTORY">
+              <PropertyRef Name="MerchantID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_adv_CommissionBreakdown_Adv_Mst_Merchant">
+          <End Role="Adv_Mst_Merchant" Type="Ad_Model.Store.Adv_Mst_Merchant" Multiplicity="0..1" />
+          <End Role="adv_CommissionBreakdown" Type="Ad_Model.Store.adv_CommissionBreakdown" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Adv_Mst_Merchant">
+              <PropertyRef Name="MID" />
+            </Principal>
+            <Dependent Role="adv_CommissionBreakdown">
+              <PropertyRef Name="MID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Adv_Coupon_Adv_Mst_Merchant">
+          <End Role="Adv_Mst_Merchant" Type="Ad_Model.Store.Adv_Mst_Merchant" Multiplicity="0..1" />
+          <End Role="Adv_Coupon" Type="Ad_Model.Store.Adv_Coupon" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Adv_Mst_Merchant">
+              <PropertyRef Name="MID" />
+            </Principal>
+            <Dependent Role="Adv_Coupon">
+              <PropertyRef Name="MID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Adv_Deal_Adv_Mst_Merchant">
+          <End Role="Adv_Mst_Merchant" Type="Ad_Model.Store.Adv_Mst_Merchant" Multiplicity="0..1" />
+          <End Role="Adv_Deal" Type="Ad_Model.Store.Adv_Deal" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Adv_Mst_Merchant">
+              <PropertyRef Name="MID" />
+            </Principal>
+            <Dependent Role="Adv_Deal">
+              <PropertyRef Name="MID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Adv_Offer_Adv_Mst_Merchant">
+          <End Role="Adv_Mst_Merchant" Type="Ad_Model.Store.Adv_Mst_Merchant" Multiplicity="0..1" />
+          <End Role="Adv_Offer" Type="Ad_Model.Store.Adv_Offer" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Adv_Mst_Merchant">
+              <PropertyRef Name="MID" />
+            </Principal>
+            <Dependent Role="Adv_Offer">
+              <PropertyRef Name="MID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Adv_Trn_Banner_Adv_Trn_Banner">
+          <End Role="Adv_Trn_Banner" Type="Ad_Model.Store.Adv_Trn_Banner" Multiplicity="1" />
+          <End Role="Adv_Trn_Banner1" Type="Ad_Model.Store.Adv_Trn_Banner" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="Adv_Trn_Banner">
+              <PropertyRef Name="BannerID" />
+            </Principal>
+            <Dependent Role="Adv_Trn_Banner1">
+              <PropertyRef Name="BannerID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Adv_Trn_UserProfile_aspnet_Users">
+          <End Role="aspnet_Users" Type="Ad_Model.Store.aspnet_Users" Multiplicity="1" />
+          <End Role="Adv_Trn_UserProfile" Type="Ad_Model.Store.Adv_Trn_UserProfile" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="aspnet_Users">
+              <PropertyRef Name="UserId" />
+            </Principal>
+            <Dependent Role="Adv_Trn_UserProfile">
+              <PropertyRef Name="UserProfileID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Mst_SubCategory_Mst_Category">
+          <End Role="Mst_Category" Type="Ad_Model.Store.Mst_Category" Multiplicity="0..1" />
+          <End Role="Mst_SubCategory" Type="Ad_Model.Store.Mst_SubCategory" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Mst_Category">
+              <PropertyRef Name="CategoryID_N" />
+            </Principal>
+            <Dependent Role="Mst_SubCategory">
+              <PropertyRef Name="CategoryID_N" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Function Name="adv_FindAllChildForCategory" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="categoryName" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="adv_FindAllParentForCategory" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="categoryname" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="adv_FindAllParentForCategoryNew" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="categoryname" Type="varchar" Mode="In" />
+          <Parameter Name="parentcategoryId" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="adv_proc_CalculateFinalCommission" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="Adv_TransactionHistory" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="UId" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="adv_UpdateAndDeleteDuplicateOffers" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="GetMerchantOffer" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="PageIndex" Type="int" Mode="In" />
+          <Parameter Name="PageSize" Type="int" Mode="In" />
+          <Parameter Name="RecordCount" Type="int" Mode="InOut" />
+          <Parameter Name="searchType" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="GetOfferItemPageWise" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="PageIndex" Type="int" Mode="In" />
+          <Parameter Name="PageSize" Type="int" Mode="In" />
+          <Parameter Name="RecordCount" Type="int" Mode="InOut" />
+          <Parameter Name="categoryName_V" Type="varchar" Mode="In" />
+          <Parameter Name="Brandname" Type="varchar" Mode="In" />
+          <Parameter Name="MerchantName" Type="varchar" Mode="In" />
+          <Parameter Name="searchType" Type="varchar" Mode="In" />
+        </Function>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="Ad_Model" Alias="Self" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2008/09/edm">
+        <EntityContainer Name="Ad_ConnectionString" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Adv_Coupons" EntityType="Ad_Model.Adv_Coupon" />
+          <EntitySet Name="Adv_Mst_ApiUrls" EntityType="Ad_Model.Adv_Mst_ApiUrl" />
+          <EntitySet Name="aspnet_Users" EntityType="Ad_Model.aspnet_Users" />
+          <EntitySet Name="Adv_Trn_UserProfiles" EntityType="Ad_Model.Adv_Trn_UserProfile" />
+          <AssociationSet Name="FK_Adv_Trn_UserProfile_aspnet_Users" Association="Ad_Model.FK_Adv_Trn_UserProfile_aspnet_Users">
+            <End Role="aspnet_Users" EntitySet="aspnet_Users" />
+            <End Role="Adv_Trn_UserProfile" EntitySet="Adv_Trn_UserProfiles" />
+          </AssociationSet>
+          <EntitySet Name="Adv_Trn_Banners" EntityType="Ad_Model.Adv_Trn_Banner" />
+          <EntitySet Name="Adv_Deals" EntityType="Ad_Model.Adv_Deal" />
+          <EntitySet Name="adv_Wallet" EntityType="Ad_Model.adv_Wallet" />
+          <EntitySet Name="Adv_Mst_Merchants" EntityType="Ad_Model.Adv_Mst_Merchant" />
+          <AssociationSet Name="FK_Adv_Coupon_Adv_Mst_Merchant" Association="Ad_Model.FK_Adv_Coupon_Adv_Mst_Merchant">
+            <End Role="Adv_Mst_Merchant" EntitySet="Adv_Mst_Merchants" />
+            <End Role="Adv_Coupon" EntitySet="Adv_Coupons" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Adv_Deal_Adv_Mst_Merchant" Association="Ad_Model.FK_Adv_Deal_Adv_Mst_Merchant">
+            <End Role="Adv_Mst_Merchant" EntitySet="Adv_Mst_Merchants" />
+            <End Role="Adv_Deal" EntitySet="Adv_Deals" />
+          </AssociationSet>
+          <EntitySet Name="Adv_Commisions" EntityType="Ad_Model.Adv_Commision" />
+          <AssociationSet Name="FK_Adv_Commision_Adv_Mst_Merchant" Association="Ad_Model.FK_Adv_Commision_Adv_Mst_Merchant">
+            <End Role="Adv_Mst_Merchant" EntitySet="Adv_Mst_Merchants" />
+            <End Role="Adv_Commision" EntitySet="Adv_Commisions" />
+          </AssociationSet>
+          <EntitySet Name="Mst_Categories" EntityType="Ad_Model.Mst_Category" />
+          <EntitySet Name="Mst_SubCategories" EntityType="Ad_Model.Mst_SubCategory" />
+          <AssociationSet Name="FK_Mst_SubCategory_Mst_Category" Association="Ad_Model.FK_Mst_SubCategory_Mst_Category">
+            <End Role="Mst_Category" EntitySet="Mst_Categories" />
+            <End Role="Mst_SubCategory" EntitySet="Mst_SubCategories" />
+          </AssociationSet>
+          <EntitySet Name="Adv_Product_Commons" EntityType="Ad_Model.Adv_Product_Common" />
+          <AssociationSet Name="FK_Adv_Product_Common_Mst_Category" Association="Ad_Model.FK_Adv_Product_Common_Mst_Category">
+            <End Role="Mst_Category" EntitySet="Mst_Categories" />
+            <End Role="Adv_Product_Common" EntitySet="Adv_Product_Commons" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Adv_Trn_Banner_Adv_Mst_Merchant" Association="Ad_Model.FK_Adv_Trn_Banner_Adv_Mst_Merchant">
+            <End Role="Adv_Mst_Merchant" EntitySet="Adv_Mst_Merchants" />
+            <End Role="Adv_Trn_Banner" EntitySet="Adv_Trn_Banners" />
+          </AssociationSet>
+          <FunctionImport Name="GetOfferItemPageWise" EntitySet="vw_OfferItems" ReturnType="Collection(Ad_Model.vw_OfferItem)">
+            <Parameter Name="PageIndex" Mode="In" Type="Int32" />
+            <Parameter Name="PageSize" Mode="In" Type="Int32" />
+            <Parameter Name="RecordCount" Mode="InOut" Type="Int32" />
+            <Parameter Name="categoryName_V" Mode="In" Type="String" />
+            <Parameter Name="Brandname" Mode="In" Type="String" />
+            <Parameter Name="MerchantName" Mode="In" Type="String" />
+            <Parameter Name="searchType" Mode="In" Type="String" />
+          </FunctionImport>
+          <EntitySet Name="Adv_Commision_HISTORYs" EntityType="Ad_Model.Adv_Commision_HISTORY" />
+          <AssociationSet Name="FK_Adv_Commision_HISTORY_Adv_Commision" Association="Ad_Model.FK_Adv_Commision_HISTORY_Adv_Commision">
+            <End Role="Adv_Commision" EntitySet="Adv_Commisions" />
+            <End Role="Adv_Commision_HISTORY" EntitySet="Adv_Commision_HISTORYs" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Adv_Commision_HISTORY_Adv_Mst_Merchant" Association="Ad_Model.FK_Adv_Commision_HISTORY_Adv_Mst_Merchant">
+            <End Role="Adv_Mst_Merchant" EntitySet="Adv_Mst_Merchants" />
+            <End Role="Adv_Commision_HISTORY" EntitySet="Adv_Commision_HISTORYs" />
+          </AssociationSet>
+          <FunctionImport Name="GetMerchantOffer" EntitySet="vw_Offer_Lists" ReturnType="Collection(Ad_Model.vw_Offer_List)">
+            <Parameter Name="PageIndex" Mode="In" Type="Int32" />
+            <Parameter Name="PageSize" Mode="In" Type="Int32" />
+            <Parameter Name="RecordCount" Mode="InOut" Type="Int32" />
+            <Parameter Name="searchType" Mode="In" Type="String" />
+          </FunctionImport>
+          <EntitySet Name="vw_OfferItems" EntityType="Ad_Model.vw_OfferItem" />
+          <EntitySet Name="vw_Offer_Lists" EntityType="Ad_Model.vw_Offer_List" />
+          <EntitySet Name="Adv_MissingCashbacks" EntityType="Ad_Model.Adv_MissingCashback" />
+          <EntitySet Name="Adv_Notifications" EntityType="Ad_Model.Adv_Notification" />
+          <EntitySet Name="Adv_DynamicProductFeeds" EntityType="Ad_Model.Adv_DynamicProductFeed" />
+          <AssociationSet Name="FK_Adv_Trn_Banner_Adv_Trn_Banner" Association="Ad_Model.FK_Adv_Trn_Banner_Adv_Trn_Banner">
+            <End Role="Adv_Trn_Banner" EntitySet="Adv_Trn_Banners" />
+            <End Role="Adv_Trn_Banner1" EntitySet="Adv_Trn_Banners" />
+          </AssociationSet>
+          <EntitySet Name="Adv_Subscribe" EntityType="Ad_Model.Adv_Subscribe" />
+          <FunctionImport Name="adv_proc_CalculateFinalCommission" />
+          <FunctionImport Name="adv_UpdateAndDeleteDuplicateOffers" />
+          <EntitySet Name="adv_CommissionBreakdown" EntityType="Ad_Model.adv_CommissionBreakdown" />
+          <AssociationSet Name="FK_adv_CommissionBreakdown_Adv_Mst_Merchant" Association="Ad_Model.FK_adv_CommissionBreakdown_Adv_Mst_Merchant">
+            <End Role="Adv_Mst_Merchant" EntitySet="Adv_Mst_Merchants" />
+            <End Role="adv_CommissionBreakdown" EntitySet="adv_CommissionBreakdown" />
+          </AssociationSet>
+          <EntitySet Name="Adv_MailContents" EntityType="Ad_Model.Adv_MailContent" />
+          <FunctionImport Name="Adv_WalletHistory" ReturnType="Collection(Ad_Model.Wallet_Histroy)">
+            <Parameter Name="uid" Mode="In" Type="String" />
+          </FunctionImport>
+          <EntitySet Name="Adv_FeatureOffer1" EntityType="Ad_Model.Adv_FeatureOffer1" />
+          <EntitySet Name="Adv_OMG_Transactions" EntityType="Ad_Model.Adv_OMG_Transaction" />
+          <EntitySet Name="Adv_Offers" EntityType="Ad_Model.Adv_Offer" />
+          <AssociationSet Name="FK_Adv_Offer_Adv_Mst_Merchant" Association="Ad_Model.FK_Adv_Offer_Adv_Mst_Merchant">
+            <End Role="Adv_Mst_Merchant" EntitySet="Adv_Mst_Merchants" />
+            <End Role="Adv_Offer" EntitySet="Adv_Offers" />
+          </AssociationSet>
+          </EntityContainer>
+        <EntityType Name="Adv_Coupon">
+          <Key>
+            <PropertyRef Name="CID" />
+          </Key>
+          <Property Type="Int64" Name="CID" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="Int64" Name="MID" />
+          <Property Type="Int16" Name="CouponForDevice" />
+          <Property Type="String" Name="Coupon" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="Offer" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Type="DateTime" Name="ValidTill" />
+          <Property Type="String" Name="NavigationURL" MaxLength="300" FixedLength="false" Unicode="true" />
+          <Property Type="DateTime" Name="CreatedDate" />
+          <NavigationProperty Name="Adv_Mst_Merchant" Relationship="Ad_Model.FK_Adv_Coupon_Adv_Mst_Merchant" FromRole="Adv_Coupon" ToRole="Adv_Mst_Merchant" />
+        </EntityType>
+        <EntityType Name="Adv_Mst_ApiUrl">
+          <Key>
+            <PropertyRef Name="APIID" />
+          </Key>
+          <Property Type="Int32" Name="APIID" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="Int32" Name="APIType" />
+          <Property Type="String" Name="ApiName" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="ApiURL" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Type="DateTime" Name="ExpireOn" />
+          <Property Type="Int32" Name="ApiScheduleType" />
+          <Property Type="Time" Name="RunOnTime" />
+        </EntityType>
+        <EntityType Name="aspnet_Users">
+          <Key>
+            <PropertyRef Name="UserId" />
+          </Key>
+          <Property Type="Guid" Name="ApplicationId" Nullable="false" />
+          <Property Type="Guid" Name="UserId" Nullable="false" />
+          <Property Type="String" Name="UserName" Nullable="false" MaxLength="256" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="LoweredUserName" Nullable="false" MaxLength="256" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="MobileAlias" MaxLength="16" FixedLength="false" Unicode="true" />
+          <Property Type="Boolean" Name="IsAnonymous" Nullable="false" />
+          <Property Type="DateTime" Name="LastActivityDate" Nullable="false" />
+          <NavigationProperty Name="Adv_Trn_UserProfile" Relationship="Ad_Model.FK_Adv_Trn_UserProfile_aspnet_Users" FromRole="aspnet_Users" ToRole="Adv_Trn_UserProfile" />
+        </EntityType>
+        <EntityType Name="Adv_Trn_UserProfile">
+          <Key>
+            <PropertyRef Name="UserProfileID" />
+          </Key>
+          <Property Type="Int64" Name="UserID" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="Guid" Name="UserProfileID" Nullable="false" />
+          <Property Type="String" Name="LoginUserName" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="FullName" MaxLength="80" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="Picture" MaxLength="60" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="PhoneNo" MaxLength="15" FixedLength="false" Unicode="false" />
+          <Property Type="DateTime" Name="DOB" />
+          <Property Type="Boolean" Name="IsEmailVerified" />
+          <Property Type="Boolean" Name="IsOfferReceiveWeekly" />
+          <Property Type="Boolean" Name="IsOtherInfo" />
+          <Property Type="String" Name="BankAcHolderName" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="BankName" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="BankBranchName" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="BankAccountNo" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="IFSCCode" MaxLength="15" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="FullNameOnAdd" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="FullAddress" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="City" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="State" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="PinCode" MaxLength="8" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="aspnet_Users" Relationship="Ad_Model.FK_Adv_Trn_UserProfile_aspnet_Users" FromRole="Adv_Trn_UserProfile" ToRole="aspnet_Users" />
+        </EntityType>
+        <Association Name="FK_Adv_Trn_UserProfile_aspnet_Users">
+          <End Type="Ad_Model.aspnet_Users" Role="aspnet_Users" Multiplicity="1" />
+          <End Type="Ad_Model.Adv_Trn_UserProfile" Role="Adv_Trn_UserProfile" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="aspnet_Users">
+              <PropertyRef Name="UserId" />
+            </Principal>
+            <Dependent Role="Adv_Trn_UserProfile">
+              <PropertyRef Name="UserProfileID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="Adv_Trn_Banner">
+          <Key>
+            <PropertyRef Name="BannerID" />
+          </Key>
+          <Property Type="Int64" Name="BannerID" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="String" Name="BannerText" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Type="Int32" Name="BannerType" />
+          <Property Type="String" Name="BannerURL" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Type="Int32" Name="BannerLocation" />
+          <Property Type="Int64" Name="MID" />
+          <NavigationProperty Name="Adv_Mst_Merchant" Relationship="Ad_Model.FK_Adv_Trn_Banner_Adv_Mst_Merchant" FromRole="Adv_Trn_Banner" ToRole="Adv_Mst_Merchant" />
+          <Property Type="String" Name="Description" MaxLength="250" FixedLength="false" Unicode="false" />
+          <Property Type="Int32" Name="Price" />
+          <Property Type="Int32" Name="DiscountedPrice" />
+          <NavigationProperty Name="Adv_Trn_Banner1" Relationship="Ad_Model.FK_Adv_Trn_Banner_Adv_Trn_Banner" FromRole="Adv_Trn_Banner" ToRole="Adv_Trn_Banner1" />
+          <NavigationProperty Name="Adv_Trn_Banner2" Relationship="Ad_Model.FK_Adv_Trn_Banner_Adv_Trn_Banner" FromRole="Adv_Trn_Banner1" ToRole="Adv_Trn_Banner" />
+        </EntityType>
+        <EntityType Name="Adv_Deal">
+          <Key>
+            <PropertyRef Name="DealID" />
+          </Key>
+          <Property Type="Int64" Name="DealID" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="Int64" Name="MID" />
+          <Property Type="String" Name="ProductID" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="ProductSKU" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="ProductCategoryName" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="Title" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="Description" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Type="Double" Name="ProductPrice" />
+          <Property Type="String" Name="ProductPriceCurrency" MaxLength="5" FixedLength="false" Unicode="false" />
+          <Property Type="Double" Name="WasPrice" />
+          <Property Type="Double" Name="DiscountedPrice" />
+          <Property Type="String" Name="Brand" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="Color" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="Location" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="Availability" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="CouponCode" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="ImageUrl" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="NavigationURL" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Type="Int32" Name="SerialNo" />
+          <Property Type="DateTime" Name="CreatedDate" />
+          <Property Type="DateTime" Name="ModifiedDate" />
+          <Property Type="String" Name="CreatedBy" MaxLength="50" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Adv_Mst_Merchant" Relationship="Ad_Model.FK_Adv_Deal_Adv_Mst_Merchant" FromRole="Adv_Deal" ToRole="Adv_Mst_Merchant" />
+        </EntityType>
+        <EntityType Name="adv_Wallet">
+          <Key>
+            <PropertyRef Name="WaletID" />
+          </Key>
+          <Property Type="Int64" Name="WaletID" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="Int32" Name="OmgTransactionID" />
+          <Property Type="String" Name="IsTransfered" MaxLength="1" FixedLength="true" Unicode="false" />
+          <Property Type="DateTime" Name="TransferedDate" />
+          <Property Type="Int32" Name="TransferedBy" />
+          <Property Type="String" Name="BankTransactionID" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="TransactionStatus" MaxLength="50" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="Adv_Mst_Merchant">
+          <Key>
+            <PropertyRef Name="MID" />
+          </Key>
+          <Property Type="Int64" Name="MID" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="Int32" Name="AffiliateID" />
+          <Property Type="Int32" Name="MerchantName" />
+          <Property Type="String" Name="MerchantNameDetail" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="MerchantDetails" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Type="Int32" Name="OMGMID" />
+          <Property Type="String" Name="CountryCode" MaxLength="5" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="LogoUrl" MaxLength="250" FixedLength="false" Unicode="false" />
+          <Property Type="Int32" Name="Status" />
+          <NavigationProperty Name="Adv_Coupon" Relationship="Ad_Model.FK_Adv_Coupon_Adv_Mst_Merchant" FromRole="Adv_Mst_Merchant" ToRole="Adv_Coupon" />
+          <NavigationProperty Name="Adv_Deal" Relationship="Ad_Model.FK_Adv_Deal_Adv_Mst_Merchant" FromRole="Adv_Mst_Merchant" ToRole="Adv_Deal" />
+          <NavigationProperty Name="Adv_Commision" Relationship="Ad_Model.FK_Adv_Commision_Adv_Mst_Merchant" FromRole="Adv_Mst_Merchant" ToRole="Adv_Commision" />
+          <Property Type="String" Name="TrackingURL" MaxLength="250" FixedLength="false" Unicode="false" />
+          <Property Type="Int32" Name="CategoryType" />
+          <NavigationProperty Name="Adv_Trn_Banner" Relationship="Ad_Model.FK_Adv_Trn_Banner_Adv_Mst_Merchant" FromRole="Adv_Mst_Merchant" ToRole="Adv_Trn_Banner" />
+          <NavigationProperty Name="Adv_Commision_HISTORY" Relationship="Ad_Model.FK_Adv_Commision_HISTORY_Adv_Mst_Merchant" FromRole="Adv_Mst_Merchant" ToRole="Adv_Commision_HISTORY" />
+          <Property Type="String" Name="Seo_Title" MaxLength="250" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="Seo_Description" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="Seo_Keyword" MaxLength="500" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="adv_CommissionBreakdown" Relationship="Ad_Model.FK_adv_CommissionBreakdown_Adv_Mst_Merchant" FromRole="Adv_Mst_Merchant" ToRole="adv_CommissionBreakdown" />
+          <Property Type="Int16" Name="MerchantLinkType" />
+          <Property Type="String" Name="MerchantNameDescription" MaxLength="50" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Adv_Offer" Relationship="Ad_Model.FK_Adv_Offer_Adv_Mst_Merchant" FromRole="Adv_Mst_Merchant" ToRole="Adv_Offer" />
+        </EntityType>
+        <Association Name="FK_Adv_Coupon_Adv_Mst_Merchant">
+          <End Type="Ad_Model.Adv_Mst_Merchant" Role="Adv_Mst_Merchant" Multiplicity="0..1" />
+          <End Type="Ad_Model.Adv_Coupon" Role="Adv_Coupon" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Adv_Mst_Merchant">
+              <PropertyRef Name="MID" />
+            </Principal>
+            <Dependent Role="Adv_Coupon">
+              <PropertyRef Name="MID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Adv_Deal_Adv_Mst_Merchant">
+          <End Type="Ad_Model.Adv_Mst_Merchant" Role="Adv_Mst_Merchant" Multiplicity="0..1" />
+          <End Type="Ad_Model.Adv_Deal" Role="Adv_Deal" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Adv_Mst_Merchant">
+              <PropertyRef Name="MID" />
+            </Principal>
+            <Dependent Role="Adv_Deal">
+              <PropertyRef Name="MID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="Adv_Commision">
+          <Key>
+            <PropertyRef Name="CommisionID" />
+          </Key>
+          <Property Type="Int32" Name="CommisionID" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="Int64" Name="MerchantID" />
+          <Property Type="Int32" Name="PID" />
+          <Property Type="String" Name="ProgramName" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="ProductDescription" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="Commision" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="UserCommision" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Type="Int32" Name="MaximumCommision" />
+          <Property Type="String" Name="Sector" MaxLength="15" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="PayoutType" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="CookieDuration" MaxLength="15" FixedLength="false" Unicode="false" />
+          <Property Type="Int16" Name="ProductfeedAvailable" />
+          <Property Type="Int16" Name="DeepLinkEnabled" />
+          <Property Type="Int16" Name="UIDTracking" />
+          <Property Type="String" Name="WebsiteUrl" MaxLength="300" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="TrackingURL" MaxLength="300" FixedLength="false" Unicode="false" />
+          <Property Type="Int32" Name="Currency" />
+          <Property Type="Int32" Name="PriceType" />
+          <Property Type="Int32" Name="Status" />
+          <NavigationProperty Name="Adv_Mst_Merchant" Relationship="Ad_Model.FK_Adv_Commision_Adv_Mst_Merchant" FromRole="Adv_Commision" ToRole="Adv_Mst_Merchant" />
+          <Property Type="DateTime" Name="UpdatedDate" />
+          <NavigationProperty Name="Adv_Commision_HISTORY" Relationship="Ad_Model.FK_Adv_Commision_HISTORY_Adv_Commision" FromRole="Adv_Commision" ToRole="Adv_Commision_HISTORY" />
+        </EntityType>
+        <Association Name="FK_Adv_Commision_Adv_Mst_Merchant">
+          <End Type="Ad_Model.Adv_Mst_Merchant" Role="Adv_Mst_Merchant" Multiplicity="0..1" />
+          <End Type="Ad_Model.Adv_Commision" Role="Adv_Commision" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Adv_Mst_Merchant">
+              <PropertyRef Name="MID" />
+            </Principal>
+            <Dependent Role="Adv_Commision">
+              <PropertyRef Name="MerchantID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="Mst_Category">
+          <Key>
+            <PropertyRef Name="CategoryID_N" />
+          </Key>
+          <Property Type="Int32" Name="CategoryID_N" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="String" Name="CategoryName_V" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Type="Int16" Name="Status_N" />
+          <Property Type="String" Name="CreatedBy" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Type="DateTime" Name="CreatedDate" />
+          <Property Type="String" Name="UpdatedBy" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Type="DateTime" Name="UpdatedDate" />
+          <Property Type="String" Name="DeletedBy" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Type="DateTime" Name="DeletedDate" />
+          <NavigationProperty Name="Mst_SubCategory" Relationship="Ad_Model.FK_Mst_SubCategory_Mst_Category" FromRole="Mst_Category" ToRole="Mst_SubCategory" />
+          <Property Type="Int32" Name="ParentCategoryID_N" />
+          <NavigationProperty Name="Adv_Product_Common" Relationship="Ad_Model.FK_Adv_Product_Common_Mst_Category" FromRole="Mst_Category" ToRole="Adv_Product_Common" />
+          <Property Type="String" Name="Seo_Title" MaxLength="250" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="Seo_Description" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="Seo_Keyword" MaxLength="500" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="Mst_SubCategory">
+          <Key>
+            <PropertyRef Name="SubCategoryID_N" />
+          </Key>
+          <Property Type="Int32" Name="SubCategoryID_N" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="Int32" Name="CategoryID_N" />
+          <Property Type="String" Name="SubCategoryName_V" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Type="Int16" Name="Status_N" />
+          <Property Type="String" Name="CreatedBy" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Type="DateTime" Name="CreatedDate" />
+          <Property Type="String" Name="UpdatedBy" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Type="DateTime" Name="UpdatedDate" />
+          <Property Type="String" Name="DeletedBy" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Type="DateTime" Name="DeletedDate" />
+          <NavigationProperty Name="Mst_Category" Relationship="Ad_Model.FK_Mst_SubCategory_Mst_Category" FromRole="Mst_SubCategory" ToRole="Mst_Category" />
+        </EntityType>
+        <Association Name="FK_Mst_SubCategory_Mst_Category">
+          <End Type="Ad_Model.Mst_Category" Role="Mst_Category" Multiplicity="0..1" />
+          <End Type="Ad_Model.Mst_SubCategory" Role="Mst_SubCategory" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Mst_Category">
+              <PropertyRef Name="CategoryID_N" />
+            </Principal>
+            <Dependent Role="Mst_SubCategory">
+              <PropertyRef Name="CategoryID_N" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="Adv_Product_Common">
+          <Key>
+            <PropertyRef Name="ProductID" />
+          </Key>
+          <Property Type="Int64" Name="ProductID" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="Int32" Name="CategoryID_N" />
+          <Property Type="Int32" Name="Ad_For" />
+          <Property Type="Int32" Name="Ad_Type" />
+          <Property Type="String" Name="ProductCategoryName" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="Title" MaxLength="300" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="Description" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Type="Double" Name="ProductPrice" />
+          <Property Type="String" Name="ProductPriceCurrency" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Type="Double" Name="DiscountedPrice" />
+          <Property Type="String" Name="Brand" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="Color" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="Location" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="Availability" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="ImageUrl" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="NavigationURL" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="MerchantProductID" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="SKUID" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Type="Int32" Name="SerialNo" />
+          <Property Type="DateTime" Name="CreatedDate" />
+          <Property Type="DateTime" Name="ModifiedDate" />
+          <Property Type="String" Name="CreatedBy" MaxLength="50" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Mst_Category" Relationship="Ad_Model.FK_Adv_Product_Common_Mst_Category" FromRole="Adv_Product_Common" ToRole="Mst_Category" />
+          <Property Type="Int32" Name="PID" />
+          <Property Type="String" Name="Custom1" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="Custom2" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="Custom3" MaxLength="100" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <Association Name="FK_Adv_Product_Common_Mst_Category">
+          <End Type="Ad_Model.Mst_Category" Role="Mst_Category" Multiplicity="0..1" />
+          <End Type="Ad_Model.Adv_Product_Common" Role="Adv_Product_Common" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Mst_Category">
+              <PropertyRef Name="CategoryID_N" />
+            </Principal>
+            <Dependent Role="Adv_Product_Common">
+              <PropertyRef Name="CategoryID_N" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Adv_Trn_Banner_Adv_Mst_Merchant">
+          <End Type="Ad_Model.Adv_Mst_Merchant" Role="Adv_Mst_Merchant" Multiplicity="0..1" />
+          <End Type="Ad_Model.Adv_Trn_Banner" Role="Adv_Trn_Banner" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Adv_Mst_Merchant">
+              <PropertyRef Name="MID" />
+            </Principal>
+            <Dependent Role="Adv_Trn_Banner">
+              <PropertyRef Name="MID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="Adv_Commision_HISTORY">
+          <Key>
+            <PropertyRef Name="CommisionID" />
+          </Key>
+          <Property Type="Int32" Name="CommisionID" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="Int64" Name="MerchantID" />
+          <Property Type="Int32" Name="PID" />
+          <Property Type="String" Name="ProgramName" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="ProductDescription" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="Commision" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="UserCommision" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Type="Int32" Name="MaximumCommision" />
+          <Property Type="String" Name="Sector" MaxLength="15" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="PayoutType" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="CookieDuration" MaxLength="15" FixedLength="false" Unicode="false" />
+          <Property Type="Int16" Name="ProductfeedAvailable" />
+          <Property Type="Int16" Name="DeepLinkEnabled" />
+          <Property Type="Int16" Name="UIDTracking" />
+          <Property Type="String" Name="WebsiteUrl" MaxLength="300" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="TrackingURL" MaxLength="300" FixedLength="false" Unicode="false" />
+          <Property Type="Int32" Name="Currency" />
+          <Property Type="Int32" Name="PriceType" />
+          <Property Type="Int32" Name="Status" />
+          <Property Type="String" Name="MerchantName" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Type="Int32" Name="COMID" />
+          <Property Type="DateTime" Name="CreatedDate" />
+          <NavigationProperty Name="Adv_Commision" Relationship="Ad_Model.FK_Adv_Commision_HISTORY_Adv_Commision" FromRole="Adv_Commision_HISTORY" ToRole="Adv_Commision" />
+          <NavigationProperty Name="Adv_Mst_Merchant" Relationship="Ad_Model.FK_Adv_Commision_HISTORY_Adv_Mst_Merchant" FromRole="Adv_Commision_HISTORY" ToRole="Adv_Mst_Merchant" />
+        </EntityType>
+        <Association Name="FK_Adv_Commision_HISTORY_Adv_Commision">
+          <End Type="Ad_Model.Adv_Commision" Role="Adv_Commision" Multiplicity="0..1" />
+          <End Type="Ad_Model.Adv_Commision_HISTORY" Role="Adv_Commision_HISTORY" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Adv_Commision">
+              <PropertyRef Name="CommisionID" />
+            </Principal>
+            <Dependent Role="Adv_Commision_HISTORY">
+              <PropertyRef Name="COMID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Adv_Commision_HISTORY_Adv_Mst_Merchant">
+          <End Type="Ad_Model.Adv_Mst_Merchant" Role="Adv_Mst_Merchant" Multiplicity="0..1" />
+          <End Type="Ad_Model.Adv_Commision_HISTORY" Role="Adv_Commision_HISTORY" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Adv_Mst_Merchant">
+              <PropertyRef Name="MID" />
+            </Principal>
+            <Dependent Role="Adv_Commision_HISTORY">
+              <PropertyRef Name="MerchantID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="vw_OfferItem">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Type="Int64" Name="ID" Nullable="false" />
+          <Property Type="Int32" Name="MerchantName" />
+          <Property Type="String" Name="MerchantNameDetail" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="MerchantLogoUrl" MaxLength="250" FixedLength="false" Unicode="false" />
+          <Property Type="Int32" Name="AdType" />
+          <Property Type="String" Name="CategoryName" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="ProductTitle" MaxLength="300" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="Description" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="Availability" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="ImageUrl" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="NavigationURL" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Type="Int32" Name="SerialNo" />
+          <Property Type="DateTime" Name="CreatedDate" />
+          <Property Type="DateTime" Name="ModifiedDate" />
+          <Property Type="String" Name="CreatedBy" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Type="Double" Name="ProductPrice" />
+          <Property Type="String" Name="ProductPriceCurrency" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Type="Double" Name="DiscountedPrice" />
+          <Property Type="String" Name="Brand" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="Color" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="Location" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="MerchantProductID" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="SKUID" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Type="Int32" Name="CategoryID_N" />
+          <Property Type="String" Name="CategoryName_V" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Type="Int32" Name="PID" />
+          <Property Type="String" Name="Custom1" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="Custom2" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="Custom3" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="UserCommision" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Type="Int32" Name="PriceType" />
+        </EntityType>
+        <EntityType Name="vw_Offer_List">
+          <Key>
+            <PropertyRef Name="OfferID" />
+          </Key>
+          <Property Type="Int64" Name="OfferID" Nullable="false" />
+          <Property Type="Int64" Name="MID" />
+          <Property Type="Int32" Name="VoucherCodeID" />
+          <Property Type="Int16" Name="CouponForDevice" />
+          <Property Type="String" Name="Title" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="CouponCode" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="Description" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Type="DateTime" Name="ValidTill" />
+          <Property Type="String" Name="NavigationURL" MaxLength="300" FixedLength="false" Unicode="true" />
+          <Property Type="DateTime" Name="CreatedDate" />
+          <Property Type="Int32" Name="MoreOffer" />
+          <Property Type="String" Name="MerchantName" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="TrackingURL" MaxLength="250" FixedLength="false" Unicode="false" />
+          <Property Type="Int16" Name="OfferType" />
+          <Property Type="String" Name="MerchantImage" MaxLength="250" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="ImageUrl" MaxLength="300" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="UserCommision" MaxLength="24" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <ComplexType Name="Wallet_Histroy" >
+          <Property Type="Decimal" Name="PendingAmount" Nullable="false" Precision="18" Scale="2" />
+          <Property Type="String" Name="ValidatedAmount" Nullable="false" MaxLength="10" />
+          <Property Type="String" Name="TransferableAmount" Nullable="false" MaxLength="10" />
+          <Property Type="String" Name="RejectedAmount" Nullable="false" MaxLength="10" />
+          <Property Type="Decimal" Name="RechargeAmount" Nullable="false" Precision="18" Scale="2" />
+        </ComplexType>
+        <EntityType Name="Adv_MissingCashback">
+          <Key>
+            <PropertyRef Name="TicketNo" />
+          </Key>
+          <Property Type="Int32" Name="TicketNo" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="DateTime" Name="TransactionDate" />
+          <Property Type="Int64" Name="MID" />
+          <Property Type="Guid" Name="UserID" />
+          <Property Type="String" Name="OrderID" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="AmountPaid" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="CouponCode" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="Details" MaxLength="300" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="FileUrl" MaxLength="250" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="ContactNo" MaxLength="15" FixedLength="false" Unicode="false" />
+          <Property Type="DateTime" Name="CreatedDate" />
+          <Property Type="Int32" Name="Status" />
+          <Property Type="Boolean" Name="IsMailSend" />
+        </EntityType>
+        <EntityType Name="Adv_Notification">
+          <Key>
+            <PropertyRef Name="NotificationId" />
+          </Key>
+          <Property Type="Int32" Name="NotificationId" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="String" Name="NotificationText" MaxLength="250" FixedLength="false" Unicode="false" />
+          <Property Type="Int32" Name="Status" />
+          <Property Type="DateTime" Name="CreatedDate" />
+          <Property Type="Int16" Name="NotificationType" />
+        </EntityType>
+        <EntityType Name="Adv_DynamicProductFeed">
+          <Key>
+            <PropertyRef Name="PFURLID" />
+          </Key>
+          <Property Type="Int64" Name="PFURLID" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="Int32" Name="CategoryID_N" />
+          <Property Type="String" Name="PFXmlPath" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="MerchantName" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="SearchInCategory" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="ISRUN" MaxLength="1" FixedLength="true" Unicode="false" />
+          <Property Type="String" Name="Status" MaxLength="1" FixedLength="true" Unicode="false" />
+        </EntityType>
+        <Association Name="FK_Adv_Trn_Banner_Adv_Trn_Banner">
+          <End Type="Ad_Model.Adv_Trn_Banner" Role="Adv_Trn_Banner" Multiplicity="1" />
+          <End Type="Ad_Model.Adv_Trn_Banner" Role="Adv_Trn_Banner1" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="Adv_Trn_Banner">
+              <PropertyRef Name="BannerID" />
+            </Principal>
+            <Dependent Role="Adv_Trn_Banner1">
+              <PropertyRef Name="BannerID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="Adv_Subscribe">
+          <Key>
+            <PropertyRef Name="SubscribeID" />
+          </Key>
+          <Property Type="Int64" Name="SubscribeID" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="String" Name="SubscribeEmail" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Type="Int16" Name="Status" />
+          <Property Type="DateTime" Name="SubscrptionDate" />
+          <Property Type="DateTime" Name="UnSubscriptionDate" />
+        </EntityType>
+        <EntityType Name="adv_CommissionBreakdown">
+          <Key>
+            <PropertyRef Name="BreakDownID" />
+          </Key>
+          <Property Type="Int32" Name="BreakDownID" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="Int64" Name="MID" />
+          <Property Type="String" Name="BreakDownText" MaxLength="250" FixedLength="false" Unicode="false" />
+          <Property Type="Decimal" Name="BreakDownStartAmount" Precision="18" Scale="0" />
+          <Property Type="Decimal" Name="BreakDownEndAmount" Precision="18" Scale="0" />
+          <Property Type="Decimal" Name="BreakDownMaxCommission" Precision="18" Scale="0" />
+          <Property Type="Decimal" Name="UserBreakDownMaxCommission" Precision="18" Scale="0" />
+          <Property Type="Int16" Name="CommissionType" />
+          <Property Type="DateTime" Name="ToValidDate" />
+          <Property Type="DateTime" Name="CreatedDate" />
+          <NavigationProperty Name="Adv_Mst_Merchant" Relationship="Ad_Model.FK_adv_CommissionBreakdown_Adv_Mst_Merchant" FromRole="adv_CommissionBreakdown" ToRole="Adv_Mst_Merchant" />
+        </EntityType>
+        <Association Name="FK_adv_CommissionBreakdown_Adv_Mst_Merchant">
+          <End Type="Ad_Model.Adv_Mst_Merchant" Role="Adv_Mst_Merchant" Multiplicity="0..1" />
+          <End Type="Ad_Model.adv_CommissionBreakdown" Role="adv_CommissionBreakdown" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Adv_Mst_Merchant">
+              <PropertyRef Name="MID" />
+            </Principal>
+            <Dependent Role="adv_CommissionBreakdown">
+              <PropertyRef Name="MID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="Adv_MailContent">
+          <Key>
+            <PropertyRef Name="MailTemplateID" />
+          </Key>
+          <Property Type="Int32" Name="MailTemplateID" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="String" Name="MailContent" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Type="Int16" Name="MailType" />
+        </EntityType>
+        <EntityType Name="Adv_FeatureOffer1">
+          <Key>
+            <PropertyRef Name="FeatureOfferID" />
+          </Key>
+          <Property Type="Int64" Name="FeatureOfferID" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="Int64" Name="OfferID" />
+          <Property Type="Int16" Name="OfferType" />
+        </EntityType>
+        <EntityType Name="Adv_OMG_Transaction">
+          <Key>
+            <PropertyRef Name="TransactionID" />
+          </Key>
+          <Property Type="Int64" Name="TransactionID" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="String" Name="ClickTime" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Type="DateTime" Name="TransactionTime" />
+          <Property Type="String" Name="OmgTransactionID" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="OmgMerchantRef" MaxLength="60" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="UID" MaxLength="40" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="UID2" MaxLength="40" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="MID" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="MerchantName" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="PID" MaxLength="40" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="Product" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="Referrer" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="SR" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="VR" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="NVR" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="Status" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="Paid" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="Completed" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="UKey" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="TransactionValue" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="Commision" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Type="Decimal" Name="UserCommision" Precision="18" Scale="2" />
+          <Property Type="Int32" Name="MaximumCommision" />
+          <Property Type="Int32" Name="PriceType" />
+          <Property Type="String" Name="VoucherCode" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Type="Boolean" Name="SendToUser" />
+          <Property Type="Decimal" Name="FinalCommision" Precision="18" Scale="2" />
+          <Property Type="Decimal" Name="UserPercentage" Precision="18" Scale="2" />
+          <Property Type="Int16" Name="AmountStatus" />
+        </EntityType>
+        <EntityType Name="Adv_Offer">
+          <Key>
+            <PropertyRef Name="OfferID" />
+          </Key>
+          <Property Type="Int64" Name="OfferID" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="Int64" Name="MID" />
+          <Property Type="Int32" Name="VoucherCodeID" />
+          <Property Type="Int16" Name="OfferForDevice" />
+          <Property Type="String" Name="Title" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="CouponCode" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="Description" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Type="Int32" Name="SrNo" />
+          <Property Type="DateTime" Name="ValidTill" />
+          <Property Type="String" Name="NavigationURL" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Type="DateTime" Name="CreatedDate" />
+          <Property Type="Int16" Name="OfferType" />
+          <Property Type="DateTime" Name="ActivationDate" />
+          <Property Type="String" Name="ImageUrl" MaxLength="300" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Adv_Mst_Merchant" Relationship="Ad_Model.FK_Adv_Offer_Adv_Mst_Merchant" FromRole="Adv_Offer" ToRole="Adv_Mst_Merchant" />
+        </EntityType>
+        <Association Name="FK_Adv_Offer_Adv_Mst_Merchant">
+          <End Type="Ad_Model.Adv_Mst_Merchant" Role="Adv_Mst_Merchant" Multiplicity="0..1" />
+          <End Type="Ad_Model.Adv_Offer" Role="Adv_Offer" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Adv_Mst_Merchant">
+              <PropertyRef Name="MID" />
+            </Principal>
+            <Dependent Role="Adv_Offer">
+              <PropertyRef Name="MID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2008/09/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="Ad_ModelStoreContainer" CdmEntityContainer="Ad_ConnectionString">
+          <EntitySetMapping Name="Adv_Coupons">
+            <EntityTypeMapping TypeName="Ad_Model.Adv_Coupon">
+              <MappingFragment StoreEntitySet="Adv_Coupon">
+                <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+                <ScalarProperty Name="NavigationURL" ColumnName="NavigationURL" />
+                <ScalarProperty Name="ValidTill" ColumnName="ValidTill" />
+                <ScalarProperty Name="Offer" ColumnName="Offer" />
+                <ScalarProperty Name="Coupon" ColumnName="Coupon" />
+                <ScalarProperty Name="CouponForDevice" ColumnName="CouponForDevice" />
+                <ScalarProperty Name="MID" ColumnName="MID" />
+                <ScalarProperty Name="CID" ColumnName="CID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Adv_Mst_ApiUrls">
+            <EntityTypeMapping TypeName="Ad_Model.Adv_Mst_ApiUrl">
+              <MappingFragment StoreEntitySet="Adv_Mst_ApiUrl">
+                <ScalarProperty Name="RunOnTime" ColumnName="RunOnTime" />
+                <ScalarProperty Name="ApiScheduleType" ColumnName="ApiScheduleType" />
+                <ScalarProperty Name="ExpireOn" ColumnName="ExpireOn" />
+                <ScalarProperty Name="ApiURL" ColumnName="ApiURL" />
+                <ScalarProperty Name="ApiName" ColumnName="ApiName" />
+                <ScalarProperty Name="APIType" ColumnName="APIType" />
+                <ScalarProperty Name="APIID" ColumnName="APIID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="aspnet_Users">
+            <EntityTypeMapping TypeName="Ad_Model.aspnet_Users">
+              <MappingFragment StoreEntitySet="aspnet_Users">
+                <ScalarProperty Name="LastActivityDate" ColumnName="LastActivityDate" />
+                <ScalarProperty Name="IsAnonymous" ColumnName="IsAnonymous" />
+                <ScalarProperty Name="MobileAlias" ColumnName="MobileAlias" />
+                <ScalarProperty Name="LoweredUserName" ColumnName="LoweredUserName" />
+                <ScalarProperty Name="UserName" ColumnName="UserName" />
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+                <ScalarProperty Name="ApplicationId" ColumnName="ApplicationId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Adv_Trn_UserProfiles">
+            <EntityTypeMapping TypeName="Ad_Model.Adv_Trn_UserProfile">
+              <MappingFragment StoreEntitySet="Adv_Trn_UserProfile">
+                <ScalarProperty Name="PinCode" ColumnName="PinCode" />
+                <ScalarProperty Name="State" ColumnName="State" />
+                <ScalarProperty Name="City" ColumnName="City" />
+                <ScalarProperty Name="FullAddress" ColumnName="FullAddress" />
+                <ScalarProperty Name="FullNameOnAdd" ColumnName="FullNameOnAdd" />
+                <ScalarProperty Name="IFSCCode" ColumnName="IFSCCode" />
+                <ScalarProperty Name="BankAccountNo" ColumnName="BankAccountNo" />
+                <ScalarProperty Name="BankBranchName" ColumnName="BankBranchName" />
+                <ScalarProperty Name="BankName" ColumnName="BankName" />
+                <ScalarProperty Name="BankAcHolderName" ColumnName="BankAcHolderName" />
+                <ScalarProperty Name="IsOtherInfo" ColumnName="IsOtherInfo" />
+                <ScalarProperty Name="IsOfferReceiveWeekly" ColumnName="IsOfferReceiveWeekly" />
+                <ScalarProperty Name="IsEmailVerified" ColumnName="IsEmailVerified" />
+                <ScalarProperty Name="DOB" ColumnName="DOB" />
+                <ScalarProperty Name="PhoneNo" ColumnName="PhoneNo" />
+                <ScalarProperty Name="Picture" ColumnName="Picture" />
+                <ScalarProperty Name="FullName" ColumnName="FullName" />
+                <ScalarProperty Name="LoginUserName" ColumnName="LoginUserName" />
+                <ScalarProperty Name="UserProfileID" ColumnName="UserProfileID" />
+                <ScalarProperty Name="UserID" ColumnName="UserID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Adv_Trn_Banners">
+            <EntityTypeMapping TypeName="Ad_Model.Adv_Trn_Banner">
+              <MappingFragment StoreEntitySet="Adv_Trn_Banner">
+                <ScalarProperty Name="DiscountedPrice" ColumnName="DiscountedPrice" />
+                <ScalarProperty Name="Price" ColumnName="Price" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="MID" ColumnName="MID" />
+                <ScalarProperty Name="BannerLocation" ColumnName="BannerLocation" />
+                <ScalarProperty Name="BannerURL" ColumnName="BannerURL" />
+                <ScalarProperty Name="BannerType" ColumnName="BannerType" />
+                <ScalarProperty Name="BannerText" ColumnName="BannerText" />
+                <ScalarProperty Name="BannerID" ColumnName="BannerID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Adv_Deals">
+            <EntityTypeMapping TypeName="Ad_Model.Adv_Deal">
+              <MappingFragment StoreEntitySet="Adv_Deal">
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+                <ScalarProperty Name="ModifiedDate" ColumnName="ModifiedDate" />
+                <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+                <ScalarProperty Name="SerialNo" ColumnName="SerialNo" />
+                <ScalarProperty Name="NavigationURL" ColumnName="NavigationURL" />
+                <ScalarProperty Name="ImageUrl" ColumnName="ImageUrl" />
+                <ScalarProperty Name="CouponCode" ColumnName="CouponCode" />
+                <ScalarProperty Name="Availability" ColumnName="Availability" />
+                <ScalarProperty Name="Location" ColumnName="Location" />
+                <ScalarProperty Name="Color" ColumnName="Color" />
+                <ScalarProperty Name="Brand" ColumnName="Brand" />
+                <ScalarProperty Name="DiscountedPrice" ColumnName="DiscountedPrice" />
+                <ScalarProperty Name="WasPrice" ColumnName="WasPrice" />
+                <ScalarProperty Name="ProductPriceCurrency" ColumnName="ProductPriceCurrency" />
+                <ScalarProperty Name="ProductPrice" ColumnName="ProductPrice" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="Title" ColumnName="Title" />
+                <ScalarProperty Name="ProductCategoryName" ColumnName="ProductCategoryName" />
+                <ScalarProperty Name="ProductSKU" ColumnName="ProductSKU" />
+                <ScalarProperty Name="ProductID" ColumnName="ProductID" />
+                <ScalarProperty Name="MID" ColumnName="MID" />
+                <ScalarProperty Name="DealID" ColumnName="DealID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="adv_Wallet">
+            <EntityTypeMapping TypeName="Ad_Model.adv_Wallet">
+              <MappingFragment StoreEntitySet="adv_Wallet">
+                <ScalarProperty Name="TransactionStatus" ColumnName="TransactionStatus" />
+                <ScalarProperty Name="BankTransactionID" ColumnName="BankTransactionID" />
+                <ScalarProperty Name="TransferedBy" ColumnName="TransferedBy" />
+                <ScalarProperty Name="TransferedDate" ColumnName="TransferedDate" />
+                <ScalarProperty Name="IsTransfered" ColumnName="IsTransfered" />
+                <ScalarProperty Name="OmgTransactionID" ColumnName="OmgTransactionID" />
+                <ScalarProperty Name="WaletID" ColumnName="WaletID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Adv_Mst_Merchants">
+            <EntityTypeMapping TypeName="Ad_Model.Adv_Mst_Merchant">
+              <MappingFragment StoreEntitySet="Adv_Mst_Merchant">
+                <ScalarProperty Name="MerchantNameDescription" ColumnName="MerchantNameDescription" />
+                <ScalarProperty Name="MerchantLinkType" ColumnName="MerchantLinkType" />
+                <ScalarProperty Name="Seo_Keyword" ColumnName="Seo_Keyword" />
+                <ScalarProperty Name="Seo_Description" ColumnName="Seo_Description" />
+                <ScalarProperty Name="Seo_Title" ColumnName="Seo_Title" />
+                <ScalarProperty Name="CategoryType" ColumnName="CategoryType" />
+                <ScalarProperty Name="TrackingURL" ColumnName="TrackingURL" />
+                <ScalarProperty Name="Status" ColumnName="Status" />
+                <ScalarProperty Name="LogoUrl" ColumnName="LogoUrl" />
+                <ScalarProperty Name="CountryCode" ColumnName="CountryCode" />
+                <ScalarProperty Name="OMGMID" ColumnName="OMGMID" />
+                <ScalarProperty Name="MerchantDetails" ColumnName="MerchantDetails" />
+                <ScalarProperty Name="MerchantNameDetail" ColumnName="MerchantNameDetail" />
+                <ScalarProperty Name="MerchantName" ColumnName="MerchantName" />
+                <ScalarProperty Name="AffiliateID" ColumnName="AffiliateID" />
+                <ScalarProperty Name="MID" ColumnName="MID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Adv_Commisions">
+            <EntityTypeMapping TypeName="Ad_Model.Adv_Commision">
+              <MappingFragment StoreEntitySet="Adv_Commision">
+                <ScalarProperty Name="UpdatedDate" ColumnName="UpdatedDate" />
+                <ScalarProperty Name="Status" ColumnName="Status" />
+                <ScalarProperty Name="PriceType" ColumnName="PriceType" />
+                <ScalarProperty Name="Currency" ColumnName="Currency" />
+                <ScalarProperty Name="TrackingURL" ColumnName="TrackingURL" />
+                <ScalarProperty Name="WebsiteUrl" ColumnName="WebsiteUrl" />
+                <ScalarProperty Name="UIDTracking" ColumnName="UIDTracking" />
+                <ScalarProperty Name="DeepLinkEnabled" ColumnName="DeepLinkEnabled" />
+                <ScalarProperty Name="ProductfeedAvailable" ColumnName="ProductfeedAvailable" />
+                <ScalarProperty Name="CookieDuration" ColumnName="CookieDuration" />
+                <ScalarProperty Name="PayoutType" ColumnName="PayoutType" />
+                <ScalarProperty Name="Sector" ColumnName="Sector" />
+                <ScalarProperty Name="MaximumCommision" ColumnName="MaximumCommision" />
+                <ScalarProperty Name="UserCommision" ColumnName="UserCommision" />
+                <ScalarProperty Name="Commision" ColumnName="Commision" />
+                <ScalarProperty Name="ProductDescription" ColumnName="ProductDescription" />
+                <ScalarProperty Name="ProgramName" ColumnName="ProgramName" />
+                <ScalarProperty Name="PID" ColumnName="PID" />
+                <ScalarProperty Name="MerchantID" ColumnName="MerchantID" />
+                <ScalarProperty Name="CommisionID" ColumnName="CommisionID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Mst_Categories">
+            <EntityTypeMapping TypeName="Ad_Model.Mst_Category">
+              <MappingFragment StoreEntitySet="Mst_Category">
+                <ScalarProperty Name="Seo_Keyword" ColumnName="Seo_Keyword" />
+                <ScalarProperty Name="Seo_Description" ColumnName="Seo_Description" />
+                <ScalarProperty Name="Seo_Title" ColumnName="Seo_Title" />
+                <ScalarProperty Name="ParentCategoryID_N" ColumnName="ParentCategoryID_N" />
+                <ScalarProperty Name="DeletedDate" ColumnName="DeletedDate" />
+                <ScalarProperty Name="DeletedBy" ColumnName="DeletedBy" />
+                <ScalarProperty Name="UpdatedDate" ColumnName="UpdatedDate" />
+                <ScalarProperty Name="UpdatedBy" ColumnName="UpdatedBy" />
+                <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+                <ScalarProperty Name="Status_N" ColumnName="Status_N" />
+                <ScalarProperty Name="CategoryName_V" ColumnName="CategoryName_V" />
+                <ScalarProperty Name="CategoryID_N" ColumnName="CategoryID_N" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Mst_SubCategories">
+            <EntityTypeMapping TypeName="Ad_Model.Mst_SubCategory">
+              <MappingFragment StoreEntitySet="Mst_SubCategory">
+                <ScalarProperty Name="DeletedDate" ColumnName="DeletedDate" />
+                <ScalarProperty Name="DeletedBy" ColumnName="DeletedBy" />
+                <ScalarProperty Name="UpdatedDate" ColumnName="UpdatedDate" />
+                <ScalarProperty Name="UpdatedBy" ColumnName="UpdatedBy" />
+                <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+                <ScalarProperty Name="Status_N" ColumnName="Status_N" />
+                <ScalarProperty Name="SubCategoryName_V" ColumnName="SubCategoryName_V" />
+                <ScalarProperty Name="CategoryID_N" ColumnName="CategoryID_N" />
+                <ScalarProperty Name="SubCategoryID_N" ColumnName="SubCategoryID_N" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Adv_Product_Commons">
+            <EntityTypeMapping TypeName="Ad_Model.Adv_Product_Common">
+              <MappingFragment StoreEntitySet="Adv_Product_Common">
+                <ScalarProperty Name="Custom3" ColumnName="Custom3" />
+                <ScalarProperty Name="Custom2" ColumnName="Custom2" />
+                <ScalarProperty Name="Custom1" ColumnName="Custom1" />
+                <ScalarProperty Name="PID" ColumnName="PID" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+                <ScalarProperty Name="ModifiedDate" ColumnName="ModifiedDate" />
+                <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+                <ScalarProperty Name="SerialNo" ColumnName="SerialNo" />
+                <ScalarProperty Name="SKUID" ColumnName="SKUID" />
+                <ScalarProperty Name="MerchantProductID" ColumnName="MerchantProductID" />
+                <ScalarProperty Name="NavigationURL" ColumnName="NavigationURL" />
+                <ScalarProperty Name="ImageUrl" ColumnName="ImageUrl" />
+                <ScalarProperty Name="Availability" ColumnName="Availability" />
+                <ScalarProperty Name="Location" ColumnName="Location" />
+                <ScalarProperty Name="Color" ColumnName="Color" />
+                <ScalarProperty Name="Brand" ColumnName="Brand" />
+                <ScalarProperty Name="DiscountedPrice" ColumnName="DiscountedPrice" />
+                <ScalarProperty Name="ProductPriceCurrency" ColumnName="ProductPriceCurrency" />
+                <ScalarProperty Name="ProductPrice" ColumnName="ProductPrice" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="Title" ColumnName="Title" />
+                <ScalarProperty Name="ProductCategoryName" ColumnName="ProductCategoryName" />
+                <ScalarProperty Name="Ad_Type" ColumnName="Ad_Type" />
+                <ScalarProperty Name="Ad_For" ColumnName="Ad_For" />
+                <ScalarProperty Name="CategoryID_N" ColumnName="CategoryID_N" />
+                <ScalarProperty Name="ProductID" ColumnName="ProductID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <FunctionImportMapping FunctionImportName="GetOfferItemPageWise" FunctionName="Ad_Model.Store.GetOfferItemPageWise" />
+          <EntitySetMapping Name="Adv_Commision_HISTORYs">
+            <EntityTypeMapping TypeName="Ad_Model.Adv_Commision_HISTORY">
+              <MappingFragment StoreEntitySet="Adv_Commision_HISTORY">
+                <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+                <ScalarProperty Name="COMID" ColumnName="COMID" />
+                <ScalarProperty Name="MerchantName" ColumnName="MerchantName" />
+                <ScalarProperty Name="Status" ColumnName="Status" />
+                <ScalarProperty Name="PriceType" ColumnName="PriceType" />
+                <ScalarProperty Name="Currency" ColumnName="Currency" />
+                <ScalarProperty Name="TrackingURL" ColumnName="TrackingURL" />
+                <ScalarProperty Name="WebsiteUrl" ColumnName="WebsiteUrl" />
+                <ScalarProperty Name="UIDTracking" ColumnName="UIDTracking" />
+                <ScalarProperty Name="DeepLinkEnabled" ColumnName="DeepLinkEnabled" />
+                <ScalarProperty Name="ProductfeedAvailable" ColumnName="ProductfeedAvailable" />
+                <ScalarProperty Name="CookieDuration" ColumnName="CookieDuration" />
+                <ScalarProperty Name="PayoutType" ColumnName="PayoutType" />
+                <ScalarProperty Name="Sector" ColumnName="Sector" />
+                <ScalarProperty Name="MaximumCommision" ColumnName="MaximumCommision" />
+                <ScalarProperty Name="UserCommision" ColumnName="UserCommision" />
+                <ScalarProperty Name="Commision" ColumnName="Commision" />
+                <ScalarProperty Name="ProductDescription" ColumnName="ProductDescription" />
+                <ScalarProperty Name="ProgramName" ColumnName="ProgramName" />
+                <ScalarProperty Name="PID" ColumnName="PID" />
+                <ScalarProperty Name="MerchantID" ColumnName="MerchantID" />
+                <ScalarProperty Name="CommisionID" ColumnName="CommisionID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <FunctionImportMapping FunctionImportName="GetMerchantOffer" FunctionName="Ad_Model.Store.GetMerchantOffer" />
+          <EntitySetMapping Name="vw_OfferItems">
+            <EntityTypeMapping TypeName="Ad_Model.vw_OfferItem">
+              <MappingFragment StoreEntitySet="vw_OfferItem">
+                <ScalarProperty Name="PriceType" ColumnName="PriceType" />
+                <ScalarProperty Name="UserCommision" ColumnName="UserCommision" />
+                <ScalarProperty Name="Custom3" ColumnName="Custom3" />
+                <ScalarProperty Name="Custom2" ColumnName="Custom2" />
+                <ScalarProperty Name="Custom1" ColumnName="Custom1" />
+                <ScalarProperty Name="PID" ColumnName="PID" />
+                <ScalarProperty Name="CategoryName_V" ColumnName="CategoryName_V" />
+                <ScalarProperty Name="CategoryID_N" ColumnName="CategoryID_N" />
+                <ScalarProperty Name="SKUID" ColumnName="SKUID" />
+                <ScalarProperty Name="MerchantProductID" ColumnName="MerchantProductID" />
+                <ScalarProperty Name="Location" ColumnName="Location" />
+                <ScalarProperty Name="Color" ColumnName="Color" />
+                <ScalarProperty Name="Brand" ColumnName="Brand" />
+                <ScalarProperty Name="DiscountedPrice" ColumnName="DiscountedPrice" />
+                <ScalarProperty Name="ProductPriceCurrency" ColumnName="ProductPriceCurrency" />
+                <ScalarProperty Name="ProductPrice" ColumnName="ProductPrice" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+                <ScalarProperty Name="ModifiedDate" ColumnName="ModifiedDate" />
+                <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+                <ScalarProperty Name="SerialNo" ColumnName="SerialNo" />
+                <ScalarProperty Name="NavigationURL" ColumnName="NavigationURL" />
+                <ScalarProperty Name="ImageUrl" ColumnName="ImageUrl" />
+                <ScalarProperty Name="Availability" ColumnName="Availability" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="ProductTitle" ColumnName="ProductTitle" />
+                <ScalarProperty Name="CategoryName" ColumnName="CategoryName" />
+                <ScalarProperty Name="AdType" ColumnName="AdType" />
+                <ScalarProperty Name="MerchantLogoUrl" ColumnName="MerchantLogoUrl" />
+                <ScalarProperty Name="MerchantNameDetail" ColumnName="MerchantNameDetail" />
+                <ScalarProperty Name="MerchantName" ColumnName="MerchantName" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="vw_Offer_Lists">
+            <EntityTypeMapping TypeName="Ad_Model.vw_Offer_List">
+              <MappingFragment StoreEntitySet="vw_Offer_List">
+                <ScalarProperty Name="UserCommision" ColumnName="UserCommision" />
+                <ScalarProperty Name="ImageUrl" ColumnName="ImageUrl" />
+                <ScalarProperty Name="MerchantImage" ColumnName="MerchantImage" />
+                <ScalarProperty Name="OfferType" ColumnName="OfferType" />
+                <ScalarProperty Name="TrackingURL" ColumnName="TrackingURL" />
+                <ScalarProperty Name="MerchantName" ColumnName="MerchantName" />
+                <ScalarProperty Name="MoreOffer" ColumnName="MoreOffer" />
+                <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+                <ScalarProperty Name="NavigationURL" ColumnName="NavigationURL" />
+                <ScalarProperty Name="ValidTill" ColumnName="ValidTill" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="CouponCode" ColumnName="CouponCode" />
+                <ScalarProperty Name="Title" ColumnName="Title" />
+                <ScalarProperty Name="CouponForDevice" ColumnName="CouponForDevice" />
+                <ScalarProperty Name="VoucherCodeID" ColumnName="VoucherCodeID" />
+                <ScalarProperty Name="MID" ColumnName="MID" />
+                <ScalarProperty Name="OfferID" ColumnName="OfferID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Adv_MissingCashbacks">
+            <EntityTypeMapping TypeName="Ad_Model.Adv_MissingCashback">
+              <MappingFragment StoreEntitySet="Adv_MissingCashback">
+                <ScalarProperty Name="IsMailSend" ColumnName="IsMailSend" />
+                <ScalarProperty Name="Status" ColumnName="Status" />
+                <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+                <ScalarProperty Name="ContactNo" ColumnName="ContactNo" />
+                <ScalarProperty Name="FileUrl" ColumnName="FileUrl" />
+                <ScalarProperty Name="Details" ColumnName="Details" />
+                <ScalarProperty Name="CouponCode" ColumnName="CouponCode" />
+                <ScalarProperty Name="AmountPaid" ColumnName="AmountPaid" />
+                <ScalarProperty Name="OrderID" ColumnName="OrderID" />
+                <ScalarProperty Name="UserID" ColumnName="UserID" />
+                <ScalarProperty Name="MID" ColumnName="MID" />
+                <ScalarProperty Name="TransactionDate" ColumnName="TransactionDate" />
+                <ScalarProperty Name="TicketNo" ColumnName="TicketNo" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Adv_Notifications">
+            <EntityTypeMapping TypeName="Ad_Model.Adv_Notification">
+              <MappingFragment StoreEntitySet="Adv_Notification">
+                <ScalarProperty Name="NotificationType" ColumnName="NotificationType" />
+                <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+                <ScalarProperty Name="Status" ColumnName="Status" />
+                <ScalarProperty Name="NotificationText" ColumnName="NotificationText" />
+                <ScalarProperty Name="NotificationId" ColumnName="NotificationId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Adv_DynamicProductFeeds">
+            <EntityTypeMapping TypeName="Ad_Model.Adv_DynamicProductFeed">
+              <MappingFragment StoreEntitySet="Adv_DynamicProductFeed">
+                <ScalarProperty Name="Status" ColumnName="Status" />
+                <ScalarProperty Name="ISRUN" ColumnName="ISRUN" />
+                <ScalarProperty Name="SearchInCategory" ColumnName="SearchInCategory" />
+                <ScalarProperty Name="MerchantName" ColumnName="MerchantName" />
+                <ScalarProperty Name="PFXmlPath" ColumnName="PFXmlPath" />
+                <ScalarProperty Name="CategoryID_N" ColumnName="CategoryID_N" />
+                <ScalarProperty Name="PFURLID" ColumnName="PFURLID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Adv_Subscribe">
+            <EntityTypeMapping TypeName="Ad_Model.Adv_Subscribe">
+              <MappingFragment StoreEntitySet="Adv_Subscribe">
+                <ScalarProperty Name="UnSubscriptionDate" ColumnName="UnSubscriptionDate" />
+                <ScalarProperty Name="SubscrptionDate" ColumnName="SubscrptionDate" />
+                <ScalarProperty Name="Status" ColumnName="Status" />
+                <ScalarProperty Name="SubscribeEmail" ColumnName="SubscribeEmail" />
+                <ScalarProperty Name="SubscribeID" ColumnName="SubscribeID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <FunctionImportMapping FunctionImportName="adv_proc_CalculateFinalCommission" FunctionName="Ad_Model.Store.adv_proc_CalculateFinalCommission" />
+          <FunctionImportMapping FunctionImportName="adv_UpdateAndDeleteDuplicateOffers" FunctionName="Ad_Model.Store.adv_UpdateAndDeleteDuplicateOffers" />
+          <EntitySetMapping Name="adv_CommissionBreakdown">
+            <EntityTypeMapping TypeName="Ad_Model.adv_CommissionBreakdown">
+              <MappingFragment StoreEntitySet="adv_CommissionBreakdown">
+                <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+                <ScalarProperty Name="ToValidDate" ColumnName="ToValidDate" />
+                <ScalarProperty Name="CommissionType" ColumnName="CommissionType" />
+                <ScalarProperty Name="UserBreakDownMaxCommission" ColumnName="UserBreakDownMaxCommission" />
+                <ScalarProperty Name="BreakDownMaxCommission" ColumnName="BreakDownMaxCommission" />
+                <ScalarProperty Name="BreakDownEndAmount" ColumnName="BreakDownEndAmount" />
+                <ScalarProperty Name="BreakDownStartAmount" ColumnName="BreakDownStartAmount" />
+                <ScalarProperty Name="BreakDownText" ColumnName="BreakDownText" />
+                <ScalarProperty Name="MID" ColumnName="MID" />
+                <ScalarProperty Name="BreakDownID" ColumnName="BreakDownID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Adv_MailContents">
+            <EntityTypeMapping TypeName="Ad_Model.Adv_MailContent">
+              <MappingFragment StoreEntitySet="Adv_MailContent">
+                <ScalarProperty Name="MailType" ColumnName="MailType" />
+                <ScalarProperty Name="MailContent" ColumnName="MailContent" />
+                <ScalarProperty Name="MailTemplateID" ColumnName="MailTemplateID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Adv_FeatureOffer1">
+            <EntityTypeMapping TypeName="Ad_Model.Adv_FeatureOffer1">
+              <MappingFragment StoreEntitySet="Adv_FeatureOffer">
+                <ScalarProperty Name="OfferType" ColumnName="OfferType" />
+                <ScalarProperty Name="OfferID" ColumnName="OfferID" />
+                <ScalarProperty Name="FeatureOfferID" ColumnName="FeatureOfferID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Adv_OMG_Transactions">
+            <EntityTypeMapping TypeName="Ad_Model.Adv_OMG_Transaction">
+              <MappingFragment StoreEntitySet="Adv_OMG_Transaction">
+                <ScalarProperty Name="AmountStatus" ColumnName="AmountStatus" />
+                <ScalarProperty Name="UserPercentage" ColumnName="UserPercentage" />
+                <ScalarProperty Name="FinalCommision" ColumnName="FinalCommision" />
+                <ScalarProperty Name="SendToUser" ColumnName="SendToUser" />
+                <ScalarProperty Name="VoucherCode" ColumnName="VoucherCode" />
+                <ScalarProperty Name="PriceType" ColumnName="PriceType" />
+                <ScalarProperty Name="MaximumCommision" ColumnName="MaximumCommision" />
+                <ScalarProperty Name="UserCommision" ColumnName="UserCommision" />
+                <ScalarProperty Name="Commision" ColumnName="Commision" />
+                <ScalarProperty Name="TransactionValue" ColumnName="TransactionValue" />
+                <ScalarProperty Name="UKey" ColumnName="UKey" />
+                <ScalarProperty Name="Completed" ColumnName="Completed" />
+                <ScalarProperty Name="Paid" ColumnName="Paid" />
+                <ScalarProperty Name="Status" ColumnName="Status" />
+                <ScalarProperty Name="NVR" ColumnName="NVR" />
+                <ScalarProperty Name="VR" ColumnName="VR" />
+                <ScalarProperty Name="SR" ColumnName="SR" />
+                <ScalarProperty Name="Referrer" ColumnName="Referrer" />
+                <ScalarProperty Name="Product" ColumnName="Product" />
+                <ScalarProperty Name="PID" ColumnName="PID" />
+                <ScalarProperty Name="MerchantName" ColumnName="MerchantName" />
+                <ScalarProperty Name="MID" ColumnName="MID" />
+                <ScalarProperty Name="UID2" ColumnName="UID2" />
+                <ScalarProperty Name="UID" ColumnName="UID" />
+                <ScalarProperty Name="OmgMerchantRef" ColumnName="OmgMerchantRef" />
+                <ScalarProperty Name="OmgTransactionID" ColumnName="OmgTransactionID" />
+                <ScalarProperty Name="TransactionTime" ColumnName="TransactionTime" />
+                <ScalarProperty Name="ClickTime" ColumnName="ClickTime" />
+                <ScalarProperty Name="TransactionID" ColumnName="TransactionID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Adv_Offers">
+            <EntityTypeMapping TypeName="Ad_Model.Adv_Offer">
+              <MappingFragment StoreEntitySet="Adv_Offer">
+                <ScalarProperty Name="ImageUrl" ColumnName="ImageUrl" />
+                <ScalarProperty Name="ActivationDate" ColumnName="ActivationDate" />
+                <ScalarProperty Name="OfferType" ColumnName="OfferType" />
+                <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+                <ScalarProperty Name="NavigationURL" ColumnName="NavigationURL" />
+                <ScalarProperty Name="ValidTill" ColumnName="ValidTill" />
+                <ScalarProperty Name="SrNo" ColumnName="SrNo" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="CouponCode" ColumnName="CouponCode" />
+                <ScalarProperty Name="Title" ColumnName="Title" />
+                <ScalarProperty Name="OfferForDevice" ColumnName="OfferForDevice" />
+                <ScalarProperty Name="VoucherCodeID" ColumnName="VoucherCodeID" />
+                <ScalarProperty Name="MID" ColumnName="MID" />
+                <ScalarProperty Name="OfferID" ColumnName="OfferID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2008/10/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="True" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="True" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams>
+      <Diagram Name="Model_Advertise" ZoomLevel="101">
+        <EntityTypeShape EntityType="Ad_Model.Adv_Coupon" Width="1.5" PointX="3.5" PointY="2" Height="2.4140429687499996" />
+        <EntityTypeShape EntityType="Ad_Model.Adv_Mst_ApiUrl" Width="1.5" PointX="0.75" PointY="0.75" Height="2.3648893229166674" />
+        <EntityTypeShape EntityType="Ad_Model.aspnet_Users" Width="1.5" PointX="11.75" PointY="2.125" Height="2.2496956380208335" />
+        <EntityTypeShape EntityType="Ad_Model.Adv_Trn_UserProfile" Width="1.5" PointX="14" PointY="1" Height="4.3862109375" />
+        <AssociationConnector Association="Ad_Model.FK_Adv_Trn_UserProfile_aspnet_Users" >
+          <ConnectorPoint PointX="13.25" PointY="3.2498478190104167" />
+          <ConnectorPoint PointX="14" PointY="3.2498478190104167" />
+        </AssociationConnector>
+        <EntityTypeShape EntityType="Ad_Model.Adv_Trn_Banner" Width="1.5" PointX="3.5" PointY="9.375" Height="2.9070849609374996" />
+        <EntityTypeShape EntityType="Ad_Model.Adv_Deal" Width="1.5" PointX="3.5" PointY="13" Height="4.7149055989583353" />
+        <EntityTypeShape EntityType="Ad_Model.adv_Wallet" Width="1.5" PointX="5.75" PointY="0.75" Height="2.0853483072916674" />
+        <EntityTypeShape EntityType="Ad_Model.Adv_Mst_Merchant" Width="2" PointX="0.75" PointY="10.5" Height="4.2218636067708317" />
+        <AssociationConnector Association="Ad_Model.FK_Adv_Coupon_Adv_Mst_Merchant" >
+          <ConnectorPoint PointX="2.53125" PointY="10.5" />
+          <ConnectorPoint PointX="2.53125" PointY="3.2926741536458337" />
+          <ConnectorPoint PointX="3.5" PointY="3.2926741536458337" />
+        </AssociationConnector>
+        <AssociationConnector Association="Ad_Model.FK_Adv_Deal_Adv_Mst_Merchant" >
+          <ConnectorPoint PointX="2.75" PointY="14.107452799479166" />
+          <ConnectorPoint PointX="3.5" PointY="14.107452799479166" />
+        </AssociationConnector>
+        <EntityTypeShape EntityType="Ad_Model.Adv_Commision" Width="2.375" PointX="3.5" PointY="18.5" Height="4.5505582682291674" />
+        <AssociationConnector Association="Ad_Model.FK_Adv_Commision_Adv_Mst_Merchant" >
+          <ConnectorPoint PointX="1.442871953125" PointY="15.214905598958332" />
+          <ConnectorPoint PointX="1.442871953125" PointY="20.775279134114584" />
+          <ConnectorPoint PointX="2.0443551432291662" PointY="20.775279134114584" />
+          <ConnectorPoint PointX="2.2110218098958332" PointY="20.775279134114584" />
+          <ConnectorPoint PointX="3.5" PointY="20.775279134114584" />
+        </AssociationConnector>
+        <EntityTypeShape EntityType="Ad_Model.Mst_Category" Width="2" PointX="5.75" PointY="4" Height="3.4001269531249996" />
+        <EntityTypeShape EntityType="Ad_Model.Mst_SubCategory" Width="1.5" PointX="8.5" PointY="1.25" Height="2.7427376302083326" />
+        <AssociationConnector Association="Ad_Model.FK_Mst_SubCategory_Mst_Category" >
+          <ConnectorPoint PointX="7.53125" PointY="4" />
+          <ConnectorPoint PointX="7.53125" PointY="3.44529296875" />
+          <ConnectorPoint PointX="8.5" PointY="3.44529296875" />
+        </AssociationConnector>
+        <EntityTypeShape EntityType="Ad_Model.Adv_Product_Common" Width="2" PointX="8.5" PointY="4.75" Height="5.372294921875004" />
+        <AssociationConnector Association="Ad_Model.FK_Adv_Product_Common_Mst_Category" >
+          <ConnectorPoint PointX="7.75" PointY="6.0750634765625" />
+          <ConnectorPoint PointX="8.5" PointY="6.0750634765625" />
+        </AssociationConnector>
+        <AssociationConnector Association="Ad_Model.FK_Adv_Trn_Banner_Adv_Mst_Merchant" >
+          <ConnectorPoint PointX="2.75" PointY="11.39104248046875" />
+          <ConnectorPoint PointX="3.5" PointY="11.39104248046875" />
+        </AssociationConnector>
+        <EntityTypeShape EntityType="Ad_Model.Adv_Commision_HISTORY" Width="2.25" PointX="6.625" PointY="14.25" Height="4.879252929687496" />
+        <AssociationConnector Association="Ad_Model.FK_Adv_Commision_HISTORY_Adv_Commision" >
+          <ConnectorPoint PointX="5.875" PointY="18.814626464843748" />
+          <ConnectorPoint PointX="6.625" PointY="18.814626464843748" />
+        </AssociationConnector>
+        <AssociationConnector Association="Ad_Model.FK_Adv_Commision_HISTORY_Adv_Mst_Merchant" >
+          <ConnectorPoint PointX="2.75" PointY="12.739410807291666" />
+          <ConnectorPoint PointX="8.09375" PointY="12.739410807291666" />
+          <ConnectorPoint PointX="8.09375" PointY="14.25" />
+        </AssociationConnector>
+        <EntityTypeShape EntityType="Ad_Model.vw_OfferItem" Width="1.5" PointX="11.75" PointY="6.75" Height="6.0296842447916674" />
+        <EntityTypeShape EntityType="Ad_Model.vw_Offer_List" Width="1.5" PointX="5.75" PointY="8.75" Height="3.7288216145833317" />
+        <EntityTypeShape EntityType="Ad_Model.Adv_MissingCashback" Width="1.5" PointX="13.75" PointY="6.75" Height="3.0714322916666674" />
+        <EntityTypeShape EntityType="Ad_Model.Adv_Notification" Width="2.875" PointX="9.75" PointY="13.75" Height="1.7566536458333317" />
+        <EntityTypeShape EntityType="Ad_Model.Adv_DynamicProductFeed" Width="3.75" PointX="13.75" PointY="10.75" Height="2.0853483072916674" />
+        <AssociationConnector Association="Ad_Model.FK_Adv_Trn_Banner_Adv_Trn_Banner" >
+          <ConnectorPoint PointX="4.0319230769230767" PointY="12.2820849609375" />
+          <ConnectorPoint PointX="4.0319230769230767" PointY="12.5320849609375" />
+          <ConnectorPoint PointX="4.4784615384615378" PointY="12.5320849609375" />
+          <ConnectorPoint PointX="4.4784615384615378" PointY="12.2820849609375" />
+        </AssociationConnector>
+        <EntityTypeShape EntityType="Ad_Model.Adv_Subscribe" Width="1.5" PointX="0.75" PointY="3.75" Height="1.7566536458333246" />
+        <EntityTypeShape EntityType="Ad_Model.adv_CommissionBreakdown" Width="1.5" PointX="3.5" PointY="24.375" Height="2.7427376302083246" />
+        <AssociationConnector Association="Ad_Model.FK_adv_CommissionBreakdown_Adv_Mst_Merchant" >
+          <ConnectorPoint PointX="2.1276884765624997" PointY="15.214905598958332" />
+          <ConnectorPoint PointX="2.1276884765624997" PointY="25.746368815104162" />
+          <ConnectorPoint PointX="3.5" PointY="25.746368815104162" />
+        </AssociationConnector>
+        <EntityTypeShape EntityType="Ad_Model.Adv_MailContent" Width="1.5" PointX="0.75" PointY="6.75" Height="1.4279589843750102" />
+        <EntityTypeShape EntityType="Ad_Model.Adv_FeatureOffer1" Width="1.5" PointX="15.375" PointY="14.75" Height="1.5956835937500102" />
+        <EntityTypeShape EntityType="Ad_Model.Adv_OMG_Transaction" Width="1.5" PointX="16.375" PointY="0.75" Height="6.5955208333333246" />
+        <EntityTypeShape EntityType="Ad_Model.Adv_Offer" Width="1.5" PointX="3.5" PointY="28.125" Height="3.400126953124996" />
+        <AssociationConnector Association="Ad_Model.FK_Adv_Offer_Adv_Mst_Merchant" >
+          <ConnectorPoint PointX="1.0651834765625001" PointY="15.214905598958332" />
+          <ConnectorPoint PointX="1.0651834765625001" PointY="29.825063476562498" />
+          <ConnectorPoint PointX="3.5" PointY="29.825063476562498" />
+        </AssociationConnector>
+      </Diagram>
+    </Diagrams>
+  </Designer>
+</edmx:Edmx>

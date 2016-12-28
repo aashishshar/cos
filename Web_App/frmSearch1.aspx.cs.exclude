@@ -1,0 +1,357 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Web;
+using System.Web.UI;
+using System.Web.UI.WebControls;
+using System.Data.SqlClient;
+using System.Configuration;
+using System.Data;
+using System.Web.Services;
+using System.Collections.Specialized;
+using EntityData;
+
+public partial class frmSearch : BasePage
+{
+    SqlConnection con = new SqlConnection();
+    DataTable dtBrand;
+    DataTable dtMerchant;
+    protected void Page_Load(object sender, EventArgs e)
+    {
+        con = new SqlConnection(ConfigurationManager.ConnectionStrings["Ad_ConnectionStringMain"].ToString());
+        if (!IsPostBack)
+        {
+            string categoryname = Convert.ToString(Request.QueryString["categoryname"]);
+            Load_tree(categoryname);
+            BindRecord(categoryname,"");
+        }
+    }
+
+
+    protected void TreeView1_SelectedNodeChanged(object sender, EventArgs e)
+    {
+        string val = TreeView1.SelectedNode.Text;
+        ChangeURL(val);
+        //BindMerchant(val);
+    }
+
+    public string BindAllCategories(string categoryName)
+    {
+        SqlCommand cmd = new SqlCommand("adv_FindAllChildForCategory", con);
+        cmd.CommandType = CommandType.StoredProcedure;
+        cmd.Parameters.AddWithValue("@categoryname", categoryName);
+        SqlDataAdapter daP = new SqlDataAdapter(cmd);
+        DataTable dtp = new DataTable();
+        daP.Fill(dtp);
+        string strAllcategory = string.Empty;
+        if (dtp != null)
+        {
+            if (dtp.Rows.Count > 0)
+            {
+                for (int i = 0; i < dtp.Rows.Count; i++)
+                {
+                    strAllcategory = strAllcategory + "'" + dtp.Rows[i]["CategoryID_N"].ToString() + "',";
+                }
+                strAllcategory = strAllcategory.TrimEnd(',');
+            }
+            else
+            {
+                SqlDataAdapter daCat = new SqlDataAdapter("select categoryid_n from mst_category where categoryname_v='" + categoryName + "'", con);
+                DataTable dtcat = new DataTable();
+                daCat.Fill(dtcat);
+                if (dtcat != null)
+                {
+                    if (dtcat.Rows.Count > 0)
+                        strAllcategory = dtcat.Rows[0]["categoryid_n"].ToString();
+                }
+
+            }
+        }
+        return strAllcategory;
+    }
+    public DataTable BindAllCategory(string categoryName)
+    {
+        SqlCommand cmd = new SqlCommand("adv_FindAllChildForCategory", con);
+        cmd.CommandType = CommandType.StoredProcedure;
+        cmd.Parameters.AddWithValue("@categoryname", categoryName);
+        SqlDataAdapter daP = new SqlDataAdapter(cmd);
+        DataTable dtp = new DataTable();
+        daP.Fill(dtp);
+        return dtp;
+    }
+    public void BindMerchant(string categoryName)
+    {
+        string strAllcategory = string.Empty;
+        strAllcategory = BindAllCategories(categoryName);
+        string sql = "select distinct MID,MerchantNameDetail + ' ('+ cast(COUNT(*) as varchar(50))+')' as MerchantNameDetail from Mst_Category A  inner join Adv_Product_Common C on A.CategoryID_N=C.CategoryID_N inner join Adv_Mst_Merchant D on D.MID=C.Ad_For where isnull(Brand,'')!='' and A.CategoryID_N in(" + strAllcategory + ") group by MID,MerchantNameDetail";
+        SqlDataAdapter da = new SqlDataAdapter(sql, con);
+        DataTable dt = new DataTable();
+        da.Fill(dt);
+        chkMerchant.DataSource = dt;
+        chkMerchant.DataTextField = "MerchantNameDetail";
+        chkMerchant.DataValueField = "MID";
+        chkMerchant.DataBind();
+        if (chkMerchant.Items.Count > 0)
+            divmerchant.Visible = true;
+        else
+            divmerchant.Visible = false;
+    }
+
+    public void BindBrand(string categoryName)
+    {
+        string strAllcategory = string.Empty;
+        strAllcategory = BindAllCategories(categoryName);
+        string sql = "select distinct Brand,Brand + ' ('+ cast(COUNT(*) as varchar(50))+')' as Branddetail from Mst_Category A inner join Adv_Product_Common C on A.CategoryID_N=C.CategoryID_N  where  A.CategoryID_N in(" + strAllcategory + ") and isnull(Brand,'')!='' group by Brand";
+        SqlDataAdapter da = new SqlDataAdapter(sql, con);
+        DataTable dt = new DataTable();
+        da.Fill(dt);
+        chkBrand.DataSource = dt;
+        chkBrand.DataTextField = "Branddetail";
+        chkMerchant.DataValueField = "Brand";
+        chkBrand.DataBind();
+        if (chkBrand.Items.Count > 0)
+            divBrand.Visible = true;
+        else
+            divBrand.Visible = false;
+
+    }
+
+
+
+    #region Bind Category Tree
+    public void Load_tree(string category)
+    {
+        SqlCommand cmd = new SqlCommand("adv_FindAllParentForCategory", con);
+        cmd.CommandType = CommandType.StoredProcedure;
+        cmd.Parameters.AddWithValue("@categoryname", category);
+        SqlDataAdapter daP = new SqlDataAdapter(cmd);
+        DataTable dtp = new DataTable();
+        daP.Fill(dtp);
+        ViewState["checkvalue"] = null;
+        TreeView1.Nodes.Clear();
+        foreach (DataRow dr in dtp.Rows)
+        {
+            if (Convert.ToString(dr["ParentCategoryID_N"]) == string.Empty)
+            {
+                TreeNode tnParent = new TreeNode();
+                tnParent.Text = dr["CategoryName_V"].ToString();
+                tnParent.Value = dr["CategoryID_N"].ToString();
+                string value = dr["CategoryID_N"].ToString();
+                tnParent.Expand();
+                TreeView1.Nodes.Add(tnParent);
+                FillParentChild(tnParent, value, category);
+            }
+        }
+        BindBrand(category);
+        BindMerchant(category);
+    }
+    public void FillParentChild(TreeNode parent, string ID, string category)
+    {
+        SqlCommand cmd = new SqlCommand("adv_FindAllParentForCategoryNew", con);
+        cmd.CommandType = CommandType.StoredProcedure;
+        cmd.Parameters.AddWithValue("@categoryname", category);
+        cmd.Parameters.AddWithValue("@parentcategoryId", ID);
+        SqlDataAdapter da = new SqlDataAdapter(cmd);
+        DataTable dt = new DataTable();
+        da.Fill(dt);
+        foreach (DataRow dr in dt.Rows)
+        {
+            TreeNode child = new TreeNode();
+            child.Text = dr["CategoryName_V"].ToString().Trim();
+            child.Value = dr["CategoryID_N"].ToString().Trim();
+            string temp = dr["CategoryID_N"].ToString();
+            child.Expand();
+            parent.ChildNodes.Add(child);
+            FillParentChild(child, temp, category);
+        }
+
+        if (dt.Rows.Count == 0 && Convert.ToString(ViewState["checkvalue"]) != "assign")
+            FillChild(parent, ID);
+    }
+    public int FillChild(TreeNode parent, string ID)
+    {
+        string Childquery = " SELECT CategoryName_V,CategoryID_N from vw_FindAllChildForCategory where ParentCategoryID_N='" + ID + "'";
+        SqlDataAdapter da = new SqlDataAdapter(Childquery, con);
+        DataTable dt = new DataTable();
+        da.Fill(dt);
+
+        if (dt.Rows.Count > 0)
+        {
+            foreach (DataRow dr in dt.Rows)
+            {
+                TreeNode child = new TreeNode();
+                child.Text = dr["CategoryName_V"].ToString().Trim();
+                child.Value = dr["CategoryID_N"].ToString().Trim();
+                string temp = dr["CategoryID_N"].ToString();
+                child.Expand();
+                parent.ChildNodes.Add(child);
+            }
+            return 0;
+        }
+        else
+        {
+            return 0;
+        }
+    }
+    #endregion
+
+    public void BindRecord(string categoryName,string sortby)
+    {
+        try
+        {
+            DataTable dtprice = new DataTable();
+            dtprice.Columns.Add("HighPrice");
+            dtprice.Columns.Add("LowPrice");
+            DataRow drPrice = dtprice.NewRow();
+            drPrice["HighPrice"] = txtPriceTo.Text;
+            drPrice["LowPrice"] = txtpriceFrom.Text;
+            dtprice.Rows.Add(drPrice);
+
+            
+            DataTable dtp = new DataTable();
+            dtp = BindAllCategory(categoryName);
+            dtMerchant = new DataTable();
+            dtMerchant.Columns.Add("merchantID");
+            dtMerchant.Columns.Add("merchantName");
+            foreach (ListItem lstMerchat in chkMerchant.Items)
+            {
+                if (lstMerchat.Selected)
+                {
+                    DataRow dr = dtMerchant.NewRow();
+                    dr["merchantID"] = lstMerchat.Value;
+                    string input = string.Empty;
+                    int index = lstMerchat.Text.LastIndexOf("(");
+                    if (index > 0)
+                        input = lstMerchat.Text.Substring(0, index - 1);
+                    dr["merchantName"] = input;
+                    dtMerchant.Rows.Add(dr);
+                }
+            }
+
+            dtBrand = new DataTable();
+            dtBrand.Columns.Add("BrandName");
+
+            foreach (ListItem lstbrand in chkBrand.Items)
+            {
+                if (lstbrand.Selected)
+                {
+                    DataRow dr = dtBrand.NewRow();
+                    string input = string.Empty;
+                    int index = lstbrand.Text.LastIndexOf("(");
+                    if (index > 0)
+                        input = lstbrand.Text.Substring(0, index - 1);
+                    dr["BrandName"] = input;
+                    dtBrand.Rows.Add(dr);
+                }
+            }
+
+            SqlCommand cmd = new SqlCommand("GetOfferItemPageWiseSearch", con);
+            cmd.CommandType = CommandType.StoredProcedure;
+            cmd.Parameters.AddWithValue("@PageIndex", 1);
+            cmd.Parameters.AddWithValue("@PageSize", 100);
+            cmd.Parameters.AddWithValue("@RecordCount", "");
+            cmd.Parameters.AddWithValue("@categoryName_V", dtp);
+            cmd.Parameters.AddWithValue("@Brandname", dtBrand);
+            cmd.Parameters.AddWithValue("@MerchantName", dtMerchant);
+            cmd.Parameters.AddWithValue("@searchType", "");
+            cmd.Parameters.AddWithValue("@sortby", sortby);
+            cmd.Parameters.AddWithValue("@price", dtprice);
+            
+            SqlDataAdapter daP = new SqlDataAdapter(cmd);
+            DataTable dtProduct = new DataTable();
+            daP.Fill(dtProduct);
+            //grvItems.DataSource = dtProduct;
+            //grvItems.DataBind();
+            //var product = (from p in dtProduct.AsEnumerable()
+            //               select new vw_Product()
+            //              {
+            //                  Brand = p.Field<string>("Brand"),
+            //                  //MerchantName = p.Field<Int32>("MerchantName"),
+            //                  MerchantImage = p.Field<string>("MerchantLogoUrl"),
+            //                  MerchantLogoUrl = p.Field<string>("MerchantLogoUrl"),
+            //                  //AdType = p.Field<Int32>("AdType"),
+            //                  CategoryName = p.Field<string>("CategoryName"),
+            //                  ProductTitle = p.Field<string>("ProductTitle"),
+            //                  Description = p.Field<string>("Description"),
+            //                  Availability = p.Field<string>("Availability"),
+            //                  ImageUrl = p.Field<string>("ImageUrl"),
+            //                  NavigationURL = p.Field<string>("NavigationURL"),
+            //                  //SerialNo = p.Field<Int32>("SerialNo"),
+            //                 // CreatedDate = p.Field<DateTime>("CreatedDate"),
+            //                 // ModifiedDate = p.Field<DateTime>("ModifiedDate"),
+            //                  //CreatedBy = p.Field<string>("CreatedBy"),
+            //                  ProductPrice =Convert.ToSingle(p.Field<double>("ProductPrice")),
+            //                  DiscountPercentage = discountPrice(p.Field<double>("DiscountedPrice"), p.Field<double>("ProductPrice")),
+            //                  ProductPriceCurrency = p.Field<string>("ProductPriceCurrency"),
+            //                  DiscountedPrice =Convert.ToSingle( p.Field<double>("DiscountedPrice")),
+            //                  Color = p.Field<string>("Color")
+            //                 // Location = p.Field<string>("Location")
+            //                  //MerchantImage = string.IsNullOrEmpty(_product.MerchantLogoUrl) ? clsImageUrl.GetMerchantImage((Constants.NameOfMerchants)Enum.Parse(typeof(Constants.NameOfMerchants), _product.MerchantName.Value.ToString())) : _product.MerchantLogoUrl;
+            //              }).ToList();
+            //uc_VwProduct1.ProductItemBind(product);
+
+            clsAssignDataCollection getVW_Item = new clsAssignDataCollection();
+
+            uc_VwProduct1.ProductItemBind(getVW_Item.GetViewProductCommon(dtProduct.ToList<vw_OfferItem>()));
+        }
+        catch (Exception ex)
+        { }
+    }
+
+
+    public string discountPrice(double dicountPrice,double productPrice)
+    {
+        string disPrice = "";
+        if (dicountPrice > 0)
+        {
+            double percentagePrice = 100 - (Convert.ToSingle(dicountPrice) * 100 / Convert.ToSingle(productPrice));
+            if (Math.Round(percentagePrice) > 0)
+            {
+                disPrice = "<span style='text-decoration:line-through;'><b>Rs " + productPrice.ToString() + "</b></span>" + " " + "<span style='color: Black;'><b>Rs " + dicountPrice.ToString() + "</b></span> " + " " + " <span style='color: White;background-color:Green;border-radius:3px;padding:2px 3px 2px 3px;'><b>" + Math.Round(percentagePrice).ToString() + "%</b></span>";
+            }
+            else
+            {
+                disPrice = "<span style='color: Black;'><b>Rs " + productPrice.ToString() + "</b></span> ";
+            }
+        }
+        else if (productPrice > 0 && dicountPrice == 0)
+        {
+            disPrice = "<span style='color: Black;'><b>Rs " + productPrice.ToString() + "</b></span> ";
+        }
+        if (productPrice == 0 && dicountPrice == 0)
+        {
+            disPrice = "";
+        }
+        return disPrice;
+    }
+
+
+    protected void chkMerchant_SelectedIndexChanged(object sender, EventArgs e)
+    {
+        BindRecord(Convert.ToString(Request.QueryString["categoryname"]),"");
+        txtmerchant.Text = string.Empty;
+    }
+    protected void chkBrand_SelectedIndexChanged(object sender, EventArgs e)
+    {
+        BindRecord(Convert.ToString(Request.QueryString["categoryname"]),"");
+        txtBrand.Text = string.Empty;
+    }
+    public void ChangeURL(string categoryName)
+    {
+        string url = HttpContext.Current.Request.Url.AbsoluteUri;
+        string[] separateURL = url.Split('?');
+        NameValueCollection queryString = System.Web.HttpUtility.ParseQueryString(separateURL[1]);
+        queryString["categoryname"] = categoryName;
+        url = separateURL[0] + "?" + queryString.ToString();
+        Response.Redirect(url);
+    }
+    protected void lnkLowPrice_Click(object sender, EventArgs e)
+    {
+        LinkButton lnk = (LinkButton)sender;
+        BindRecord(Convert.ToString(Request.QueryString["categoryname"]),lnk.Text);
+    }
+    protected void btnGo_Click(object sender, EventArgs e)
+    {
+        BindRecord(Convert.ToString(Request.QueryString["categoryname"]), "");
+    }
+}

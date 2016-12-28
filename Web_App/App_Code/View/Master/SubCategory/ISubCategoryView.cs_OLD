@@ -1,0 +1,19 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Web;
+
+
+/// <summary>
+/// Summary description for ISubCategoryView
+/// </summary>
+public interface ISubCategoryView : IView
+{
+    void populateDDL(List<KeyValuePair<int, string>> items);
+    string SelectedValueDDL { get; set; }
+    bool postback { get; set; }  
+
+
+    SubCategoryListPresenter Presenter { get; }
+    event EventHandler SelectionChanged;
+}

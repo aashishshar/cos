@@ -1,0 +1,6 @@
+@ 3600 IN A 216.239.32.21
+@ 3600 IN A 216.239.34.21
+@ 3600 IN A 216.239.36.21
+@ 3600 IN A 216.239.38.21
+blog 3600 IN CNAME ghs.google.com
+cq6tyj4q4omo 3600 IN CNAME gv-jmaopxnr7talsk.dv.googlehosted.com

@@ -1,0 +1,78 @@
+﻿Row 			Report row number
+ClickTime		Click Time of last click prior to transaction
+TransactionTime Transaction Time
+AppId			Transaction reference
+UID 			Unique Identifier - publisher click reference
+UID2			Unique Identifier 2 - publisher click reference
+MID				MerchantID
+Merchant		Merchant Name
+PID				ProductID
+Product 		Product Name
+Referrer 		The referring URL that generated the sale
+SR				Standard Rate - the baseline commission calculated with no potential tiering taken into consideration
+VR 				Validated Rate - the calculated commission calculated with any potential tiering taken into consideration
+NVR 			Deprecated
+Status 			The transaction status - Pending, Validated or Rejected
+Completed 		The Invoice Period date
+UKey 			A Unique Key for every transaction
+TransactionValue 	The total basket value for the transaction
+VoucherCode 	The voucher code used by the consumer in the transaction 
+
+
+
+CPA (Cost Per Action) – The cost paid per qualified action (click, sale, registration) from an online advertisement or affiliate link.
+
+CPC (Cost Per Click) – The cost or cost-equivalent paid per click through from an online advertisement to the advertiser's destination.
+
+CPL (Cost Per Lead) – Total cost of online advertisement campaign divided by the number of leads generated.
+
+CPM (Cost Per thousand impressions) – An agreed upon price paid to a content site for displaying an advertiser’s banner a thousand times. “M” represents the Roman numeral for 1000.
+
+CPS (Cost Per Sale) – The cost paid per sale generated from an online advertisement or affiliate link.
+
+CR (Conversion Rate) – Percentage of site visitors that take a desired action.
+
+CSS (Cascading Style Sheets) – A text data format used to separate style from structure on Web pages.
+
+CTR (Click Through Rate) - The percentage of visitors that click-through an ad impression/link compared to the total number of visitors that viewed the ad impression/link.
+
+Click through – The process of clicking on a link to visit another page or site.
+
+Cloaking – Delivering content to search engines for indexing that is different than what a human visitor will see when visiting the indexed URL. Most search engines have rules against unapproved cloaking and may ban your site if used inappropriately.
+
+Contextual links – Text in a link; examined by search engines in order to determine the relevance of the linked to page.
+
+Conversion rate - Total cost per sale or lead, calculated by dividing the total cost of an advertising campaign by the number of resulting sales or leads.
+
+Copy – The printed text in an advertisement or webpage (content).
+
+Creative – The concept, design, and artwork that goes into a given ad or website design.
+
+Crawl – The process in which search engine robots navigate through the Web by following links to gather listings, copy web pages and store the information in the search engine’s index.
+
+Crawler (Agent, Bot, Robot, Spider) – Software program that navigates the Web to find, catalog, and report information it has been told to search for.
+
+
+
+
+
+
+
+http://api.omgpm.com/network/sandbox/affiliate/--API URL GENERATE
+
+
+
+
+https://api.omgpm.com/network/OMGNetworkApi.svc/v1.1/ProductFeeds/GetProducts?Key=0e1a4b99-8aa0-43e7-81d7-22dd4e0f6786&Sig=98e2106077d34d2c900cdd7c7121906e&SigData=2015-5-8 15:19:13.ContactID={AID}&AgencyID={AgencyID}&MID={MID}&Keyword={Keyword}&MinPrice={MinPrice}&MaxPrice={MaxPrice}&Currency={Currency}&Brand={Brand}&DiscountedOnly={DiscountedOnly}&MPN={MPN}&ProductSKU={ProductSKU}&FeedID={FeedID}&NoOfRecords=800
+
+
+API-KEY--0e1a4b99-8aa0-43e7-81d7-22dd4e0f6786
+
+Private Key--98e2106077d34d2c900cdd7c7121906e
+
+
+Your AID - 764019
+Your AuthHash=31600E6D4717172FC8C62F9C1D35CE11
+
+
+http://api.omgpm.com/network/OMGNetworkApi.svc/v1.1/ProductFeeds/GetProducts?AgencyID=75&AID=764019&MID=523796&Keyword=Shirt&MinPrice=0&MaxPrice=400&Currency=INR&DiscountedOnly=False&ProductSKU=&Key=0e1a4b99-8aa0-43e7-81d7-22dd4e0f6786&Sig=5bwxU7dsTvlw6N6M%2fPp4laxqjR6xAVKmcxezMTVtqcQ%3d&SigData=2015-05-08 06:36:42.305

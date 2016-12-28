@@ -1,0 +1,720 @@
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/UC/UserMain.master" AutoEventWireup="true"
+    EnableEventValidation="false" CodeFile="Recharge.aspx.cs" Inherits="Recharge" %>
+
+<asp:Content ID="Content1" ContentPlaceHolderID="head" runat="Server">
+    <%-- <script src="jquery-1.3.2.min.js" type="text/javascript"></script>--%>
+</asp:Content>
+<asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="Server">
+    <div class="col-lg-3 col-md-3 col-sm-3 sidebar left-sidebar">
+        <div class="da-activepanel">
+            <div class="widget widget-popular-posts">
+                <h4>
+                    <b>RECHARGE</b><span class="head-line"></span></h4>
+                <div class="radio radio-inline col-sm-12 col-xs-12" style="margin-top:-10px;">
+                    <asp:RadioButtonList ID="rdbMobile" RepeatLayout="Flow" CssClass="radio" ClientIDMode="Static"
+                        RepeatDirection="Horizontal" runat="server">
+                        <asp:ListItem Text="Prepaid No" Value="1" Selected="True"></asp:ListItem>
+                        <asp:ListItem Text="Postpaid No" Value="2"></asp:ListItem>
+                    </asp:RadioButtonList>
+                </div>
+                <div class="row">
+                    <div class="col-sm-12 col-xs-6">
+                        <div class="form-group">
+                            <asp:TextBox ID="txtMobileno" ClientIDMode="Static" runat="server" CssClass="form-control"
+                                placeholder="Enter Mobile No." onkeyup="ValidateOperator();return false;" MaxLength="10"></asp:TextBox>
+                        </div>
+                    </div>
+                    <div class="col-sm-12 col-xs-6">
+                        <div class="form-group">
+                            <asp:DropDownList ID="ddlOperator" CssClass="form-control" ClientIDMode="Static"
+                                runat="server">
+                            </asp:DropDownList>
+                        </div>
+                    </div>
+                    <div class="col-sm-12 col-xs-6">
+                        <div class="form-group">
+                            <asp:TextBox ID="txtAmount" CssClass="form-control" placeholder="Enter Amount" ClientIDMode="Static"
+                                runat="server" MaxLength="4"></asp:TextBox>
+                        </div>
+                    </div>
+                    <div class="col-sm-12 col-xs-6" id="divCircle">
+                        <div class="form-group">
+                            <asp:DropDownList ID="ddlCircle" CssClass="form-control" ClientIDMode="Static" runat="server">
+                            </asp:DropDownList>
+                        </div>
+                    </div>
+                    <div class="col-sm-12 col-xs-6">
+                        <div>
+                            <asp:Button ID="btnRecharge" Width="100%" CssClass="pull-right btn login-btn" OnClientClick="RechargeMobile();return false;"
+                                runat="server" Text="Proceed To Recharge" />
+                            <asp:Label ID="Label1" runat="server"></asp:Label>
+                            <span class="text-success">
+                                <div id="subscribemsg">
+                                </div>
+                            </span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-lg-9 col-md-9 col-sm-9 right-sidebar">
+        <div class="">
+            <div class="widget widget-popular-posts" id="divMobile" style="display: none">
+                <%-- <h4>
+                    <b>Plans of All Operators</b><span class="head-line"></span></h4>--%>
+                <div class="tabs-section">
+                    <!-- Nav Tabs -->
+                    <ul class="nav nav-tabs">
+                        <li class="active"><a href="#tab-1" data-toggle="tab">Top Up </a></li>
+                        <li class=""><a href="#tab-2" data-toggle="tab">Full TalkTime</a></li>
+                        <li class=""><a href="#tab-3" data-toggle="tab">2G</a></li>
+                        <li class=""><a href="#tab-4" data-toggle="tab">3G/4G</a></li>
+                        <li class=""><a href="#tab-5" data-toggle="tab">LOCAL/STD/ISD</a></li>
+                        <li class=""><a href="#tab-6" data-toggle="tab">Roaming</a></li>
+                    </ul>
+                    <!-- Tab panels -->
+                    <div class="tab-content" style="max-height: 291px; min-height: 291px;">
+                        <!-- Tab Content 1 -->
+                        <div class="tab-pane fade active in" id="tab-1">
+                            <div class="table-responsive">
+                                <div class="da-nice-scroll" style="max-height: 250px; min-height: 250px; overflow: auto;
+                                    margin-top: 3px;">
+                                    <table id="tbTopUP" cellpadding="0" class="table table-condensed" cellspacing="0">
+                                        <thead>
+                                            <tr>
+                                                <th>
+                                                    Detail
+                                                </th>
+                                                <th>
+                                                    Validity
+                                                </th>
+                                                <th>
+                                                    Amount
+                                                </th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                        </tbody>
+                                    </table>
+                                    <%--<asp:GridView ID="gvItems" ClientIDMode="Static" GridLines="None" CssClass="table table-condensed"
+                                        AutoGenerateColumns="false" runat="server" EmptyDataRowStyle-BackColor="#FF3300"
+                                        EmptyDataRowStyle-BorderStyle="Dotted" EmptyDataRowStyle-BorderWidth="1" EmptyDataRowStyle-ForeColor="White"
+                                        EmptyDataRowStyle-HorizontalAlign="Center" EmptyDataRowStyle-VerticalAlign="Middle"
+                                        EmptyDataRowStyle-Width="100%" EmptyDataText="Their is no Plans." OnRowDataBound="GridView1_RowDataBound">
+                                        <Columns>
+                                            <asp:TemplateField HeaderText="PLAN DETAILS ">
+                                                <ItemTemplate>
+                                                    <asp:Label ID="Label1" runat="server" Text='<%#Bind("Detail") %>'></asp:Label>
+                                                </ItemTemplate>
+                                            </asp:TemplateField>
+                                            <asp:TemplateField HeaderText="VALIDITY">
+                                                <ItemTemplate>
+                                                    <asp:Label ID="Label2" Width="100px" runat="server" Text='<%#Bind("Validity") %>'></asp:Label>
+                                                </ItemTemplate>
+                                            </asp:TemplateField>
+                                            <asp:TemplateField HeaderText="Amount">
+                                                <ItemTemplate>
+                                                    <i class="fa fa-inr"></i>&nbsp;<%#Eval("Amount") %>
+                                                </ItemTemplate>
+                                            </asp:TemplateField>
+                                            <asp:TemplateField HeaderText="">
+                                                <ItemTemplate>
+                                                    <asp:LinkButton ID="lkbAmountSelect" CommandArgument='<%#Bind("Amount") %>' runat="server"
+                                                        Text="Select" />
+                                                </ItemTemplate>
+                                            </asp:TemplateField>
+                                        </Columns>
+                                    </asp:GridView>--%>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Tab Content 2 -->
+                        <div class="tab-pane fade" id="tab-2">
+                            <div class="table-responsive">
+                                <div class="da-nice-scroll" style="max-height: 250px; min-height: 250px; overflow: auto;
+                                    margin-top: 3px;">
+                                    <table id="tbFulltacktime" class="table table-condensed" cellpadding="0" cellspacing="0">
+                                        <thead>
+                                            <tr>
+                                                <th>
+                                                    Detail
+                                                </th>
+                                                <th>
+                                                    Validity
+                                                </th>
+                                                <th>
+                                                    Amount
+                                                </th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Tab Content 3 -->
+                        <div class="tab-pane fade" id="tab-3">
+                            <div class="table-responsive">
+                                <div class="da-nice-scroll" style="max-height: 250px; min-height: 250px; overflow: auto;
+                                    margin-top: 3px;">
+                                    <table id="tb2g" cellpadding="0" class="table table-condensed" cellspacing="0">
+                                        <thead>
+                                            <tr>
+                                                <th>
+                                                    Detail
+                                                </th>
+                                                <th>
+                                                    Validity
+                                                </th>
+                                                <th>
+                                                    Amount
+                                                </th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="tab-pane fade" id="tab-4">
+                            <div class="table-responsive">
+                                <div class="da-nice-scroll" style="max-height: 250px; min-height: 250px; overflow: auto;
+                                    margin-top: 3px;">
+                                    <table id="tb3g" cellpadding="0" class="table table-condensed" cellspacing="0">
+                                        <thead>
+                                            <tr>
+                                                <th>
+                                                    Detail
+                                                </th>
+                                                <th>
+                                                    Validity
+                                                </th>
+                                                <th>
+                                                    Amount
+                                                </th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="tab-pane fade" id="tab-5">
+                            <div class="table-responsive">
+                                <div class="da-nice-scroll" style="max-height: 250px; min-height: 250px; overflow: auto;
+                                    margin-top: 3px;">
+                                    <table id="tblocal" cellpadding="0" class="table table-condensed" cellspacing="0">
+                                        <thead>
+                                            <tr>
+                                                <th>
+                                                    Detail
+                                                </th>
+                                                <th>
+                                                    Validity
+                                                </th>
+                                                <th>
+                                                    Amount
+                                                </th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="tab-pane fade" id="tab-6">
+                            <div class="table-responsive">
+                                <div class="da-nice-scroll" style="max-height: 250px; min-height: 250px; overflow: auto;
+                                    margin-top: 3px;">
+                                    <table id="tbRoaming" cellpadding="0" class="table table-condensed" cellspacing="0">
+                                        <thead>
+                                            <tr>
+                                                <th>
+                                                    Detail
+                                                </th>
+                                                <th>
+                                                    Validity
+                                                </th>
+                                                <th>
+                                                    Amount
+                                                </th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                        <%--<div class="tab-pane fade" id="tab-7">
+                       <asp:GridView ID="GridView7" runat="server">
+                        </asp:GridView>
+                    </div>--%>
+                    </div>
+                    <!-- End Tab Panels -->
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-lg-12 col-md-12 col-sm-12" id="dvRecharge" style="display: none">
+        <div class="page-content da-activepanel">
+            <div class="">
+                <h4 class="classic-title">
+                    <b>Recharge/Bill Payment Order History</b><span class="head-line"></span></h4>
+                <div class="da-nice-scroll" style="max-height: 1000px; min-height: 200px; overflow: auto;
+                    margin-top: 3px;">
+                    <table id="tblOrders" cellpadding="0" class="table table-condensed" cellspacing="0">
+                        <thead>
+                            <tr>
+                                <th>
+                                    Operator Name
+                                </th>
+                                <th>
+                                    Status
+                                </th>
+                                <th>
+                                    Amount
+                                </th>
+                                <th>
+                                    Order No.
+                                </th>
+                                <th>
+                                    Order Time
+                                </th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                        </tbody>
+                    </table>
+                </div>
+                <div style="text-align: center;">
+                    <button type="button" style="width: 25%;" class="main-button" id="like">
+                        <b>View More</b>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div id="likes" style="display: none">
+        <span class="figure">1 </span>
+    </div>
+    <script type="text/javascript">
+        $(document).ready(function () {
+            //FindOperator();
+
+            GetAllUsers();
+        });
+        function FindOperator() {
+            $(document).ready(function () {
+
+                //alert($('#rdbMobile input:checked').val());
+                var param = { RechargeType: $('#rdbMobile input:checked').next().html() };
+                //alert(param.RechargeType);
+                $.ajax({
+                    type: "POST",
+                    contentType: "application/json; charset=utf-8",
+                    url: '<%=ResolveUrl("~/CommonService.asmx/BindRechargeOperator") %>',
+                    data: JSON.stringify(param),
+                    dataType: "json",
+                    success: function (Result) {
+                        $('#ddlOperator').empty();
+                        $('#ddlOperator').append("<option value='0'>--Select--</option>");
+                        $.each(Result.d, function (key, value) {
+                            $("#ddlOperator").append($("<option></option>").val(value.opratorcode).html(value.operatorname));
+                        });
+                    },
+                    error: function (Result) {
+                        alert(Result.d);
+                    }
+                });
+
+            });
+        }
+
+        $(document).ready(function () {
+            $.ajax({
+                type: "POST",
+                contentType: "application/json; charset=utf-8",
+                url: '<%=ResolveUrl("~/CommonService.asmx/BindRechargeCircle") %>',
+                data: "{}",
+                dataType: "json",
+                success: function (Result) {
+                    $('#ddlCircle').empty();
+                    $('#ddlCircle').append("<option value='0'>--Select--</option>");
+                    $.each(Result.d, function (key, value) {
+                        $("#ddlCircle").append($("<option></option>").val(value.Circlecode).html(value.Circlename));
+                    });
+                },
+                error: function (Result) {
+                    alert(Result.d);
+                }
+            });
+        });
+         
+    
+    </script>
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $("#txtMobileno").keydown(function (e) {
+                // Allow: backspace, delete, tab, escape, enter and .
+                if ($.inArray(e.keyCode, [46, 8, 9, 27, 13, 110, 190]) !== -1 ||
+                // Allow: Ctrl+A, Command+A
+            (e.keyCode == 65 && (e.ctrlKey === true || e.metaKey === true)) ||
+                // Allow: home, end, left, right, down, up
+            (e.keyCode >= 35 && e.keyCode <= 40)) {
+                    // let it happen, don't do anything
+                    return;
+                }
+                // Ensure that it is a number and stop the keypress
+                if ((e.shiftKey || (e.keyCode < 48 || e.keyCode > 57)) && (e.keyCode < 96 || e.keyCode > 105)) {
+                    e.preventDefault();
+                }
+            });
+        });
+
+        $(document).ready(function () {
+            $("#txtAmount").keydown(function (e) {
+                // Allow: backspace, delete, tab, escape, enter and .
+                if ($.inArray(e.keyCode, [46, 8, 9, 27, 13, 110, 190]) !== -1 ||
+                // Allow: Ctrl+A, Command+A
+            (e.keyCode == 65 && (e.ctrlKey === true || e.metaKey === true)) ||
+                // Allow: home, end, left, right, down, up
+            (e.keyCode >= 35 && e.keyCode <= 40)) {
+                    // let it happen, don't do anything
+                    return;
+                }
+                // Ensure that it is a number and stop the keypress
+                if ((e.shiftKey || (e.keyCode < 48 || e.keyCode > 57)) && (e.keyCode < 96 || e.keyCode > 105)) {
+                    e.preventDefault();
+                }
+            });
+        });
+        //}
+        function ValidateOperator() {
+            var _loginMsg = $('#subscribemsg');
+            _loginMsg.html('');
+            if ($('#txtMobileno').val().length == 4) {
+                var param = { mobile: $('#txtMobileno').val() };
+                $.ajax({
+                    url: '<%=ResolveUrl("~/CommonService.asmx/FindOperator") %>',
+                    data: JSON.stringify(param),
+                    dataType: "json",
+                    type: "POST",
+                    contentType: "application/json; charset=utf-8",
+                    success: function (data) {
+                        var arr = data.d.split(',');
+                        if (data.d == "0,0") {
+                            _loginMsg.addClass("text-danger").removeClass("text-success");
+                            _loginMsg.html('Invalid Mobile Number.');
+                        }
+                        else if (arr[0] != 'Failed') {
+                            $("#ddlOperator option[value=" + arr[0] + "]").prop('selected', true);
+                            $("#ddlCircle option[value=" + arr[1] + "]").prop('selected', true);
+                            var value = $('#rdbMobile input:checked').val();
+
+                            if (value == 1) {
+                                BindPlans();
+                            }
+                            else {
+                                $("#divMobile").hide();
+                            }
+                        }
+                        return;
+                    },
+                    Error: function (textMsg) {
+
+                    }
+                });
+            }
+            else if ($('#txtMobileno').val().length <= 4) {
+                $("#ddlOperator option[value= 0]").prop('selected', true);
+                $("#ddlCircle option[value=0]").prop('selected', true);
+                $('#tbTopUP tbody').empty();
+                $('#tbFulltacktime tbody').empty();
+                $('#tb2g tbody').empty();
+                $('#tb3g tbody').empty();
+                $('#tblocal tbody').empty();
+                $('#tbRoaming tbody').empty();
+                $("#divMobile").hide();
+            }
+
+        }
+
+
+
+        function BindPlans() {
+            $('#tbTopUP tbody').empty();
+            var param = { CircleCode: $('#ddlCircle :selected').val(), OperatorCode: $('#ddlOperator :selected').val() };
+            $.ajax({
+                type: "POST",
+                contentType: "application/json; charset=utf-8",
+                url: "Recharge.aspx/BindTopUP",
+                data: JSON.stringify(param),
+                dataType: "json",
+                success: function (data) {
+                    for (var i = 0; i < data.d.length; i++) {
+                        $("#tbTopUP").append("<tr><td>" + data.d[i].Detail + "</td><td>" + data.d[i].Validity + "</td><td style=display:none>" + data.d[i].Amount + "</td><td><input type='submit' onclick='PutValueInTextBox();return false;' style='width:70px'  class='main-button' value='Rs. " + data.d[i].Amount + "'></button></td> </tr>");
+                    }
+                    $("#divMobile").show();
+                },
+                error: function (result) {
+                    alert(result.d);
+                }
+            });
+            //2
+            $('#tbFulltacktime tbody').empty();
+            $.ajax({
+                type: "POST",
+                contentType: "application/json; charset=utf-8",
+                url: "Recharge.aspx/BindFullTalkTime",
+                data: JSON.stringify(param),
+                dataType: "json",
+                success: function (data) {
+                    for (var i = 0; i < data.d.length; i++) {
+                        $("#tbFulltacktime").append("<tr><td>" + data.d[i].Detail + "</td><td>" + data.d[i].Validity + "</td><td style=display:none>" + data.d[i].Amount + "</td><td><input type='submit' onclick='PutValueInTextBox();return false;' style='width:70px'  class='main-button' value='Rs. " + data.d[i].Amount + "'></button></td> </tr>");
+                    }
+                },
+                error: function (result) {
+                    alert(result.d);
+                }
+            });
+            //3
+            $('#tb2g tbody').empty();
+            $.ajax({
+                type: "POST",
+                contentType: "application/json; charset=utf-8",
+                url: "Recharge.aspx/Bind2G",
+                data: JSON.stringify(param),
+                dataType: "json",
+                success: function (data) {
+                    for (var i = 0; i < data.d.length; i++) {
+                        $("#tb2g").append("<tr><td>" + data.d[i].Detail + "</td><td>" + data.d[i].Validity + "</td><td style=display:none>" + data.d[i].Amount + "</td><td><input type='submit' onclick='PutValueInTextBox();return false;' style='width:70px'  class='main-button' value='Rs. " + data.d[i].Amount + "'></button></td> </tr>");
+                    }
+                },
+                error: function (result) {
+                    alert(result.d);
+                }
+            });
+            //4
+            $('#tb3g tbody').empty();
+            $.ajax({
+                type: "POST",
+                contentType: "application/json; charset=utf-8",
+                url: "Recharge.aspx/Bind3G4G",
+                data: JSON.stringify(param),
+                dataType: "json",
+                success: function (data) {
+                    for (var i = 0; i < data.d.length; i++) {
+                        $("#tb3g").append("<tr><td>" + data.d[i].Detail + "</td><td>" + data.d[i].Validity + "</td><td style=display:none>" + data.d[i].Amount + "</td><td><input type='submit' onclick='PutValueInTextBox();return false;' style='width:70px'  class='main-button' value='Rs. " + data.d[i].Amount + "'></button></td> </tr>");
+                    }
+                },
+                error: function (result) {
+                    alert(result.d);
+                }
+            });
+
+            //5
+            $('#tblocal tbody').empty();
+            $.ajax({
+                type: "POST",
+                contentType: "application/json; charset=utf-8",
+                url: "Recharge.aspx/BindLocal",
+                data: JSON.stringify(param),
+                dataType: "json",
+                success: function (data) {
+                    for (var i = 0; i < data.d.length; i++) {
+                        $("#tblocal").append("<tr><td>" + data.d[i].Detail + "</td><td>" + data.d[i].Validity + "</td><td style=display:none>" + data.d[i].Amount + "</td><td><input type='submit' onclick='PutValueInTextBox();return false;' style='width:70px'  class='main-button' value='Rs. " + data.d[i].Amount + "'></button></td> </tr>");
+                    }
+                },
+                error: function (result) {
+                    alert(result.d);
+                }
+            });
+            //6
+            $('#tbRoaming tbody').empty();
+            $.ajax({
+                type: "POST",
+                contentType: "application/json; charset=utf-8",
+                url: "Recharge.aspx/BindRoaming",
+                data: JSON.stringify(param),
+                dataType: "json",
+                success: function (data) {
+                    for (var i = 0; i < data.d.length; i++) {
+                        $("#tbRoaming").append("<tr><td>" + data.d[i].Detail + "</td><td>" + data.d[i].Validity + "</td><td style=display:none>" + data.d[i].Amount + "</td><td><input type='submit' onclick='PutValueInTextBox();return false;' style='width:70px'  class='main-button' value='Rs. " + data.d[i].Amount + "'></button></td> </tr>");
+                    }
+                },
+                error: function (result) {
+                    alert(result.d);
+                }
+            });
+
+        }
+    </script>
+    <script type="text/javascript">
+        function RechargeMobile() {
+            var _loginMsg = $('#subscribemsg');
+
+            var param = { mobile: $('#txtMobileno').val(), OperatorCode: $('#ddlOperator :selected').val(), Amount: $('#txtAmount').val(), RechargeType: $('#rdbMobile input:checked').next().html() };
+
+            $.ajax({
+                url: '<%=ResolveUrl("~/CommonService.asmx/RechargeAPI") %>',
+                data: JSON.stringify(param),
+                dataType: "json",
+                type: "POST",
+                contentType: "application/json; charset=utf-8",
+                success: function (data) {
+                    _loginMsg.addClass("text-danger").removeClass("text-success");
+                    _loginMsg.html(data.d);
+                    $('#tblOrders tbody').empty();
+                    GetAllUsers();
+                    //alert(data.d);
+                    if (data.d == "Success") {
+                        MoveToCouponCodePage();
+                    }
+                    else if (data.d == "Recharge Successfully.") {
+                        $('#txtMobileno').val('');
+                        $('#txtAmount').val('');
+                    }
+                    return;
+
+                },
+                Error: function (textMsg) {
+
+                }
+            });
+        }
+
+
+        function PutValueInTextBox() {
+            $("#tbTopUP tr").click(function () {
+                var value = $('#txtAmount').val($(this).find('td:eq(2)').html());
+                return false;
+
+            });
+
+            $("#tbFulltacktime tr").click(function () {
+                var value = $('#txtAmount').val($(this).find('td:eq(2)').html());
+                return false;
+
+            });
+
+            $("#tb2g tr").click(function () {
+                var value = $('#txtAmount').val($(this).find('td:eq(2)').html());
+                return false;
+
+            });
+
+            $("#tb3g tr").click(function () {
+                var value = $('#txtAmount').val($(this).find('td:eq(2)').html());
+                return false;
+
+            });
+
+            $("#tblocal tr").click(function () {
+                var value = $('#txtAmount').val($(this).find('td:eq(2)').html());
+                return false;
+
+            });
+
+            $("#tbRoaming tr").click(function () {
+                var value = $('#txtAmount').val($(this).find('td:eq(2)').html());
+                return false;
+
+            });
+
+        }
+    </script>
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $('#rdbMobile input').click(function () {
+                var value = $('#rdbMobile input:checked').val();
+                if (value == 1) {
+                    $("#divCircle").show();
+                }
+                else if (value == 2) {
+                    $("#divCircle").hide();
+                }
+                $('#txtMobileno').val('');
+                $('#txtAmount').val('');
+                ValidateOperator();
+                //FindOperator();
+
+            });
+        });
+    </script>
+    <script type="text/javascript">
+
+        $("#like").click(function () {
+            var num = parseInt($(".figure").text());
+            $(".figure").text(num + 1);
+            GetAllUsers();
+        })
+
+
+        function GetAllUsers() {
+            var num = parseInt($(".figure").text());
+            var param = { PageIndex: num };
+            $.ajax({
+                type: "POST",
+                contentType: "application/json; charset=utf-8",
+                url: "Recharge.aspx/BindOrders",
+                data: JSON.stringify(param),
+                dataType: "json",
+                success: function (data) {
+                    if (data.d.length <= 2) {
+                        $("#like").hide();
+                    }
+                    for (var i = 0; i < data.d.length; i++) {
+                        $("#tblOrders").append("<tr><td>" + data.d[i].operatorName + "</td><td>" + data.d[i].SuccessStatus + "</td><td>" + data.d[i].Amount + "</td><td><a href='#' class='btn btn-default'>" + data.d[i].ourorderid + "</a></td><td>" + data.d[i].Time + "</td> </tr>");
+                    }
+                    if (($('#tblOrders tr').length) > 1)
+                        $("#dvRecharge").show();
+                    else
+                        $("#dvRecharge").hide();
+                },
+                error: function (result) {
+                    alert(result.d);
+                }
+            });
+        }
+    </script>
+    <script type="text/javascript">
+        function MoveToCouponCodePage() {
+            //alert('Next');
+            var $form = $("<form/>").attr("id", "data_form")
+                            .attr("action", "AllowCouponCode.aspx")
+                            .attr("method", "post");
+            $("body").append($form);
+            //Append the values to be send
+            AddParameter($form, "name", $("#txtMobileno").val());
+            AddParameter($form, "OperatorCode", $('#ddlOperator :selected').val());
+            AddParameter($form, "OperatorName", $('#ddlOperator :selected').text());
+            AddParameter($form, "Amount", $('#txtAmount').val());
+            AddParameter($form, "RechargeType", $('#rdbMobile input:checked').next().html());
+            //AddParameter($form, "UseWallet", $("#chkWallet").is(':checked'));
+
+
+
+            //Send the Form
+            $form[0].submit();
+        }
+
+
+
+        function AddParameter(form, name, value) {
+            var $input = $("<input />").attr("type", "hidden")
+                                .attr("name", name)
+                                .attr("value", value);
+            form.append($input);
+        }
+
+
+
+
+    </script>
+</asp:Content>

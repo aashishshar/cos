@@ -1,0 +1,83 @@
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/UC/UserMain.master" AutoEventWireup="true"
+    CodeFile="AllowCouponCode.aspx.cs" Inherits="UC_User_AllowCouponCode" %>
+
+<asp:Content ID="Content1" ContentPlaceHolderID="Head" runat="Server">
+</asp:Content>
+<asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="Server">
+    <div class="col-lg-12 col-md-12 col-sm-12 sidebar left-sidebar">
+        <div class="da-activepanel">
+            <div class="widget widget-popular-posts">
+                <h4>
+                    <b>RECHARGE / BILL PAYMENT</b><span class="head-line"></span></h4>
+                <div class="row">
+                    <div class="col-lg-4 col-md-4 col-sm-4">
+                        <p style="margin-top:10px;margin-bottom:10px;font-size:14px;">
+                            <asp:Label ID="llbmsg" runat="server"></asp:Label></p>
+                    </div>
+                    <div class="checkbox checkboxlist col-lg-2 col-md-2 col-sm-2">
+                        <asp:CheckBox ID="chkWallet" ClientIDMode="Static" Text="Use COS Wallet Amount" runat="server" />
+                    </div>
+                    <div class="col-lg-2 col-md-2 col-sm-2">
+                        <div class="row">
+                            <asp:TextBox ID="txtCouponCode" CssClass="form-control" Width="98%" placeholder="Have a coupon code?"
+                                ClientIDMode="Static" runat="server"></asp:TextBox></div>
+                    </div>
+                    <div class="col-lg-1 col-md-1 col-sm-1">
+                        <div class="row">
+                            <asp:Button ID="btnCouponCode" CausesValidation="false" ClientIDMode="Static" runat="server"
+                                Text="Apply" /></div>
+                    </div>
+                    <div class="col-lg-3 col-md-3 col-sm-3">
+                        <asp:Button ID="btnPayment" CausesValidation="false" ClientIDMode="Static" Width="100%"
+                            runat="server" Text="Proceed to Pay Amount" OnClick="btnPayment_Click" />
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <asp:HiddenField ID="hdnMobile" ClientIDMode="Static" runat="server" />
+    <asp:HiddenField ID="hdnOperatorCode" ClientIDMode="Static" runat="server" />
+    <asp:HiddenField ID="hdnOperatorName" ClientIDMode="Static" runat="server" />
+    <asp:HiddenField ID="hdnRechargeAmount" ClientIDMode="Static" runat="server" />
+    <asp:HiddenField ID="hdnRechargeType" ClientIDMode="Static" runat="server" />
+    <asp:HiddenField ID="hdnProductInfo" ClientIDMode="Static" runat="server" />
+    <asp:HiddenField ID="hdnWalletAmount" ClientIDMode="Static" runat="server" />
+    <input type="hidden" runat="server" id="key" name="key" />
+    <input type="hidden" runat="server" id="hash" name="hash" />
+    <input type="hidden" runat="server" id="txnid" name="txnid" />
+    <input type="hidden" runat="server" id="enforce_paymethod" name="enforce_paymethod" />
+    <script type="text/javascript">
+        function MoveToCouponCodePage() {
+            //alert('Next');
+            var $form = $("<form/>").attr("id", "data_form")
+                            .attr("action", "AllowCouponCode.aspx")
+                            .attr("method", "post");
+            $("body").append($form);
+            //Append the values to be send
+            AddParameter($form, "name", $("#hdnMobile").val());
+            AddParameter($form, "OperatorCode", $("#hdnOperatorCode").val());
+            AddParameter($form, "Wamount", $("#hdnWalletAmount").val());
+            AddParameter($form, "Amount", $("#hdnRechargeAmount").val());
+            AddParameter($form, "RechargeType", $("#hdnRechargeType").val());
+            //AddParameter($form, "UseWallet", $("#chkWallet").is(':checked'));
+
+
+
+            //Send the Form
+            $form[0].submit();
+        }
+
+
+
+        function AddParameter(form, name, value) {
+            var $input = $("<input />").attr("type", "hidden")
+                                .attr("name", name)
+                                .attr("value", value);
+            form.append($input);
+        }
+
+
+
+
+    </script>
+</asp:Content>

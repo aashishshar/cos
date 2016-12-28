@@ -1,0 +1,52 @@
+﻿<%@ Page Title="Log In" Language="C#" MasterPageFile="~/MainMaster.master" AutoEventWireup="true"
+    CodeFile="Login.aspx.cs" Inherits="Account_Login" %>
+    
+<%@ Register Src="~/UC/UCUI/Account/Registration.ascx" TagName="Registration" TagPrefix="uc1" %>
+<asp:Content ID="Content1" runat="server" ContentPlaceHolderID="head">
+</asp:Content>
+<asp:Content ID="Content2" runat="server" ContentPlaceHolderID="ContentPlaceHolder1">
+
+        <div class="col-md-4">
+            <uc1:Registration ID="userRegistration" runat="server" />
+        </div>
+        <div class="col-md-4" style="text-align:center;">
+            <br />
+            <br />
+            <br />
+            <br />
+            <br />
+           <h2><b> OR</b></h2></div>
+        <div class="col-md-4">
+            <h4 class="classic-title">
+                <span>Already a member? Log in</span></h4>
+            <asp:Login ID="LoginUser" runat="server" EnableViewState="false" RenderOuterTable="false"
+                DestinationPageUrl="~/Security.ashx">
+                <LayoutTemplate>
+                    <asp:ValidationSummary ID="LoginUserValidationSummary" runat="server" CssClass="failureNotification"
+                        ValidationGroup="LoginUserValidationGroup" />
+                    <div class="form-group">
+                        <asp:TextBox ID="UserName" runat="server" Width="" CssClass="form-control" placeholder="E-mail"
+                            autofocus></asp:TextBox>
+                    </div>
+                    
+                    <div class="form-group">
+                        <asp:TextBox ID="Password" runat="server" Width="" CssClass="form-control" placeholder="Password"
+                            TextMode="Password"></asp:TextBox>
+                    </div>
+                    <div class="form-group">
+                        <asp:HyperLink ID="hlForgotPassword" runat="server" NavigateUrl="~/fpass.aspx"><b>Forgot Password!</b></asp:HyperLink>
+                    </div>
+                    <div class="form-group">
+                        <asp:Button ID="LoginButton" runat="server" Width="" EnableTheming="false" CommandName="Login"
+                            Text="log in" ValidationGroup="LoginUserValidationGroup" CssClass="btn-system btn-medium" />
+                    </div>
+                    <p class="text-danger">
+                        <span>
+                            <asp:Literal ID="FailureText" runat="server"></asp:Literal>
+                        </span>
+                    </p>
+                </LayoutTemplate>
+            </asp:Login>
+        </div>
+  
+</asp:Content>

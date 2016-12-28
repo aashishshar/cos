@@ -1,0 +1,40 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Web;
+using System.Web.UI;
+using System.Web.UI.WebControls;
+using System.Web.Services;
+using System.Data.SqlClient;
+using System.Configuration;
+
+public partial class UC_MasterHeader_uc_HeaderCommon : System.Web.UI.UserControl
+{
+    protected void Page_Load(object sender, EventArgs e)
+    {
+        //if(MembershipUser MulticastDelegate=new 
+        if (!IsPostBack)
+        {
+            txtSearch.Attributes.Add("onkeydown", "if(event.which || event.keyCode){if ((event.which == 13) || (event.keyCode == 13)){ __doPostBack('" + searchButton.UniqueID + "','');return false;}else{return true;}}");
+            txtSearch.Attributes.Add("type", "search");
+        }
+    }
+   
+    public void btnSubmitPost_Click(object sender, EventArgs e)
+    {
+        //string type = "OFFER"; //ddlSelect.Value;
+
+        //string searchText = txtSearch.Text.Trim();
+        // searchresult();
+        //searchCommand(sender,e);
+        
+            Session["S"] = txtSearch.Text.Trim();
+            Response.Redirect("frmGeneralSearch.aspx");//?s=" + txtSearch.Text.Trim());
+        //}
+        //else if (type == "OFFER")
+        //{
+        //    Session["S"] = txtSearch.Text.Trim();
+        //    Response.Redirect("offers.aspx");//?s=" + txtSearch.Text.Trim());
+        //}
+    }
+}

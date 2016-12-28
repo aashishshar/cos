@@ -1,0 +1,337 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Web;
+using System.Web.Services;
+using System.Data.SqlClient;
+using System.Configuration;
+using System.Web.Script.Services;
+using System.Web.Security;
+using System.Data;
+using System.Text.RegularExpressions;
+using System.Net;
+
+/// <summary>
+/// Summary description for CommonService
+/// </summary>
+[WebService(Namespace = "http://www.cashonshop.com/")]
+[WebServiceBinding(ConformsTo = WsiProfiles.BasicProfile1_1)]
+// To allow this Web Service to be called from script, using ASP.NET AJAX, uncomment the following line. 
+[System.Web.Script.Services.ScriptService]
+public class CommonService : System.Web.Services.WebService
+{
+    public class OperatorInfo
+    {
+        public string opratorcode { get; set; }
+        public string opratorcodename { get; set; }
+        public string operatorname { get; set; }
+    }
+    public List<OperatorInfo> OperatorInformation { get; set; }
+    [WebMethod]
+    public List<OperatorInfo> BindRechargeOperator(string RechargeType)
+    {
+        
+        OperatorInfo ci = new OperatorInfo();
+        List<OperatorInfo> CountryInformation = new List<OperatorInfo>();
+         SqlParameter[] parameters =
+        {    
+            new SqlParameter("@ServiceType", SqlDbType.VarChar) { Value = RechargeType }
+        };
+         DataTable dt = objFramework.GetRecordSet("adv_proc_BindOperator", CommandType.StoredProcedure, parameters);
+        try
+        {
+              if (dt.Rows.Count > 0)
+                    {
+                        foreach (DataRow dr in dt.Rows)
+                        {
+                            CountryInformation.Add(new OperatorInfo()
+                            {
+                                opratorcode = Convert.ToString(dr["opratorcode"]),
+                                operatorname = dr["operatorname"].ToString()
+                            });
+                        }
+                    }
+            
+        }
+        catch (Exception ex)
+        {
+            throw ex;
+        }
+        return CountryInformation;
+    }
+
+    #region
+    public class CircleInfo
+    {
+        public string Circlecode { get; set; }
+        public string Circlecodename { get; set; }
+        public string Circlename { get; set; }
+    }
+    public List<CircleInfo> CircleInformation { get; set; }
+    [WebMethod]
+    public List<CircleInfo> BindRechargeCircle()
+    {
+        CircleInfo ci = new CircleInfo();
+        List<CircleInfo> CountryInformation = new List<CircleInfo>();
+        SqlParameter[] parameters =
+        {    
+           
+        };
+        DataTable dt = objFramework.GetRecordSet("adv_proc_BindCircle", CommandType.StoredProcedure, parameters);
+        try
+        {
+            if (dt.Rows.Count > 0)
+            {
+                foreach (DataRow dr in dt.Rows)
+                {
+                    CountryInformation.Add(new CircleInfo()
+                    {
+                        Circlecode = Convert.ToString(dr["CircleCode"]),
+                        Circlename = dr["CircleName"].ToString()
+                    });
+                }
+            }
+
+        }
+        catch (Exception ex)
+        {
+            throw ex;
+        }
+        return CountryInformation;
+    }
+    #endregion
+
+    [WebMethod]
+    public string FindOperator(string mobile)
+    {
+        WebClient client = new WebClient();
+        DataTable dt=new DataTable();
+        string uri = "https://joloapi.com/api/findoperator.php?userid=cashonshop&key=899388873156283&mob=" + mobile + "&type=text";
+        var dotd = client.DownloadString(uri);
+        return dotd;
+    }
+
+
+    [WebMethod]
+    public string RechargeAPI(string mobile, string OperatorCode, string Amount, string RechargeType)
+    {
+        decimal RechargeAmount = CalculateWalletAmount();
+        string mess = string.Empty;
+
+        if (mobile == string.Empty)
+            mess = "Please Enter Mobile Number";
+        else if (mobile.Length != 10)
+            mess = "Mobile number is not valid";
+        else if (OperatorCode == "0")
+            mess = "Please Select Operator";
+        else if (Amount == string.Empty)
+            mess = "Please Enter Recharge Amount";
+        else if (RechargeType.ToLower() == "postpaid" && RechargeAmount < 100)
+            mess = "Amount must be atleast 100 for bill payment";
+        else
+            mess = "Success";
+        //else if (Convert.ToInt32(Amount) > decimal.ToInt32(RechargeAmount))
+        //    mess = "Insufficient Balance in your wallet.";
+        //else
+        //{
+
+        //    #region Find Operator Code
+        //    SqlParameter[] parametersOperator = { };
+        //    DataTable dtOperator = new DataTable();
+        //    string operatorcodeName = string.Empty;
+        //    dtOperator = objFramework.GetRecordSet("select  opratorcode,operatorname,operatorCodename from adv_OperatorCode where Activestatus =1 and serviceType='" + RechargeType + "' and  opratorcode='" + OperatorCode + "' ", CommandType.Text, parametersOperator);
+        //    if (dtOperator != null)
+        //    {
+        //        if (dtOperator.Rows.Count > 0)
+        //            operatorcodeName = dtOperator.Rows[0]["operatorCodename"].ToString();
+        //    }
+        //    #endregion
+        //    SqlParameter[] parameters = { };
+        //    WebClient client = new WebClient();
+        //    string OrderID = string.Empty;
+        //    DataTable dtMaxID = objFramework.GetRecordSet("select isnull(max(APIResponseID),0)+1 from adv_Operator_APIResponse", CommandType.Text, parameters);
+        //    OrderID = dtMaxID.Rows[0][0].ToString().PadLeft(6, '1');
+        //    Int64 uniqueID = DateTime.Now.Ticks;
+        //    string API = string.Empty;
+        //    if (RechargeType.ToLower() == "prepaid")
+        //        API = "https://joloapi.com/api/recharge.php?mode=0&userid=cashonshop&key=899388873156283&operator=" + operatorcodeName + "&service=" + mobile + "&amount=" + Amount + "&orderid=" + OrderID + "&type=text";
+        //    if (RechargeType.ToLower() == "postpaid")
+        //        API = "https://joloapi.com/api/cbill.php?mode=0&userid=cashonshop&key=899388873156283&operator=" + operatorcodeName + "&service=" + mobile + "&amount=" + Amount + "&orderid=" + OrderID + "&type=text";
+        //    var dotd = client.DownloadString(API);
+        //    DataTable dt = new DataTable();
+
+        //    if (dotd.Split(',').Count() == 2)
+        //    {
+        //        dt = objFramework.GetRecordSet("SELECT ErrorCode, ErrorDetail, Status FROM  adv_OperatorErrorCode where isnull(Status,1) =1 and ErrorCode='" + dotd.Split(',')[1].ToString() + "' ", CommandType.Text, parameters);
+        //        if (dt.Rows.Count > 0)
+        //            mess = dt.Rows[0]["ErrorDetail"].ToString();
+        //    }
+
+        //    else if (dotd.Split(',').Count() > 2)
+        //    {
+        //        MembershipUser mu = Membership.GetUser();
+        //        string[] data = dotd.Split(',');
+        //        if (data[7].ToString() == string.Empty)
+        //        {
+        //            DataTable dtDispute = new DataTable();
+        //            string uri1 = "https://joloapi.com/api/dispute.php?userid=cashonshop&key=899388873156283&servicetype=1&txn=" + data[0].ToString() + "&type=text";
+        //            var dotd1 = client.DownloadString(uri1);
+        //            objFramework.ExecuteNonQuery("insert into adv_Operator_APIResponse(CashOnShopUserID,JoloOrderID,SuccessStatus,Operator,Service,Amount,OurOrderID,ErrorCode,OperatorID,Balance,Margin,Time)values('" + mu.ProviderUserKey.ToString() + "','" + data[0].ToString() + "','" + dotd1[0].ToString() + "','" + data[2].ToString() + "','" + data[3].ToString() + "','" + data[4].ToString() + "','" + data[5].ToString() + "','" + data[6].ToString() + "','" + data[7].ToString() + "','" + data[8].ToString() + "','" + data[9].ToString() + "','" + data[10].ToString() + "')", CommandType.Text, parameters);
+        //            mess = "Waiting For Operator Confirmation.";
+        //        }
+        //        else
+        //        {
+        //            objFramework.ExecuteNonQuery("insert into adv_Operator_APIResponse(CashOnShopUserID,JoloOrderID,SuccessStatus,Operator,Service,Amount,OurOrderID,ErrorCode,OperatorID,Balance,Margin,Time)values('" + mu.ProviderUserKey.ToString() + "','" + data[0].ToString() + "','" + data[1].ToString() + "','" + data[2].ToString() + "','" + data[3].ToString() + "','" + data[4].ToString() + "','" + data[5].ToString() + "','" + data[6].ToString() + "','" + data[7].ToString() + "','" + data[8].ToString() + "','" + data[9].ToString() + "','" + data[10].ToString() + "')", CommandType.Text, parameters);
+        //            mess = "Recharge Successfully.";
+        //        }
+
+
+        //    }
+        //}
+        return mess;
+    }
+
+    public decimal CalculateWalletAmount()
+    {
+        decimal walletAmount = 0;
+        clsFramework objFramework = new clsFramework();
+        MembershipUser mu = Membership.GetUser();
+
+        SqlParameter[] parameters =
+        {    
+            new SqlParameter("@userid", SqlDbType.VarChar) { Value = mu.ProviderUserKey.ToString() }
+        };
+        DataTable dt = objFramework.GetRecordSet("Adv_WalletHistory_New", CommandType.StoredProcedure, parameters);
+        if (dt != null)
+        {
+            if (dt.Rows.Count > 0)
+                walletAmount= Convert.ToDecimal(dt.Rows[0]["ConfirmAmount"]);
+        }
+        return walletAmount;
+    }
+
+    clsFramework objFramework;
+    public CommonService()
+    {
+        objFramework = new clsFramework();
+        //Uncomment the following line if using designed components 
+        //InitializeComponent(); 
+    }
+
+    [WebMethod]
+    public string HelloWorld()
+    {
+        return "Hello World";
+    }
+
+    [WebMethod]
+    public bool AuthenticateToUser(string username, string password, bool remeberMe)
+    {
+        if (Membership.ValidateUser(username, password))
+        {
+            //ProfileCommon
+            
+            FormsAuthentication.SetAuthCookie(username, remeberMe);
+            return true;
+        }
+        else
+        {
+            return false;
+        }
+    }
+
+    [WebMethod]
+    [ScriptMethod(ResponseFormat = ResponseFormat.Json)]
+    public List<string> GetTitleNames(string TitleName)
+    {
+        List<string> Emp = new List<string>();
+        //string query = string.Format("SELECT top 20 Title FROM adv_product_common WHERE Title LIKE '%{0}%'", TitleName);
+        //string query = string.Format("select MerchantNamedetail as Title from adv_mst_merchant where MerchantNamedetail like '%{0}%' union all SELECT top 20 Title FROM adv_product_common WHERE Title like '%{0}%'", TitleName);
+        string query = string.Format("select case when charindex('.', MerchantNamedetail)>0 then left(MerchantNamedetail, charindex('.', MerchantNamedetail)-1) else MerchantNamedetail  end    as Title from adv_mst_merchant where MerchantNamedetail like '%{0}%' ", TitleName);
+        SqlConnection con = new SqlConnection(ConfigurationManager.ConnectionStrings["Ad_ConnectionStringMain"].ToString());
+        using (SqlCommand cmd = new SqlCommand(query, con))
+        {
+            con.Open();
+            SqlDataReader reader = cmd.ExecuteReader();
+            while (reader.Read())
+            {
+                Emp.Add(reader.GetString(0));
+            }
+        }
+        return Emp;
+    }
+
+
+    [WebMethod]
+    public void SubscribeEmail(string Email)
+    {
+        
+        SqlParameter[] parameters =
+        {    
+            new SqlParameter("@SubscribeEmail", SqlDbType.VarChar) { Value = Email },
+            new SqlParameter("@Status", SqlDbType.VarChar) { Value = "1" }
+        };
+        objFramework.ExecuteNonQuery("Adv_Proc_SubscribeUnsubscribeEmail", CommandType.StoredProcedure, parameters);
+
+    }
+
+
+    [WebMethod]
+    public string RegisterValidation(string Name, string Email, string Mobile, string Password, string ConfirmPassword, bool Terms)
+    {
+        Regex regex = new Regex(@"^([\w\.\-]+)@([\w\-]+)((\.(\w){2,3})+)$");
+        Match match = regex.Match(Email);
+        string msg = string.Empty;
+        Regex re = new Regex("^[0-9]");
+
+        if (Name == "")
+            msg= "Please Enter Name";
+        else if (Email == "")
+            msg = "Please enter Email ID";
+        else if (!match.Success && Email != "")
+            msg = "Please enter valid email";
+        else if (Mobile == "")
+            msg = "Please enter Mobile Number";
+        else if (re.IsMatch(Mobile.Trim()) == false || Mobile.Length != 10)
+            msg = "Invalid Mobile Number";
+        else if (Password == "")
+            msg = "Please enter Password";
+        else if (ConfirmPassword == "")
+            msg = "Please enter ConfirmPassword";
+        else if (Password != ConfirmPassword)
+            msg = "Password and ConfirmPassword must be same";
+        else if (Terms == false)
+            msg = "Please select terms and condition";
+        else
+        {
+            if(!string.IsNullOrEmpty(Email))
+            {
+                var member  =  Membership.GetUser(Email);
+                if(member!=null)
+                {
+                    msg = "User with this e-mail address already exists.";
+                }
+            }
+        }
+        return msg;
+    }
+
+
+    #region Offer Detail For Prepaid Mobile
+    //
+    [WebMethod]
+    public string BindTopup()
+    {
+        string operatorcode = "AT";
+        string circlecode = "1";
+        string type = "TUP";
+        WebClient client = new WebClient();
+        DataTable dt = new DataTable();
+        string uri = "https://joloapi.com/api/findplan.php?userid=cashonshop&key=899388873156283&opt="+operatorcode+"&cir="+circlecode+"&typ="+type+"&amt=300&max=10&type=json";
+        var dotd = client.DownloadString(uri);
+        return dotd;
+    }
+    #endregion
+
+
+}

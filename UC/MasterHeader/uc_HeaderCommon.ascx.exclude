@@ -1,0 +1,250 @@
+﻿<%@ Control Language="C#" AutoEventWireup="true" CodeFile="uc_HeaderCommon.ascx.cs"
+    Inherits="UC_MasterHeader_uc_HeaderCommon" %>
+<%-- <script type="text/javascript" src="http://ajax.aspnetcdn.com/ajax/jquery/jquery-1.8.0.js"></script>
+    <script type="text/javascript" src="http://ajax.aspnetcdn.com/ajax/jquery.ui/1.8.22/jquery-ui.js"></script>--%>
+<%-- <link href="http://ajax.aspnetcdn.com/ajax/jquery.ui/1.8.10/themes/redmond/jquery-ui.css" rel="stylesheet" type="text/css" />
+--%>
+<script type="text/javascript">
+    $(function () {
+        $("#txtSearch").autocomplete({
+            source: function (request, response) {
+                var param = { TitleName: $('#txtSearch').val() };
+                $.ajax({
+                    url: "Default.aspx/GetTitleNames",
+                    data: JSON.stringify(param),
+                    dataType: "json",
+                    type: "POST",
+                    contentType: "application/json; charset=utf-8",
+                    dataFilter: function (data) { return data; },
+                    success: function (data) {
+                        response($.map(data.d, function (item) {
+                            return {
+                                value: item
+                            }
+                        }))
+                    },
+                    error: function (XMLHttpRequest, textStatus, errorThrown) {
+                        var err = eval("(" + XMLHttpRequest.responseText + ")");
+                        alert(err.Message)
+                        // console.log("Ajax Error!");  
+                    }
+                });
+            },
+            minLength: 1 //This is the Char length of inputTextBox  
+        });
+    });
+
+    $(document).ready(function () {
+        //        $('#MenuItem li ').click(function () {
+        //            alert("HI");
+        //            //$('#MenuItem li').removeClass('active');
+        //            //$(this).addClass('active');
+        //            //$('#MenuItem li').click(function () {
+        //            localStorage.setItem('thisLink', $(this).child().attr("id"));
+        //            //});
+
+
+        //            //            $('ul#navlist li a').click(function () {
+        //            //                localStorage.setItem('thisLink', $(this).parent().attr("id"));
+        //            //            });
+
+        //            //            var thisLink = localStorage.getItem('thisLink');
+        //            //            if (thisLink) {
+        //            //                $('#' + thisLink).addClass('current');
+        //            //            }
+
+        //        });
+
+        //        var thisLink = localStorage.getItem('thisLink');
+        //        if (thisLink) {
+        //            $('#' + thisLink).addClass('active');
+        //        };
+
+    });
+
+</script>
+<div class="navbar navbar-default navbar-top">
+    <div class="container">
+        <div class="navbar-header" style="margin-top: -10px!important;">
+            <%-- <div class="row">
+                <div class="col-lg-4">--%>
+            <!-- Stat Toggle Nav Link For Mobiles -->
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                <i class="fa fa-bars"></i>
+            </button>
+            <!-- End Toggle Nav Link For Mobiles -->
+            <asp:HyperLink class="navbar-brand" ID="hlHeaderNavigation" NavigateUrl="~/Default.aspx"
+                runat="server">
+                <asp:Image ID="imgHeader" Height="30px" Width="130px" ImageUrl="~/Images/cos.png"
+                    runat="server" /></asp:HyperLink>
+            <%--  </div>
+               
+                <div class="col-lg-8" style="margin-top: 20px; margin-bottom: 10px; margin-left: 0px!important;">
+                    <div class="widget widget-search" style="width: 280px!important;">
+                        <asp:TextBox ID="txtSearch" EnableTheming="false" runat="server" placeholder="Enter Search Keywords..."></asp:TextBox>
+                       
+                        <button class="search-btn" type="submit" id="searchButton" runat="server" onserverclick="btnSubmitPost_Click">
+                            <i class="fa fa-search"></i>
+                        </button>
+                    </div>
+                   
+                </div>
+            </div>--%>
+        </div>
+        <div class="nav navbar-collapse collapse ">
+            <!-- Stat Search -->
+            <div class="search-side">
+                <div class="widget widget-search" style="width: 170px!important;">
+                    <asp:TextBox ID="txtSearch" runat="server" ClientIDMode="Static" placeholder="Search..."></asp:TextBox>
+                    <button class="search-btn" type="submit" id="searchButton" runat="server" onserverclick="btnSubmitPost_Click">
+                        <i class="fa fa-search"></i>
+                    </button>
+                </div>
+                <%--<a href="#" class="show-search"><i class="fa fa-search"></i></a>
+                <div class="search-form">
+                    <form autocomplete="off" role="search" method="get" class="searchform" action="#">
+                    <asp:TextBox ID="txtSearch" EnableTheming="false" runat="server" Width="270px" Height="25px" onserverclick="btnSubmitPost_Click" placeholder="Search items here.."></asp:TextBox>
+                   
+                    </form>
+                </div>--%>
+            </div>
+            <ul class="nav navbar-nav navbar-left" id="MenuItem" style="margin-left: 20px">
+                <%--  <li class="dropdown"><a href="#">Dropdown</a>
+                    <div class="dropdown-menu multi-column">
+                        <div class="container-fluid">
+                            <div class="row-fluid">
+                                <div class="span6">
+                                    <ul class="dropdown-menu">
+                                        <li><a href="#">Col 1 - Opt 1</a></li>
+                                        <li><a href="#">Col 1 - Opt 2</a></li>
+                                    </ul>
+                                </div>
+                                <div class="span6">
+                                    <ul class="dropdown-menu">
+                                        <li><a href="#">Col 2 - Opt 1</a></li>
+                                        <li><a href="#">Col 2 - Opt 2</a></li>
+                                    lt;/ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </li>--%>
+                <li><a href="#">SHOP BY PRODUCT&nbsp;&nbsp;<i class="fa fa-caret-down"></i></a>
+                    <ul class="dropdown" style="left: -150px;">
+                        <div class="row" style="min-width: 1170px; width: 100%;">
+                            <div class="col-xs-3">
+                                <li>
+                                    <asp:HyperLink ID="HyperLink4" NavigateUrl="~/category/ELECTRONICS" runat="server"><b style="margin-left: -2px!important;">ELECTRONICS</b></asp:HyperLink>
+                                </li>
+                                <li>
+                                    <asp:HyperLink ID="HyperLink1" NavigateUrl="~/category/Mobile Phones" runat="server">Mobile Phones</asp:HyperLink></li>
+                                <li>
+                                    <asp:HyperLink ID="HyperLink2" NavigateUrl="~/category/Mobile Accessories" runat="server">Mobile Accessories</asp:HyperLink></li>
+                                <li>
+                                    <asp:HyperLink ID="HyperLink3" NavigateUrl="~/category/Laptops %26 Computer" runat="server">Laptops & Computer</asp:HyperLink></li>
+                            </div>
+                            <div class="col-xs-3">
+                                <li>
+                                    <asp:HyperLink ID="HyperLink10" NavigateUrl="~/category/Data Storage" runat="server">Data Storage</asp:HyperLink></li>
+                                <li>
+                                    <asp:HyperLink ID="HyperLink11" NavigateUrl="~/category/Cameras" runat="server">Cameras</asp:HyperLink></li>
+                                <li>
+                                    <asp:HyperLink ID="HyperLink12" NavigateUrl="~/category/TV, Video %26 Audio" runat="server">TV, Video & Audio</asp:HyperLink></li>
+                                <li>
+                                    <asp:HyperLink ID="HyperLink13" NavigateUrl="~/category/Tablets" runat="server">Tablets</asp:HyperLink></li>
+                            </div>
+                            <div class="col-xs-3">
+                                <li>
+                                    <asp:HyperLink ID="HyperLink14" NavigateUrl="~/category/Tablet Accessories" runat="server">Tablet Accessories</asp:HyperLink></li>
+                                <li>
+                                    <asp:HyperLink ID="HyperLink15" NavigateUrl="~/category/Blutooth Devices" runat="server">Blutooth Devices</asp:HyperLink></li>
+                                <li>
+                                    <asp:HyperLink ID="HyperLink16" NavigateUrl="~/category/Speakers" runat="server">Speakers</asp:HyperLink></li>
+                                <li>
+                                    <asp:HyperLink ID="HyperLink17" NavigateUrl="~/category/Networking" runat="server">Networking</asp:HyperLink></li>
+                            </div>
+                            <div class="col-xs-3">
+                                <li>
+                                    <asp:HyperLink ID="HyperLink18" NavigateUrl="~/category/Security Systems" runat="server">Security Systems</asp:HyperLink></li>
+                                <li>
+                                    <asp:HyperLink ID="HyperLink19" NavigateUrl="~/category/Gaming" runat="server">Gaming</asp:HyperLink></li>
+                                <li>
+                                    <asp:HyperLink ID="HyperLink20" NavigateUrl="~/category/Home Appliances" runat="server">Home Appliances</asp:HyperLink></li>
+                                <li>
+                                    <asp:HyperLink ID="HyperLink21" NavigateUrl="~/category/Kitchen Appliances" runat="server">Kitchen Appliances</asp:HyperLink></li>
+                            </div>
+                        </div>
+                    </ul>
+                </li>
+                <li>
+                    <asp:HyperLink ID="hlSHBM" NavigateUrl="~/MerchantStore.aspx" ClientIDMode="Static"
+                        runat="server">SHOP BY MERCHANT</asp:HyperLink>
+                </li>
+                <li><a href="#">SHOP BY BRAND&nbsp;&nbsp;<i class="fa fa-caret-down"></i></a>
+                    <ul class="dropdown" style="left: -488px;">
+                        <div class="row" style="min-width: 1168px; width: 100%;">
+                            <div class="col-xs-3">
+                                <li>
+                                    <asp:HyperLink ID="HyperLink6" NavigateUrl="~/frmDealByBrand.aspx?Brandname=All&BrandID=208"
+                                        runat="server"><b style="margin-left: -2px!important;">Mobile Phones & Tablets</b></asp:HyperLink>
+                                </li>
+                                <li>
+                                    <asp:HyperLink ID="HyperLink7" NavigateUrl="~/frmDealByBrand.aspx?Brandname=Micromax&BrandID=208"
+                                        runat="server">Micromax</asp:HyperLink></li>
+                                <li>
+                                    <asp:HyperLink ID="HyperLink8" NavigateUrl="~/frmDealByBrand.aspx?Brandname=Nokia&BrandID=208"
+                                        runat="server">Nokia</asp:HyperLink></li>
+                                <li>
+                                    <asp:HyperLink ID="HyperLink9" NavigateUrl="~/frmDealByBrand.aspx?Brandname=Samsung&BrandID=208"
+                                        runat="server">Samsung</asp:HyperLink></li>
+                            </div>
+                            <div class="col-xs-3">
+                                <li>
+                                    <asp:HyperLink ID="HyperLink22" NavigateUrl="~/frmDealByBrand.aspx?Brandname=Nexus&BrandID=208"
+                                        runat="server">Nexus</asp:HyperLink></li>
+                                <li>
+                                    <asp:HyperLink ID="HyperLink23" NavigateUrl="~/frmDealByBrand.aspx?Brandname=Apple&BrandID=208"
+                                        runat="server">Apple</asp:HyperLink></li>
+                                <li>
+                                    <asp:HyperLink ID="HyperLink24" NavigateUrl="~/frmDealByBrand.aspx?Brandname=Motorola&BrandID=208"
+                                        runat="server">Motorola</asp:HyperLink></li>
+                                <li>
+                                    <asp:HyperLink ID="HyperLink25" NavigateUrl="~/frmDealByBrand.aspx?Brandname=HTC&BrandID=208"
+                                        runat="server">HTC</asp:HyperLink></li>
+                            </div>
+                            <div class="col-xs-3">
+                                <li>
+                                    <asp:HyperLink ID="HyperLink26" NavigateUrl="~/frmDealByBrand.aspx?Brandname=Xolo&BrandID=208"
+                                        runat="server">Xolo</asp:HyperLink></li>
+                                <li>
+                                    <asp:HyperLink ID="HyperLink27" NavigateUrl="~/frmDealByBrand.aspx?Brandname=Gionee&BrandID=208"
+                                        runat="server">Gionee</asp:HyperLink></li>
+                                <li>
+                                    <asp:HyperLink ID="HyperLink28" NavigateUrl="~/frmDealByBrand.aspx?Brandname=Blackberry&BrandID=208"
+                                        runat="server">Blackberry</asp:HyperLink></li>
+                                <li>
+                                    <asp:HyperLink ID="HyperLink29" NavigateUrl="~/frmDealByBrand.aspx?Brandname=Karbonn&BrandID=208"
+                                        runat="server">Karbonn</asp:HyperLink></li>
+                            </div>
+                            <div class="col-xs-3">
+                                <li>
+                                    <asp:HyperLink ID="HyperLink30" NavigateUrl="~/frmDealByBrand.aspx?Brandname=Asus&BrandID=208"
+                                        runat="server">Asus</asp:HyperLink></li>
+                                <li>
+                                    <asp:HyperLink ID="HyperLink31" NavigateUrl="~/frmDealByBrand.aspx?Brandname=Huawei&BrandID=208"
+                                        runat="server">Huawei</asp:HyperLink></li>
+                                <li>
+                                    <asp:HyperLink ID="HyperLink32" NavigateUrl="~/frmDealByBrand.aspx?Brandname=Lava&BrandID=208"
+                                        runat="server">Lava</asp:HyperLink></li>
+                                <li>
+                                    <asp:HyperLink ID="HyperLink33" NavigateUrl="~/frmDealByBrand.aspx?Brandname=Intex&BrandID=208"
+                                        runat="server">Intex</asp:HyperLink></li>
+                            </div>
+                        </div>
+                    </ul>
+                </li>
+            </ul>
+            <!-- End Navigation List -->
+        </div>
+    </div>
+</div>
