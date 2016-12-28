@@ -9,6 +9,6 @@ public partial class about : BasePage
 {
     protected void Page_Load(object sender, EventArgs e)
     {
-
+        string i;
     }
 }

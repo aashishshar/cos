@@ -19,7 +19,7 @@ public partial class Offers : BasePage, IMerchant_OfferListView
     }
     protected void Page_Load(object sender, EventArgs e)
     {
-        if (!IsPostBack)
+        if (!IsPostBack) 
         {
             string searchText = string.Empty;
             if (Session["S"]!=null)
